@@ -28,11 +28,12 @@ $background_gradient_top = "#444444";
                     <div class="intro">
                         <p class="text-center" style="padding-bottom:54px;color:#dddddd;font-size:40px;">Admin Sign Up</p>
                     </div>
-                    <div style="background-color:#222222;border-radius:15px;margin-left:10%;margin-right:10%;">
+                    <div style="background-color:#222222;border-radius:15px;margin-left:10%;margin-right:10%;padding:5%;color:white;text-align:center;">
                         <form method="POST" action="createaccount.php">
                             <label for="username">Username:</label> <input name="username" type="text" placeholder="Username"><br>
-                            <label for="password1">Password:</label> <input name="password1" type="password" placeholder="Password"><br>
-                            <label for="password2">Password Confirmation:</label> <input name="password2" type="password" placeholder="Confirm Password">
+                            <label for="password1">Password:</label> <input minlength="8" name="password1" type="password" placeholder="Password"><br>
+                            <label for="password2">Password Confirmation:</label> <input minlength="8" name="password2" type="password" placeholder="Confirm Password"><br>
+                            <input type="submit">
                         </form>
                     </div>
                 </main>
