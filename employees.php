@@ -1,4 +1,4 @@
-<!-- V0LT - Marathon-->
+<!-- V0LT - Marathon -->
 <?php
 $background_gradient_bottom = "#000000";
 $background_gradient_top = "#444444";
