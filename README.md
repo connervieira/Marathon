@@ -45,3 +45,7 @@ Marathon is free both in terms of freedom and cost. Marathon itself costs nothin
 ### Accessibility
 
 Marathon is designed to be fully accessible to those with visual impairments by making sure the interface works with screen-readers and is easily readable regardless of color blindness.
+
+### Secure
+
+Marathon encrypts all passwords, ensuring that your login credentials can't be obtained even if someone gains physical access to the server you run Marathon on.

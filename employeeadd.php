@@ -26,12 +26,12 @@ if ($firstname == "" or $firstname == null) {
     exit();
 }
 if ($password== "" or $password == null) {
-    echo "<p style='color:red;'>Error: 'Password' is a required field, but it was left empty!</p>";
+    echo "<p style='color:red;'>Error: 'Employee Password/PIN' is a required field, but it was left empty!</p>";
     exit();
 }
 
 
-if ($id == "" or $id == null) {
+if ($id == "" or $id == null) { // If the ID field was left blank, we'll need to generate one.
     while (true) { // Run forever, until a unique ID is generated.
         $id = rand(100000, 999999); // Generate a random ID.
 
