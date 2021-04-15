@@ -41,3 +41,7 @@ Marathon doesn't need JavaScript or other modern web technologies. This means it
 ### Free
 
 Marathon is free both in terms of freedom and cost. Marathon itself costs nothing to use, and since you have the freedom to host it how you want, you also don't have to go through V0LT to set it up!
+
+### Accessibility
+
+Marathon is designed to be fully accessible to those with visual impairments by making sure the interface works with screen-readers and is easily readable regardless of color blindness.
