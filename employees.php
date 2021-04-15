@@ -34,7 +34,7 @@ $background_gradient_top = "#444444";
                             echo '
                             <form action="employeeadd.php" method="POST">
                                 <label for="id">ID Number:</label><input placeholder="ID Number" name="id"><br>
-                                <label for="firstname">First Name:</label><input placeholder="First Name" name="firstname"><br>
+                                <label for="firstname">First Name:</label><input placeholder="First Name" name="firstname" required><br>
                                 <label for="middlename">Middle Name:</label><input placeholder="Middle Name" name="middlename"><br>
                                 <label for="lastname">Last Name:</label><input placeholder="Last Name" name="lastname"><br>
                                 <label for="gender">Gender:</label><input placeholder="Gender" name="gender"><br>
@@ -44,7 +44,7 @@ $background_gradient_top = "#444444";
                                 <label for="instantmessage">Instant Message Contact:</label><input placeholder="Instant Message Contact" name="instantmessage"><br>
                                 <label for="address">Address:</label><input placeholder="Address" name="address" type="address"><br>
                                 <label for="ssn">Social Security Number:</label><input placeholder="Social Security Number" name="ssn" type="number" minlength="9" maxlength="9"><br>
-                                <label for="password">Employee Password/PIN:</label><input placeholder="Password/PIN" name="password" type="password"><br>
+                                <label for="password">Employee Password/PIN:</label><input placeholder="Password/PIN" name="password" type="password" required><br>
                                 <label for="tips">Tips:</label><input name="tips" type="checkbox"><br>
 
                                 <br>
