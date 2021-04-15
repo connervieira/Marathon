@@ -10,9 +10,10 @@ if ($confirmation !== "true") {
     echo "<p><a href='employees.php'>Cancel</a></p>";
     exit();
 } else {
-    $employee_database[$id_to_delete] = "deleted";
+    unset($employee_database[$id_to_delete]);
     file_put_contents('./databases/employeedatabase.txt', serialize($employee_database)); // Write array changes to disk
     echo "<p>Employee deleted</p>";
+    echo "<p><a href='employees.php'>Back</a></p>";
 }
 
 ?>
