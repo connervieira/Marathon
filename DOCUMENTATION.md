@@ -35,12 +35,12 @@ Marathon makes it easy to add employees to the database. To add an employee to M
         - The employee's email address.
     - **Instant Message Contact**
         - The contact information for an employee on a given instant messaging server.
-        - This value is simple a string, allowing you to put the contact information for really any service you want. For exmaple, if your business uses Matrix to communicate with employees, you may put this employee's Matrix contact information here.
+        - This value is simply a string, allowing you to put the contact information for really any service you want. For exmaple, if your business uses Matrix to communicate with employees, you may put this employee's Matrix contact information here.
     - **Address**
         - This employee's home address.
     - **Social Security Number**
         - The social security number of the employee.
-        - It is important to note that this value is stored in the database as an unencrypted value.
+        - It is important to note that this value is stored in the database as an unencrypted value. For this reason, you may want to consider only storing the last 4 digits of each employee's social security number.
     - **Employee Password/PIN** (Required)
         - This is the password or PIN that this employee will use to sign into their account in order to clock in and perform other tasks.
     - **Tips**
