@@ -17,7 +17,7 @@ Marathon makes it easy to add employees to the database. To add an employee to M
     - **ID Number**
         - A unique number that identifies this employee.
         - If left blank, a unique number will be randomly generated.
-        - This value is also used to edit employees. See 'Editing Employees' for more information.
+        - This value is also used to edit employees. See [Editing Employees](#editing-employees) for more information.
     - **First Name** (required)
         - The first name of the employee.
     - **Middle Name**
