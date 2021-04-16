@@ -4,6 +4,7 @@ This document stores information about Marathon, how to set it up, how it works,
 
 Marathon is still very much a work in progress. This document will be filled out throughout the development of Marathon as features are developed and added.
 
+## Employee Management
 
 ### Adding Employees
 
@@ -16,6 +17,7 @@ Marathon makes it easy to add employees to the database. To add an employee to M
     - **ID Number**
         - A unique number that identifies this employee.
         - If left blank, a unique number will be randomly generated.
+        - This value is also used to edit employees. See 'Editing Employees' for more information.
     - **First Name** (required)
         - The first name of the employee.
     - **Middle Name**
@@ -46,3 +48,16 @@ Marathon makes it easy to add employees to the database. To add an employee to M
     - **Payment Information**:
         - This field is for the employee's payment information.
         - You can store any string here, including bank account information, cryptocurrency addresses, or other payment processor information.
+
+
+### Deleting Employees
+
+To delete an employee, follow these steps.
+
+1. Click the 'Delete' button below an employee's information.
+2. On the page that opens, click 'Confirm' to confirm that you're sure you'd like to delete this employee.
+
+
+### Editing Employees
+
+If you'd like to update an employee's information, you can do so by overwriting them with the edit function. To edit an employee, simply enter their ID number in the 'ID Number' field, and re-enter their information, adjusting it where necessary. This will allow you to change an employee's information without changing their ID number.
