@@ -29,7 +29,13 @@ $background_gradient_top = "#444444";
                     </div>
                     <div style="text-align:center;">
                         <form action="configurationchange.php" method="POST" style="color:white;">
-                            <label for="disableadminsignups">Disable Admin Sign Ups: </label><input name="disableadminsignups" type="checkbox"><br>
+                            <?php
+                            if ($configuration_database["disableadminsignups"] == true) {
+                                echo '<label for="disableadminsignups">Disable Admin Sign Ups: </label><input name="disableadminsignups" type="checkbox" checked><br>';
+                            } else {
+                                echo '<label for="disableadminsignups">Disable Admin Sign Ups: </label><input name="disableadminsignups" type="checkbox"><br>';
+                            }
+                            ?>
                             <input type="submit">
                         </form>
                     </div>
