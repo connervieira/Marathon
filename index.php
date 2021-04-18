@@ -1,5 +1,12 @@
 <!-- V0LT - Marathon -->
 <?php
+session_start(); // Start a PHP session.
+if (isset($_SESSION['loggedin'])) { // Check to see if the user is logged in.
+    $username = $_SESSION['username']; // Set the '$username' variable to the currently signed in user's username.
+} else {
+    header("Location: login.php"); // Redirect the user to the login page.
+    exit();
+}
 
 $background_gradient_bottom = "#000000";
 $background_gradient_top = "#444444";

@@ -24,12 +24,25 @@ include('./import_databases.php');
             <?php
             $entered_username = $_POST["username"];
             $entered_password = $_POST["password"];
+            
+            session_start(); // Start a PHP session.
+            if (isset($_SESSION['loggedin'])) { // Check to see if the user is logged in.
+                echo "
+                <div style='color:white;padding:10%;text-align:center;'>
+                    <p style='color:red;'>Error: You are already signed in as " . $_SESSION['username'] . "!</p>
+                </div>
+                ";
+                exit();
+            }
 
             if ($entered_username !== null and $entered_username !== "") {
                 echo "<div style='color:white;padding:10%;text-align:center;'>";
                 if (isset($authentication_database[$entered_username])) {
                     if (password_verify($entered_password, $authentication_database[$entered_username]["password"])) {
-                        echo "<p style='color:inherit;'>Password correct!</p>";
+                        session_start();
+                        $_SESSION['loggedin'] = 1;
+                        $_SESSION['username'] = $entered_username;
+                        echo "<p style='color:inherit;'>Successfully signed in!</p>";
                     } else {
                         sleep(1); // Wait one second before showing the 'wrong password' message. This makes Marathon slightly more resistant to brute force attacks.
                         echo "<p style='color:red;'>Error: The password you entered is incorrect!</p>";
