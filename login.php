@@ -43,6 +43,7 @@ include('./import_databases.php');
                         $_SESSION['loggedin'] = 1;
                         $_SESSION['username'] = $entered_username;
                         echo "<p style='color:inherit;'>Successfully signed in!</p>";
+                        echo "<p style='color:inherit;'><a href='./index.php' style='text-decoration:underline;color:white;'>View Main Page</a></p>";
                     } else {
                         sleep(1); // Wait one second before showing the 'wrong password' message. This makes Marathon slightly more resistant to brute force attacks.
                         echo "<p style='color:red;'>Error: The password you entered is incorrect!</p>";

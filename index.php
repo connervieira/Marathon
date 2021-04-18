@@ -36,7 +36,7 @@ $background_gradient_top = "#444444";
                         <h2 class="text-center" style="color:#dddddd">Marathon</h2>
                         <p class="text-center" style="padding-bottom:54px;color:#dddddd;font-size:25px;">Main Admin Page</p>
                     </div>
-                    <div class="row projects" style="padding-left:5%;padding-right:5%;">
+                    <div class="row projects" style="padding-left:5%;padding-right:5%;color:white;">
                         <div class="col-sm-6 col-lg-4 item" style="margin:0;border-radius:15px;">
                             <h3>Employees</h3>
                             <a class="btn btn-primary" role="button" href="employees.php" style="background-color:#444444;border-color:#eeeeee">View</a>
@@ -48,6 +48,10 @@ $background_gradient_top = "#444444";
                         <div class="col-sm-6 col-lg-4 item" style="margin:0;border-radius:15px;">
                             <h3>Statistics</h3>
                             <a class="btn btn-primary" role="button" href="statistics.php" style="background-color:#444444;border-color:#eeeeee">View</a>
+                        </div>
+                        <div class="col-sm-6 col-lg-4 item" style="margin:0;border-radius:15px;">
+                            <h3>Configuration</h3>
+                            <a class="btn btn-primary" role="button" href="configure.php" style="background-color:#444444;border-color:#eeeeee">View</a>
                         </div>
                     </div>
                 </main>
