@@ -15,5 +15,6 @@ $pay_database = load_database('./databases/paydatabase.txt');
 $employee_database = load_database('./databases/employeedatabase.txt');
 $positions_database = load_database('./databases/positionsdatabase.txt');
 $authentication_database = load_database('./databases/authenticationdatabase.txt');
+$configuration_database = load_database('./databases/configurationdatabase.txt');
 
 ?>

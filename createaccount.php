@@ -29,6 +29,11 @@ $background_gradient_top = "#444444";
                     $username = $_POST["username"];
                     $password1 = $_POST["password1"];
                     $password2 = $_POST["password2"];
+                    
+                    if ($configuration_database["disableadminsignups"] == true) {
+                        echo "<p style='color:red;'>Error: Admin Sign Ups are currently disabled. Please contact the manager of your Marathon instance for more information.</p>";
+                        exit();
+                    }
 
                     if ($password1 !== $password2) {
                         echo "<p style='color:red;'>Error: The password and password confirmation do not match! This probably means you made a typo in one of the inputs.</p>";
