@@ -24,6 +24,7 @@ $background_gradient_top = "#444444";
                     ?>
                 </div>
                 <main>
+                    <a class="btn btn-primary" role="button" href="index.php" style="background-color:#444444;border-color:#eeeeee">Back</a>
                     <div class="intro">
                         <p class="text-center" style="padding-bottom:54px;color:#dddddd;font-size:40px;">Configure</p>
                     </div>
