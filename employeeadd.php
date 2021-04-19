@@ -6,6 +6,7 @@ $id = $_POST["id"];
 $firstname = $_POST["firstname"];
 $middlename = $_POST["middlename"];
 $lastname = $_POST["lastname"];
+$positionid = $_POST["positionid"];
 $gender = $_POST["gender"];
 $birthday = $_POST["birthday"];
 $phone = $_POST["phone"];
@@ -25,8 +26,12 @@ if ($firstname == "" or $firstname == null) {
     echo "<p style='color:red;'>Error: 'First Name' is a required field, but it was left empty!</p>";
     exit();
 }
-if ($password== "" or $password == null) {
+if ($password == "" or $password == null) {
     echo "<p style='color:red;'>Error: 'Employee Password/PIN' is a required field, but it was left empty!</p>";
+    exit();
+}
+if ($positionid == "" or $positionid == null) {
+    echo "<p style='color:red;'>Error: 'Position ID' is a required field, but it was left empty!</p>";
     exit();
 }
 
@@ -53,6 +58,7 @@ if ($id == "" or $id == null) { // If the ID field was left blank, we'll need to
 $employee_information["firstname"] = filter_var($firstname, FILTER_SANITIZE_STRING);
 $employee_information["middlename"] = filter_var($middlename, FILTER_SANITIZE_STRING);
 $employee_information["lastname"] = filter_var($lastname, FILTER_SANITIZE_STRING);
+$employee_information["positionid"] = filter_var($positionid, FILTER_SANITIZE_NUMBER_INT);
 $employee_information["gender"] = filter_var($gender, FILTER_SANITIZE_STRING);
 $employee_information["birthday"] = filter_var($birthday, FILTER_SANITIZE_NUMBER_INT);
 $employee_information["phone"] = filter_var($phone, FILTER_SANITIZE_NUMBER_INT);

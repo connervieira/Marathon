@@ -38,6 +38,7 @@ $background_gradient_top = "#444444";
                                 <label for="firstname">First Name:</label><input placeholder="First Name" name="firstname" required><br>
                                 <label for="middlename">Middle Name:</label><input placeholder="Middle Name" name="middlename"><br>
                                 <label for="lastname">Last Name:</label><input placeholder="Last Name" name="lastname"><br>
+                                <label for="positionid">Position ID:</label><input placeholder="Position ID" name="positionid" type="number" required><br>
                                 <label for="gender">Gender:</label><input placeholder="Gender" name="gender"><br>
                                 <label for="birthday">Birthday:</label><input placeholder="Last Name" name="birthday" type="date"><br>
                                 <label for="phone">Phone:</label><input placeholder="Phone Number" name="phone" type="tel"><br>
@@ -64,6 +65,11 @@ $background_gradient_top = "#444444";
                         <?php
                         foreach ($employee_database as $key => $element) {
                             echo "<p style='font-size:25px;'><b>Name</b>: " . $element["firstname"] . " " . $element["middlename"] . " " . $element["lastname"] . "</p>";
+                            if (isset($positions_database[$element["positionid"]])) {
+                                echo "<p><b>Position</b>: " . $positions_database[$element["positionid"]]["name"] . " (ID: " . $element["positionid"] . ")</p>";
+                            } else {
+                                echo "<p><b>Position</b>: " . $element["positionid"] . "</p>";
+                            }
                             echo "<p><b>ID Number</b>: " . $key . "</p>";
                             if ($element["birthday"] !== null and $element["birthday"] !== "") {
                                 echo "<p><b>Birthday</b>: " . $element["birthday"] . "</p>";
