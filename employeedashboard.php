@@ -39,12 +39,8 @@ $background_gradient_top = "#444444";
                     </div>
                     <div class="row projects" style="padding-left:5%;padding-right:5%;color:white;">
                         <div class="col-sm-6 col-lg-4 item" style="margin:0;border-radius:15px;">
-                            <h3>Clock In</h3>
-                            <a class="btn btn-primary" role="button" href="#" style="background-color:#444444;border-color:#eeeeee">Open</a>
-                        </div>
-                        <div class="col-sm-6 col-lg-4 item" style="margin:0;border-radius:15px;">
-                            <h3>Clock Out</h3>
-                            <a class="btn btn-primary" role="button" href="#" style="background-color:#444444;border-color:#eeeeee">Open</a>
+                            <h3>Timecard</h3>
+                            <a class="btn btn-primary" role="button" href="timecard.php" style="background-color:#444444;border-color:#eeeeee">Open</a>
                         </div>
                         <div class="col-sm-6 col-lg-4 item" style="margin:0;border-radius:15px;">
                             <h3>Employee Information</h3>
