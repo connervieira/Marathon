@@ -13,7 +13,7 @@ function load_database($database_to_load) {
 $timecard_database = load_database('./databases/timecarddatabase.txt');
 $pay_database = load_database('./databases/paydatabase.txt');
 $employee_database = load_database('./databases/employeedatabase.txt');
-$positions_database = load_database('./databases/positionsdatabase.txt');
+$positions_database = load_database('./databases/positiondatabase.txt');
 $authentication_database = load_database('./databases/authenticationdatabase.txt');
 $configuration_database = load_database('./databases/configurationdatabase.txt');
 
