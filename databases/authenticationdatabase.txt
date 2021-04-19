@@ -1,1 +1,1 @@
-a:1:{s:7:"cvieira";a:1:{s:8:"password";s:60:"$2y$10$fUGm1aGccbRBddpBUKo6j.4Zyh96gJEGd6gUrM/6ntv3AI1jOvnRi";}}
+a:0:{}
