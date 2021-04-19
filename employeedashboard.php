@@ -1,7 +1,7 @@
 <!-- V0LT - Marathon -->
 <?php
 session_start(); // Start a PHP session.
-if ($_SESSION['loggedin'] == 1) { // Check to see if the user is logged in.
+if ($_SESSION['loggedin'] == 2) { // Check to see if the user is logged in.
     $username = $_SESSION['username']; // Set the '$username' variable to the currently signed in user's username.
 } else {
     header("Location: login.php"); // Redirect the user to the login page.
@@ -17,7 +17,7 @@ $background_gradient_top = "#444444";
         <meta charset="utf-8">
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Marathon - Main Admin Page</title>
+        <title>Marathon - Employee Dashboard</title>
 
         <link rel="stylesheet" href="./assets/css/Projects-Clean.css">
         <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
@@ -35,24 +35,24 @@ $background_gradient_top = "#444444";
                 <main>
                     <div class="intro">
                         <h2 class="text-center" style="color:#dddddd">Marathon</h2>
-                        <p class="text-center" style="padding-bottom:54px;color:#dddddd;font-size:25px;">Main Admin Page</p>
+                        <p class="text-center" style="padding-bottom:54px;color:#dddddd;font-size:25px;">Employee Dashboard</p>
                     </div>
                     <div class="row projects" style="padding-left:5%;padding-right:5%;color:white;">
                         <div class="col-sm-6 col-lg-4 item" style="margin:0;border-radius:15px;">
-                            <h3>Employees</h3>
-                            <a class="btn btn-primary" role="button" href="employees.php" style="background-color:#444444;border-color:#eeeeee">Open</a>
+                            <h3>Clock In</h3>
+                            <a class="btn btn-primary" role="button" href="#" style="background-color:#444444;border-color:#eeeeee">Open</a>
                         </div>
                         <div class="col-sm-6 col-lg-4 item" style="margin:0;border-radius:15px;">
-                            <h3>Positions</h3>
-                            <a class="btn btn-primary" role="button" href="positions.php" style="background-color:#444444;border-color:#eeeeee">Open</a>
+                            <h3>Clock Out</h3>
+                            <a class="btn btn-primary" role="button" href="#" style="background-color:#444444;border-color:#eeeeee">Open</a>
                         </div>
                         <div class="col-sm-6 col-lg-4 item" style="margin:0;border-radius:15px;">
-                            <h3>Statistics</h3>
-                            <a class="btn btn-primary" role="button" href="statistics.php" style="background-color:#444444;border-color:#eeeeee">Open</a>
+                            <h3>Employee Information</h3>
+                            <a class="btn btn-primary" role="button" href="#" style="background-color:#444444;border-color:#eeeeee">Open</a>
                         </div>
                         <div class="col-sm-6 col-lg-4 item" style="margin:0;border-radius:15px;">
-                            <h3>Configuration</h3>
-                            <a class="btn btn-primary" role="button" href="configure.php" style="background-color:#444444;border-color:#eeeeee">Open</a>
+                            <h3>Timecard Receipts</h3>
+                            <a class="btn btn-primary" role="button" href="#" style="background-color:#444444;border-color:#eeeeee">Open</a>
                         </div>
                     </div>
                 </main>
