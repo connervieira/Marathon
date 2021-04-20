@@ -1,1 +1,1 @@
-a:0:{}
+a:1:{s:5:"admin";a:1:{s:8:"password";s:60:"$2y$10$BeU2R7uNPuNqyFpqBsSyCuLVoMjLrf/5wu5XhFYEO5aQvN8XdNjBa";}}

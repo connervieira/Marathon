@@ -73,14 +73,17 @@ $background_gradient_top = "#444444";
                         <?php
                         foreach ($employee_database as $key => $element) {
                             echo "<p style='font-size:25px;'><b>Name</b>: " . $element["firstname"] . " " . $element["middlename"] . " " . $element["lastname"] . "</p>";
+                            echo "<p><b>ID Number</b>: " . $key . "</p>";
                             if (isset($positions_database[$element["positionid"]])) {
                                 echo "<p><b>Position</b>: " . $positions_database[$element["positionid"]]["name"] . " (ID: " . $element["positionid"] . ")</p>";
                             } else {
                                 echo "<p><b>Position</b>: " . $element["positionid"] . "</p>";
                             }
-                            echo "<p><b>ID Number</b>: " . $key . "</p>";
                             if ($element["birthday"] !== null and $element["birthday"] !== "") {
                                 echo "<p><b>Birthday</b>: " . $element["birthday"] . "</p>";
+                            }
+                            if ($element["hourlypay"] !== null and $element["hourlypay"] !== "" and $element["hourlypay"] !== 0) {
+                                echo "<p><b>Hourly Pay</b>: " . $element["hourlypay"] . "</p>";
                             }
                             if ($element["gender"] !== null and $element["gender"] !== "") {
                                 echo "<p><b>Gender</b>: " . $element["gender"] . "</p>";

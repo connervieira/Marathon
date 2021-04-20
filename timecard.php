@@ -34,19 +34,21 @@ $background_gradient_top = "#444444";
                 if ($clock_action == "in") { // Clock the employee in
                     if (isset($timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timeout"]) == false and isset($timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timein"]) == true) {
                         echo "<p style='color:red;'>Error: You appear to already be clocked in!</p>";
+                        echo "<a href='timecard.php' style='color:white;text-decoration:underline;'>Back</a>";
                         exit();
                     }
                     $clock_record["valid"] = true;
                     
-                    // Determine how much the employee should make this hour
-                    if ($employee_database[$username]["hourlypay"] == 0 or $employee_database[$username]["hourlypay"] == null) { // If the employee's hourly pay isn't defined, then use their position's default pay.
-                        $clock_record["pay"] = $position_database[$employee_database[$username]["positionid"]]["defaultpayamount"];
-                    } else if ($employee_database[$username]["hourlypay"] >= 0) { // If the employee's hourly pay is defined, then use that as their hourly pay.
+                    // Determine how much the employee should make per hour
+                    if ($employee_database[$username]["hourlypay"] > 0) { // If the employee's hourly pay is defined, then use that as their hourly pay.
                         $clock_record["pay"] = $employee_database[$username]["hourlypay"];
+                    } else if ((int)$positions_database[$employee_database[$username]["positionid"]]["defaultpayamount"] > 0) { // If the employee's hourly pay isn't defined, then use their position's default pay.
+                        $clock_record["pay"] = $positions_database[$employee_database[$username]["positionid"]]["defaultpayamount"];
                     } else { // Otherwise, default to $0 an hour and display a warning.
                        $clock_record["pay"] = 0;
                        echo "<p style='color:white;'>Please note: You are currently making $0 an hour. This is probably a configuration problem, and you should speak with your manager to get it fixed as soon as possible.</p>";
                     }
+
                     $clock_record["timein"] = time();
                     if (isset($timecard_database[$username]) == false) {
                         $timecard_database[$username] = array();
@@ -54,18 +56,38 @@ $background_gradient_top = "#444444";
                     array_push($timecard_database[$username], $clock_record);
                     file_put_contents('./databases/timecarddatabase.txt', serialize($timecard_database)); // Write array changes to disk
                     echo "<p style='color:white;'>You have successfully clocked in!</p>";
+                    echo "<p style='color:white;'>You are earning " .  $clock_record["pay"] . " this shift</p>";
+                    echo "<a href='timecard.php' style='color:white;text-decoration:underline;'>Back</a>";
                     exit();
+
+
+
                 } elseif ($clock_action == "out") { // Clock the employee out
-                    if (isset($timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timeout"]) == false and isset($timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timein"]) == true) {
+                    if ((isset($timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timeout"]) == true and isset($timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timein"]) == true) or (isset($timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timeout"]) == false and isset($timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timein"]) == false)) {
+                        echo "<p style='color:red;'>Error: You don't appear to be clocked in!</p>";
+                        echo "<a href='timecard.php' style='color:white;text-decoration:underline;'>Back</a>";
+                        exit();
+                    } else {
                         $timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timeout"] = time();
                         file_put_contents('./databases/timecarddatabase.txt', serialize($timecard_database)); // Write array changes to disk
                         echo "<p style='color:white;'>You have successfully clocked out!</p>";
-                        exit();
-                    } else {
-                        echo "<p style='color:red;'>Error: You don't appear to be clocked in!</p>";
+                        echo "<a href='timecard.php' style='color:white;text-decoration:underline;'>Back</a>";
+
+                        $this_shift_data = $timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))];
+
+                        echo "<p style='color:white;'>Shift Statistics</p>";
+                        echo "<p style='color:white;'>Start time: " . date("Y-m-d h:i:s", $this_shift_data["timein"]) . "</p>";
+                        echo "<p style='color:white;'>End time: " . date("Y-m-d h:i:s", $this_shift_data["timeout"]) . "</p>";
+                        echo "<p style='color:white;'>Hours worked: " . (round((((int)$this_shift_data["timeout"]-(int)$this_shift_data["timein"])/3600)*10000)/10000) . "</p>";
+                        echo "<p style='color:white;'>Hourly pay: " . $this_shift_data["pay"] . "</p>";
+                        echo "<p style='color:white;'>Money earned:" . ((round((((int)$this_shift_data["timeout"]-(int)$this_shift_data[    "timein"])/3600)*10000)/10000)*$this_shift_data["pay"]) . "</p>";
                         exit();
                     }
                 }
+
+
+
+
             }
             ?>
             <div class="container" style="padding-top:100px;">
@@ -80,7 +102,7 @@ $background_gradient_top = "#444444";
                             <h3>Clock In</h3>
                             <?php
                             if (isset($timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timeout"]) == false and isset($timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timein"]) == true) {
-                                echo '<a class="btn btn-primary" role="button" href="#" style="background-color:#222222;border-color:#eeeeee;color:#888888;">Open</a>';
+                                echo '<a class="btn btn-primary" role="button" href="#" style="background-color:#222222;border-color:#eeeeee;color:#888888;">Already Clocked In</a>';
                             } else {
                                 echo '<a class="btn btn-primary" role="button" href="timecard.php?clock=in" style="background-color:#444444;border-color:#eeeeee">Open</a>';
                             }
@@ -89,13 +111,12 @@ $background_gradient_top = "#444444";
                         <div class="col-sm-6 col-lg-4 item" style="margin:0;border-radius:15px;">
                             <h3>Clock Out</h3>
                             <?php
-                            if (isset($timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timeout"]) == false and isset($timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timein"]) == true) {
-                                echo '<a class="btn btn-primary" role="button" href="#" style="background-color:#222222;border-color:#eeeeee;color:#888888;">Open</a>';
+                            if ((isset($timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timeout"]) == true and isset($timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timein"]) == true) or (isset($timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timeout"]) == false and isset($timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timein"]) == false)) {
+                                echo '<a class="btn btn-primary" role="button" href="#" style="background-color:#222222;border-color:#eeeeee;color:#888888;">Not Clocked In</a>';
                             } else {
                                 echo '<a class="btn btn-primary" role="button" href="timecard.php?clock=out" style="background-color:#444444;border-color:#eeeeee">Open</a>';
                             }
                             ?>
-                            <a class="btn btn-primary" role="button" href="timecard.php?clock=out" style="background-color:#444444;border-color:#eeeeee">Open</a>
                         </div>
                     </div>
                 </main>
