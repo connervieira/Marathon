@@ -10,7 +10,7 @@ include("./import_databases.php");
 
 // Grab variables from POST request
 $disableadminsignups = $_POST["disableadminsignups"];
-$clockinverificationkey = $_POST["clockinverificationkey"]
+$clockinverificationkey = $_POST["clockinverificationkey"];
 
 
 if ($disableadminsignups == "on" or $disableadminsignups == null or $disableadminsignups == "" or $disableadminsignups == "off") { // Check if 'Tips' is set to a valid value

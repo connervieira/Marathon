@@ -56,7 +56,7 @@ $background_gradient_top = "#444444";
                     array_push($timecard_database[$username], $clock_record);
                     file_put_contents('./databases/timecarddatabase.txt', serialize($timecard_database)); // Write array changes to disk
                     echo "<p style='color:white;'>You have successfully clocked in!</p>";
-                    echo "<p style='color:white;'>You are earning " .  $clock_record["pay"] . " this shift</p>";
+                    echo "<p style='color:white;'>You are earning $" .  $clock_record["pay"] . " per hour this shift</p>";
                     echo "<a href='timecard.php' style='color:white;text-decoration:underline;'>Back</a>";
                     exit();
 
@@ -75,12 +75,24 @@ $background_gradient_top = "#444444";
 
                         $this_shift_data = $timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))];
 
-                        echo "<p style='color:white;'>Shift Statistics</p>";
+                        echo "<br><br><br><p style='color:white;'><b>Shift Statistics</b></p>";
                         echo "<p style='color:white;'>Start time: " . date("Y-m-d h:i:s", $this_shift_data["timein"]) . "</p>";
                         echo "<p style='color:white;'>End time: " . date("Y-m-d h:i:s", $this_shift_data["timeout"]) . "</p>";
                         echo "<p style='color:white;'>Hours worked: " . (round((((int)$this_shift_data["timeout"]-(int)$this_shift_data["timein"])/3600)*10000)/10000) . "</p>";
                         echo "<p style='color:white;'>Hourly pay: " . $this_shift_data["pay"] . "</p>";
-                        echo "<p style='color:white;'>Money earned:" . ((round((((int)$this_shift_data["timeout"]-(int)$this_shift_data[    "timein"])/3600)*10000)/10000)*$this_shift_data["pay"]) . "</p>";
+                        echo "<p style='color:white;'>Money earned:" . ((round((((int)$this_shift_data["timeout"]-(int)$this_shift_data["timein"])/3600)*10000)/10000)*$this_shift_data["pay"]) . "</p>";
+
+                        $raw_shift_data = "timein:" . $this_shift_data["timein"] . ", timeout:" . $this_shift_data["timeout"] . ", hourlypay:" . $this_shift_data["pay"];
+                        echo "<p style='color:white;'><b>Verification Data</b></p>";
+                        echo "<p style='color:white;'>The information below can be used to prove to your employer that you worked this shift.</p>";
+                        if ($configuration_database["clockinverificationkey"] == "" or $configuration_database["clockinverificationkey"] == null) {
+                            echo "<p style='color:red;'>Error: Your employer hasn't correctly configured their 'Clock In Verification Key'. Therefore, the shift verification information was unable to be generated.</p>";
+                        } else {
+                            $encrypted_verification_data = openssl_encrypt($raw_shift_data, "AES-128-CTR", $configuration_database["clockinverificationkey"], 0, "1");
+                            echo "<p>" . $encrypted_verification_data . "</p>";
+                            $decrypted_verification_data = openssl_decrypt($encrypted_verification_data, "AES-128-CTR", $configuration_database["clockinverificationkey"], 0, "1");
+                            echo "<p>" . $decrypted_verification_data . "</p>";
+                        }
                         exit();
                     }
                 }

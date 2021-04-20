@@ -43,9 +43,9 @@ $background_gradient_top = "#444444";
                             } else {
                                 echo '<label for="disableadminsignups">Disable Admin Sign Ups: </label><input name="disableadminsignups" type="checkbox"><br>';
                             }
-                            echo '<label for="clockinverificationkey">Clock In Verification Key: </label><input name="clockinverificationkey" type="text"';
+                            echo '<label for="clockinverificationkey">Clock In Verification Key: </label><input name="clockinverificationkey" type="text" value="';
                             echo $configuration_database["clockinverificationkey"];
-                            echo '><br>';
+                            echo '"><br>';
                             ?>
                             <input type="submit">
                         </form>
