@@ -46,6 +46,7 @@ $background_gradient_top = "#444444";
                                 <label for="middlename">Middle Name:</label><input placeholder="Middle Name" name="middlename"><br>
                                 <label for="lastname">Last Name:</label><input placeholder="Last Name" name="lastname"><br>
                                 <label for="positionid">Position ID:</label><input placeholder="Position ID" name="positionid" type="number" required><br>
+                                <label for="hourlypay">Hourly Pay:</label><input placeholder="Hourly Pay" name="hourlypay" type="number"><br>
                                 <label for="gender">Gender:</label><input placeholder="Gender" name="gender"><br>
                                 <label for="birthday">Birthday:</label><input placeholder="Last Name" name="birthday" type="date"><br>
                                 <label for="phone">Phone:</label><input placeholder="Phone Number" name="phone" type="tel"><br>
