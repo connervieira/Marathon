@@ -37,6 +37,16 @@ $background_gradient_top = "#444444";
                         exit();
                     }
                     $clock_record["valid"] = true;
+                    
+                    // Determine how much the employee should make this hour
+                    if ($employee_database[$username]["hourlypay"] == 0 or $employee_database[$username]["hourlypay"] == null) { // If the employee's hourly pay isn't defined, then use their position's default pay.
+                        $clock_record["pay"] = $position_database[$employee_database[$username]["positionid"]]["defaultpayamount"];
+                    } else if ($employee_database[$username]["hourlypay"] >= 0) { // If the employee's hourly pay is defined, then use that as their hourly pay.
+                        $clock_record["pay"] = $employee_database[$username]["hourlypay"];
+                    } else { // Otherwise, default to $0 an hour and display a warning.
+                       $clock_record["pay"] = 0;
+                       echo "<p style='color:white;'>Please note: You are currently making $0 an hour. This is probably a configuration problem, and you should speak with your manager to get it fixed as soon as possible.</p>";
+                    }
                     $clock_record["timein"] = time();
                     if (isset($timecard_database[$username]) == false) {
                         $timecard_database[$username] = array();
