@@ -24,6 +24,9 @@ Marathon makes it easy to add employees to the database. To add an employee to M
         - The middle name of the employee.
     - **Last Name**
         - The last name of the employee.
+    - **Position ID**
+        - The ID of this employee's position in the company.
+        - This ID should correspond to a position created in the "Positions" menu in Marathon.
     - **Gender**
         - The gender of the employee.
         - This value is a string and doesn't restrict you to any specific values. For sake of organization, you should try to be consistent with how you define employee genders.
