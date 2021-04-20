@@ -68,10 +68,23 @@ $background_gradient_top = "#444444";
                     <div class="row projects" style="padding-left:5%;padding-right:5%;color:white;">
                         <div class="col-sm-6 col-lg-4 item" style="margin:0;border-radius:15px;">
                             <h3>Clock In</h3>
-                            <a class="btn btn-primary" role="button" href="timecard.php?clock=in" style="background-color:#444444;border-color:#eeeeee">Open</a>
+                            <?php
+                            if (isset($timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timeout"]) == false and isset($timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timein"]) == true) {
+                                echo '<a class="btn btn-primary" role="button" href="#" style="background-color:#222222;border-color:#eeeeee;color:#888888;">Open</a>';
+                            } else {
+                                echo '<a class="btn btn-primary" role="button" href="timecard.php?clock=in" style="background-color:#444444;border-color:#eeeeee">Open</a>';
+                            }
+                            ?>
                         </div>
                         <div class="col-sm-6 col-lg-4 item" style="margin:0;border-radius:15px;">
                             <h3>Clock Out</h3>
+                            <?php
+                            if (isset($timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timeout"]) == false and isset($timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timein"]) == true) {
+                                echo '<a class="btn btn-primary" role="button" href="#" style="background-color:#222222;border-color:#eeeeee;color:#888888;">Open</a>';
+                            } else {
+                                echo '<a class="btn btn-primary" role="button" href="timecard.php?clock=out" style="background-color:#444444;border-color:#eeeeee">Open</a>';
+                            }
+                            ?>
                             <a class="btn btn-primary" role="button" href="timecard.php?clock=out" style="background-color:#444444;border-color:#eeeeee">Open</a>
                         </div>
                     </div>
