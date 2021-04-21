@@ -17,7 +17,7 @@ $background_gradient_top = "#444444";
         <meta charset="utf-8">
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Marathon - Main Admin Page</title>
+        <title>Marathon - Admin Tools</title>
 
         <link rel="stylesheet" href="./assets/css/Projects-Clean.css">
         <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
@@ -35,28 +35,12 @@ $background_gradient_top = "#444444";
                 <main>
                     <div class="intro">
                         <h2 class="text-center" style="color:#dddddd">Marathon</h2>
-                        <p class="text-center" style="padding-bottom:54px;color:#dddddd;font-size:25px;">Main Admin Page</p>
+                        <p class="text-center" style="padding-bottom:54px;color:#dddddd;font-size:25px;">Admin Tools</p>
                     </div>
                     <div class="row projects" style="padding-left:5%;padding-right:5%;color:white;">
                         <div class="col-sm-6 col-lg-4 item" style="margin:0;border-radius:15px;">
-                            <h3>Employees</h3>
-                            <a class="btn btn-primary" role="button" href="employees.php" style="background-color:#444444;border-color:#eeeeee">Open</a>
-                        </div>
-                        <div class="col-sm-6 col-lg-4 item" style="margin:0;border-radius:15px;">
-                            <h3>Positions</h3>
-                            <a class="btn btn-primary" role="button" href="positions.php" style="background-color:#444444;border-color:#eeeeee">Open</a>
-                        </div>
-                        <div class="col-sm-6 col-lg-4 item" style="margin:0;border-radius:15px;">
-                            <h3>Statistics</h3>
-                            <a class="btn btn-primary" role="button" href="statistics.php" style="background-color:#444444;border-color:#eeeeee">Open</a>
-                        </div>
-                        <div class="col-sm-6 col-lg-4 item" style="margin:0;border-radius:15px;">
-                            <h3>Configuration</h3>
-                            <a class="btn btn-primary" role="button" href="configure.php" style="background-color:#444444;border-color:#eeeeee">Open</a>
-                        </div>
-                        <div class="col-sm-6 col-lg-4 item" style="margin:0;border-radius:15px;">
-                            <h3>Tools</h3>
-                            <a class="btn btn-primary" role="button" href="tools.php" style="background-color:#444444;border-color:#eeeeee">Open</a>
+                            <h3>Verify Shift</h3>
+                            <a class="btn btn-primary" role="button" href="verifyshift.php" style="background-color:#444444;border-color:#eeeeee">Open</a>
                         </div>
                     </div>
                 </main>

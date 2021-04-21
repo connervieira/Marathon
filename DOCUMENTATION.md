@@ -102,3 +102,16 @@ To delete a position, follow these steps.
 ### Editing Employees
 
 If you'd like to update a position's information, you can do so by overwriting it with the edit function. To edit a position, simply enter its ID number in the 'ID Number' field, and re-enter its information, adjusting it where necessary. This will allow you to change a position's information without changing its ID number.
+
+## Verifying Shift Verification Hashes
+
+To verify a Shift Verification Hash, follow these instructions.
+1. Log in to your admin account.
+2. Click through to the 'Tools' page.
+3. Click 'Open' under the 'Verify Shift' tool.
+4. Paste in the Shift Verification Hash into the Hash field.
+5. Click 'Submit'.
+6. Enter your Shift Verification Key into the Key field.
+    - If this field is left blank, the default key defined in the Marathon configuration will be used to decrypt the hash.
+7. Press 'Submit'
+8. The hash provided will be decrypted using the key provided. The output will be shown below the form. If you see random nonsensical characters, its possible one of the values were mistyped, or the hash is invalid. However, it's also possible that the hash was encrypted using a different key. This could have happened if you've changed your Clock In Verification key since this hash was created.
