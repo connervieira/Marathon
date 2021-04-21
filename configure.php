@@ -47,6 +47,7 @@ $background_gradient_top = "#444444";
                             echo $configuration_database["clockinverificationkey"];
                             echo '"><br>';
                             ?>
+                            <label for="currency">Business Currency Code: </label><input name="currency" type="text" maxlength="4" placeholder="Business Currency Code">
                             <input type="submit">
                         </form>
                     </div>
