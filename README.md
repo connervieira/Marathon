@@ -5,7 +5,9 @@ An open source, transparent, self hosted employee management tool.
 
 ## Description
 
-Marathon is an employee tracking tool designed to prioritize both employees and their managers. With Marathon, managers can add employees to the system, manage their information, and track payment information. Employees can quickly and easy clock in, clock out, and keep track of their hours and pay. Marathon is completely open source and self hosted, allowing it to be used with any device that can run a browser.
+Marathon is an employee tracking tool designed to prioritize both employees and their managers. With Marathon, managers can add employees to the system, manage their information, and track payment information. Employees can quickly and easy clock in, clock out, and keep track of their hours and pay.
+
+Marathon's main defining feature is it's unrivaled transparency. Using simple cryptography, Marathon allows employees to prove that they worked a given shift to their employers using a 'shift verification hash'. Similarly, employers can know with near certainty that if an employee has a shift verification hash that they did indeed work a given shift. Simply put, when an employee clocks out of their shift, they recieve a unique string of seemingly random characters that has been generated using their employer's defined key, and contains all of the information about their shift. Only someone with this key could generate such a string. If a doubt about the hours worked by an employee comes up, the employee can present this random string, and their employer can use their key to see if the information contained in the string matches the hours the employee claims to have worked.
 
 
 ## Features
@@ -16,7 +18,7 @@ Marathon is run completely on your own hardware, meaning it doesn't have to be d
 
 ### Transparent
 
-Marathon is designed to be transparent for employees, allowing them to be sure they are being paid fairly without compromising the privacy or security of other employees.
+Marathon is designed to be transparent for employees, allowing them to be sure they are being paid fairly without compromising the privacy or security of other employees. Simiarly, employers can be confident knowing that the software they trust with the business is completely open source and freely auditable.
 
 ### Libre
 
