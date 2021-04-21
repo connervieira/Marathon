@@ -24,7 +24,7 @@ $background_gradient_top = "#444444";
         <meta charset="utf-8">
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Marathon - Manage Employees</title>
+        <title>Marathon - Unpaid Shifts</title>
 
         <link rel="stylesheet" href="./assets/css/Projects-Clean.css">
         <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
@@ -57,16 +57,18 @@ $background_gradient_top = "#444444";
                             exit();
                         }
 
+                        $anyone_has_unpaid_shifts = false;
 
                         foreach ($employee_database as $key1 => $element1) {
                             $employee_has_unpaid_shifts = false;
                             foreach($timecard_database[$key1] as $element2) {
                                 if ($element2["paidout"] != true and isset($element2["timeout"])) {
                                     $employee_has_unpaid_shifts = true;
+                                    $anyone_has_unpaid_shifts = true;
                                 }
                             }
                             if ($employee_has_unpaid_shifts == true) {
-                                echo "<p style='color:white;font-size:25px;'>" . $element1["firstname"] . " " . $element1["lastname"] . "'s Unpaid Shifts</p>";
+                                echo "<p style='color:white;font-size:25px;'><a style='text-decoration:underline;color:white;' target='_blank' href='viewpaymentinformation.php?employee=" . $key1 . "'>" . $element1["firstname"] . " " . $element1["lastname"] . "'s</a> Unpaid Shifts</p>";
                                 $total_payment_owed = 0;
                                 foreach($timecard_database[$key1] as $key2 => $element2) {
                                     if ($element2["paidout"] != true and isset($element2["timeout"])) {
@@ -87,6 +89,9 @@ $background_gradient_top = "#444444";
                                 }
                                 echo "<hr style='height:5px;border:none;color:#333;background-color:#333;'>";
                             }
+                        }
+                        if ($anyone_has_unpaid_shifts == false) {
+                            echo "<p style='color:white;'>There are currently no unpaid shifts!</p>";
                         }
                         echo "<br><br>";
                         ?>
