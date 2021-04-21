@@ -47,9 +47,11 @@ include('./import_databases.php');
                     } else {
                         sleep(1); // Wait one second before showing the 'wrong password' message. This makes Marathon slightly more resistant to brute force attacks.
                         echo "<p style='color:red;'>Error: The password you entered is incorrect!</p>";
+                        echo "<p style='color:inherit;'><a href='login.php' style='text-decoration:underline;color:white;'>Back</a></p>";
                     }
                 } else {
                     echo "<p style='color:red;'>Error: The username you entered does not exist in the account database!</p>";
+                    echo "<p style='color:inherit;'><a href='login.php' style='text-decoration:underline;color:white;'>Back</a></p>";
                 }
                 echo "</div>";
                 exit();
