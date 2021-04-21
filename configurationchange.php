@@ -10,7 +10,14 @@ include("./import_databases.php");
 
 // Grab variables from POST request
 $disableadminsignups = $_POST["disableadminsignups"];
-$clockinverificationkey = $_POST["clockinverificationkey"];
+$clockinverificationkey = $_POST["clockinverificationkey"];\
+$currency = $_POST["currency"];
+
+if (strlen($currency) > 4) {
+    echo "<p style='color:red;'>Error: 'Business Currency Symbol' should only be 4 characters or shorter.</p>";
+    exit();
+
+}
 
 
 if ($disableadminsignups == "on" or $disableadminsignups == null or $disableadminsignups == "" or $disableadminsignups == "off") { // Check if 'Tips' is set to a valid value
@@ -24,6 +31,7 @@ if ($disableadminsignups == "on" or $disableadminsignups == null or $disableadmi
     exit();
 }
 $configuration_database["clockinverificationkey"] = $clockinverificationkey;
+$configuration_database["currency"] = filter_var($currency, FILTER_SANITIZE_STRING);
 
 file_put_contents('./databases/configurationdatabase.txt', serialize($configuration_database)); // Write array changes to disk
 
