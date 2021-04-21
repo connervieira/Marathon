@@ -10,7 +10,7 @@ include("./import_databases.php");
 
 // Grab variables from POST request
 $disableadminsignups = $_POST["disableadminsignups"];
-$clockinverificationkey = $_POST["clockinverificationkey"];\
+$clockinverificationkey = $_POST["clockinverificationkey"];
 $currency = $_POST["currency"];
 
 if (strlen($currency) > 4) {
