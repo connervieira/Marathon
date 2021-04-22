@@ -44,11 +44,11 @@ $background_gradient_top = "#444444";
                         </div>
                         <div class="col-sm-6 col-lg-4 item" style="margin:0;border-radius:15px;">
                             <h3>Employee Information</h3>
-                            <a class="btn btn-primary" role="button" href="#" style="background-color:#444444;border-color:#eeeeee">Open</a>
+                            <a class="btn btn-primary" role="button" href="employeeinformation.php" style="background-color:#444444;border-color:#eeeeee">Open</a>
                         </div>
                         <div class="col-sm-6 col-lg-4 item" style="margin:0;border-radius:15px;">
                             <h3>Timecard Receipts</h3>
-                            <a class="btn btn-primary" role="button" href="#" style="background-color:#444444;border-color:#eeeeee">Open</a>
+                            <a class="btn btn-primary" role="button" href="timecardreceipts.php" style="background-color:#444444;border-color:#eeeeee">Open</a>
                         </div>
                     </div>
                 </main>
