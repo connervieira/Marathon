@@ -4,7 +4,7 @@ session_start(); // Start a PHP session.
 if ($_SESSION['loggedin'] == 2) { // Check to see if the user is logged in.
     $username = (string)$_SESSION['username']; // Set the '$username' variable to the currently signed in user's username.
 } else {
-    header("Location: login.php"); // Redirect the user to the login page.
+    header("Location: employeelogin.php"); // Redirect the user to the login page.
     exit();
 }
 
