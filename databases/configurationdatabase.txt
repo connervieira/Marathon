@@ -1,1 +1,1 @@
-a:3:{s:19:"disableadminsignups";b:0;s:22:"clockinverificationkey";s:3:"key";s:8:"currency";s:0:"";}
+a:3:{s:19:"disableadminsignups";b:0;s:22:"clockinverificationkey";s:3:"key";s:8:"currency";s:3:"USD";}
