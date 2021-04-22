@@ -37,14 +37,14 @@ $background_gradient_top = "#444444";
                     </div>
                     <div style="text-align:center;">
                         <?php
-                        echo "<p>Number Of Employees: " . count($employee_database) . "</p>";
-                        echo "<p>Number Of Positions: " . count($positions_database) . "</p>";
+                        echo "<p style='color:white;' id='numberofemployees'>Number Of Employees: " . count($employee_database) . "</p>";
+                        echo "<p style='color:white;' id='numberofpositions'>Number Of Positions: " . count($positions_database) . "</p>";
 
                         $total_shifts = 0;
                         foreach($timecard_database as $element) {
                             $total_shifts = $total_shifts + count($element);
                         }
-                        echo "<p>Total Shifts Worked: " . (string)$total_shifts . "</p>";
+                        echo "<p style='color:white;' id='totalshiftsworked'>Total Shifts Worked: " . (string)$total_shifts . "</p>";
 
                         $total_payouts = 0.0;
                         foreach($timecard_database as $element1) {
@@ -54,7 +54,7 @@ $background_gradient_top = "#444444";
                                 }
                             }
                         }
-                        echo "<p>Total Payouts: $" . (string)(round($total_payouts * 100) / 100) . "</p>";
+                        echo "<p style='color:white;' id='totalemployeepayoutamount'>Total Payouts: $" . (string)(round($total_payouts * 100000) / 100000) . "</p>";
 
                         $open_shifts = 0;
                         foreach($timecard_database as $element1) {
@@ -64,7 +64,18 @@ $background_gradient_top = "#444444";
                                 }
                             }
                         }
-                        echo "<p>Currently Open Shifts: " . (string)$open_shifts . "</p>";
+                        echo "<p style='color:white;' id='currentlyopenshiftcount'>Currently Open Shifts: " . (string)$open_shifts . "</p>";
+
+
+                        $unpaid_shifts = 0;
+                        foreach($timecard_database as $element1) {
+                            foreach ($element1 as $element2) {
+                                if ($element2["paidout"] !== true) {
+                                    $unpaid_shifts++;
+                                }
+                            }
+                        }
+                        echo "<p style='color:white;' id='unpaidshiftcount'>Unpaid Shifts: " . (string)$unpaid_shifts . "</p>";
                         ?>
                     </div>
                 </main>
