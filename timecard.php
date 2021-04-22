@@ -88,7 +88,7 @@ $background_gradient_top = "#444444";
                         echo "<p style='color:white;'>Hourly pay: " . $this_shift_data["pay"] . "</p>";
                         echo "<p style='color:white;'>Money earned: " . ((round((((int)$this_shift_data["timeout"]-(int)$this_shift_data["timein"])/3600)*10000)/10000)*$this_shift_data["pay"]) . "</p>";
 
-                        $raw_shift_data = "timein:" . $this_shift_data["timein"] . ", timeout:" . $this_shift_data["timeout"] . ", hourlypay:" . $this_shift_data["pay"];
+                        $raw_shift_data = "employee: " . $username . ", timein:" . $this_shift_data["timein"] . ", timeout:" . $this_shift_data["timeout"] . ", hourlypay:" . $this_shift_data["pay"];
                         echo "<br><p style='color:white;'><b>Verification Data</b></p>";
                         echo "<p style='color:white;'>The information below can be used to prove to your employer that you worked this shift.</p>";
                         if ($configuration_database["clockinverificationkey"] == "" or $configuration_database["clockinverificationkey"] == null) {
