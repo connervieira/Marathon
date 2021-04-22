@@ -38,11 +38,11 @@ $background_gradient_top = "#444444";
                     foreach ($timecard_database[$username] as $key => $element) {
                         echo "<div style='background:#222222;padding:30px;border-radius:15px;'>";
                         echo "<p style='color:white;font-size:20px;'><b>Shift ID</b>: " . $key . "</p>";
-                        echo "<p style='color:white;'>Start time: " . date("Y-m-d h:i:s", $this_shift_data["timein"]) . "</p>";
-                        echo "<p style='color:white;'>End time: " . date("Y-m-d h:i:s", $this_shift_data["timeout"]) . "</p>";
-                        echo "<p style='color:white;'>Hours worked: " . (round((((int)$this_shift_data["timeout"]-(int)$this_shift_data["timein"])/3600)*10000)/10000) . "</p>";
-                        echo "<p style='color:white;'>Hourly pay: " . $this_shift_data["pay"] . "</p>";
-                        echo "<p style='color:white;'>Money earned: " . ((round((((int)$this_shift_data["timeout"]-(int)$this_shift_data["timein"])/3600)*10000)/10000)*$this_shift_data["pay"]) . "</p>";
+                        echo "<p style='color:white;'>Start time: " . date("Y-m-d h:i:s", $element["timein"]) . "</p>";
+                        echo "<p style='color:white;'>End time: " . date("Y-m-d h:i:s", $element["timeout"]) . "</p>";
+                        echo "<p style='color:white;'>Hours worked: " . (round((((int)$element["timeout"]-(int)$element["timein"])/3600)*10000)/10000) . "</p>";
+                        echo "<p style='color:white;'>Hourly pay: " . $element["pay"] . "</p>";
+                        echo "<p style='color:white;'>Money earned: " . ((round((((int)$element["timeout"]-(int)$this_shift_data["timein"])/3600)*10000)/10000)*$element["pay"]) . "</p>";
 
                         // Display verification data
                         $raw_shift_data = "employee: " . $username . ", timein:" . $element["timein"] . ", timeout:" . $element["timeout"] . ", hourlypay:" . $element["pay"];
