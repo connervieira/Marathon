@@ -51,3 +51,7 @@ Marathon is designed to be fully accessible to those with visual impairments by 
 ### Secure
 
 Marathon encrypts all passwords, ensuring that your login credentials can't be obtained even if someone gains physical access to the server you run Marathon on.
+
+### Statistics
+
+Marathon allows managers to quickly view their store statistics at a glance. Statistics can help to quickly determine how many unpaid shifts still need to be paid out, and how many people are currently clocked in.
