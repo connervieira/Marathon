@@ -33,20 +33,31 @@ $background_gradient_top = "#444444";
                 <main>
                     <a class="btn btn-primary" role="button" href="index.php" style="background-color:#444444;border-color:#eeeeee">Back</a>
                     <div class="intro">
-                        <p class="text-center" style="padding-bottom:54px;color:#dddddd;font-size:40px;">Manage Employees</p>
+                        <p class="text-center" style="padding-bottom:54px;color:#dddddd;font-size:40px;color:white;">Manage Employees</p>
                     </div>
                     <div style="text-align:center;">
-                        <p style="font-size:30px;">Add New Employee</p>
+                        <p style="font-size:30px;color:white;">Add New Employee</p>
                         <?php 
                         if ($_GET["editing"] == "true") {
                             echo '
-                            <form action="employeeadd.php" method="POST">
+                            <form style="color:white;" action="employeeadd.php" method="POST">
                                 <label for="id">ID Number:</label><input placeholder="ID Number" name="id"><br>
                                 <label for="firstname">First Name:</label><input placeholder="First Name" name="firstname" required><br>
                                 <label for="middlename">Middle Name:</label><input placeholder="Middle Name" name="middlename"><br>
                                 <label for="lastname">Last Name:</label><input placeholder="Last Name" name="lastname"><br>
                                 <label for="positionid">Position ID:</label><input placeholder="Position ID" name="positionid" type="number" required><br>
-                                <label for="hourlypay">Hourly Pay:</label><input placeholder="Hourly Pay" name="hourlypay" type="number"><br>
+                                ';
+                            $currency = strtolower($configuration_database["currency"]);
+                            if ($currency == "usd") {
+                                echo '<label for="hourlypay">Hourly Pay:</label><input placeholder="Hourly Pay" name="hourlypay" step="0.01" type="number"><br>';
+                            } elseif ($currency == "bch") {
+                                echo '<label for="hourlypay">Hourly Pay:</label><input placeholder="Hourly Pay" name="hourlypay" step="0.00001" type="number"><br>';
+                            } elseif ($currency == "xmr") {
+                                echo '<label for="hourlypay">Hourly Pay:</label><input placeholder="Hourly Pay" name="hourlypay" step="0.00001" type="number"><br>';
+                            } else {
+                                echo '<label for="hourlypay">Hourly Pay:</label><input placeholder="Hourly Pay" name="hourlypay" step="0.00000001" type="number"><br>';
+                            }
+                            echo '
                                 <label for="gender">Gender:</label><input placeholder="Gender" name="gender"><br>
                                 <label for="birthday">Birthday:</label><input placeholder="Last Name" name="birthday" type="date"><br>
                                 <label for="phone">Phone:</label><input placeholder="Phone Number" name="phone" type="tel"><br>
