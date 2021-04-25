@@ -1,5 +1,7 @@
 # Marathon
 
+Version 0.1
+
 An open source, transparent, self hosted employee management tool.
 
 
