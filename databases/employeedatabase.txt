@@ -1,1 +1,1 @@
-a:1:{i:1;a:15:{s:9:"firstname";s:4:"Test";s:10:"middlename";s:0:"";s:8:"lastname";s:8:"Employee";s:10:"positionid";s:1:"1";s:9:"hourlypay";s:2:"11";s:6:"gender";s:4:"Male";s:8:"birthday";s:0:"";s:5:"phone";s:12:"123-456-7890";s:5:"email";s:0:"";s:14:"instantmessage";s:0:"";s:7:"address";s:0:"";s:3:"ssn";s:0:"";s:8:"password";s:60:"$2y$10$4PHKvlndBxerysWnlbvdge7gh2Pl4Gl961GNUXftIKhLUjZSNQrdm";s:11:"paymentinfo";s:8:"Bank1234";s:4:"tips";s:3:"off";}}
+a:0:{}
