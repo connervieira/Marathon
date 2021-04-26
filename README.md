@@ -1,6 +1,6 @@
 # Marathon
 
-Version 0.1
+Version 0.2
 
 An open source, transparent, self hosted employee management tool.
 
@@ -57,3 +57,8 @@ Marathon encrypts all passwords, ensuring that your login credentials can't be o
 ### Statistics
 
 Marathon allows managers to quickly view their store statistics at a glance. Statistics can help to quickly determine how many unpaid shifts still need to be paid out, and how many people are currently clocked in.
+
+
+## Bug Reports
+
+Marathon is a very complex system of interconnected databases and modules. While I do my best to ensure Marathon is as stable as possible, I'm a single person developer, and I'm bound to miss things. If you find something wrong with Marathon, whether it be a bug or something that just doesn't work as you'd expect, I'd greatly appreciate if you would make me aware of the issue so I can fix it. Feel free to contact me using the information found at <https://v0lttech.com/contact.php>, or submit a issue on GitHub
