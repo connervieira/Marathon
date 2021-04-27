@@ -5,6 +5,11 @@ Version 0.1
 An open source, transparent, self hosted employee management tool.
 
 
+## Webpage
+
+You can find the official Marathon webpage, as well as Marathon downloads at <https://v0lttech.com/marathon.php>.
+
+
 ## Description
 
 Marathon is an employee tracking tool designed to prioritize both employees and their managers. With Marathon, managers can add employees to the system, manage their information, and track payment information. Employees can quickly and easy clock in, clock out, and keep track of their hours and pay.
