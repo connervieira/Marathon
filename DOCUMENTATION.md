@@ -4,7 +4,7 @@ This document stores information about Marathon, how to set it up, how it works,
 
 Marathon is still very much a work in progress. This document will be filled out throughout the development of Marathon as features are developed and added.
 
-## Set Up
+## Setup
 
 This section describes how to install Marathon on a technical level.
 
