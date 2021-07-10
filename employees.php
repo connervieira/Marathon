@@ -47,6 +47,8 @@ $background_gradient_top = "#444444";
                                 <label for="lastname">Last Name:</label><input placeholder="Last Name" name="lastname"><br>
                                 <label for="positionid">Position ID:</label><input placeholder="Position ID" name="positionid" type="number" required><br>
                                 ';
+                            
+                            // Change the hourly pay "step" based on the currency defined in the configuration.
                             $currency = strtolower($configuration_database["currency"]);
                             if ($currency == "usd") {
                                 echo '<label for="hourlypay">Hourly Pay:</label><input placeholder="Hourly Pay" name="hourlypay" step="0.01" type="number"><br>';
@@ -57,6 +59,8 @@ $background_gradient_top = "#444444";
                             } else {
                                 echo '<label for="hourlypay">Hourly Pay:</label><input placeholder="Hourly Pay" name="hourlypay" step="0.00000001" type="number"><br>';
                             }
+                            
+                            
                             echo '
                                 <label for="gender">Gender:</label><input placeholder="Gender" name="gender"><br>
                                 <label for="birthday">Birthday:</label><input placeholder="Last Name" name="birthday" type="date"><br>
