@@ -18,9 +18,16 @@ This section describes how to install Marathon on a technical level.
     - `sudo apache2ctl restart`
 5. Download Marathon, and copy it to you the root of your web server.
     - `mv ~/Downloads/marathon /var/www/html/`
-6. Optionally, unblock Apache on your firewall.
+6. Open your Apache configuration in a text editor of your choice, and add the following line before the closing VirtualHost tag.
+    - Example: `sudo vim /etc/apache2/sites-enabled/000-default.conf`
+    - `<Directory /var/www>
+    AllowOverride All
+</Directory>`
+7. Restart Apache once more.
+    - `sudo apache2ctl restart`
+8. Optionally, unblock Apache on your firewall.
     - `sudo ufw allow 80; sudo ufw allow 443`
-7. At this point, you should be able to load Marathon by loading `http://localhost/marathon` in your browser.
+9. At this point, you should be able to load Marathon by loading `http://localhost/marathon` in your browser.
 
 
 ## Initial Configuration
