@@ -20,9 +20,11 @@ This section describes how to install Marathon on a technical level.
     - `mv ~/Downloads/marathon /var/www/html/`
 6. Open your Apache configuration in a text editor of your choice, and add the following line before the closing VirtualHost tag.
     - Example: `sudo vim /etc/apache2/sites-enabled/000-default.conf`
-    - `<Directory /var/www>
-    AllowOverride All
-</Directory>`
+    - ```apacheconf
+        <Directory /var/www>
+            AllowOverride All
+        </Directory>
+        ```
 7. Restart Apache once more.
     - `sudo apache2ctl restart`
 8. Optionally, unblock Apache on your firewall.
