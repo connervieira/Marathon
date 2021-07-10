@@ -63,6 +63,7 @@ if ($id == "" or $id == null) { // If the ID field was left blank, we'll need to
 
 
 // Sanitize all inputs then add them to the array for this employee's information.
+$id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 $employee_information["firstname"] = filter_var($firstname, FILTER_SANITIZE_STRING);
 $employee_information["middlename"] = filter_var($middlename, FILTER_SANITIZE_STRING);
 $employee_information["lastname"] = filter_var($lastname, FILTER_SANITIZE_STRING);
