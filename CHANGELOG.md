@@ -9,4 +9,5 @@ This file explains what changes are made to Marathon based on version.
 
 ## v0.2
 
-- Added explanation to READEME.md about reporting bugs
+- Added explanation to README.md about reporting bugs.
+- Fixed issue that allowed remote clients to access raw database information.
