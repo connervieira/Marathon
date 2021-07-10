@@ -41,6 +41,12 @@ if ($id == "" or $id == null) { // If the ID field was left blank, we'll need to
     }
 }
 
+// Check to make sure the submitted Position ID number is actually a number.
+if (is_numeric($id) == false) {
+    echo "<p style='color:red;'>Error: 'Position ID' should be a number, but it appears to be a string!</p>";
+    exit();
+}
+
 
 // Sanitize all inputs then add them to the array for this position's information.
 $position_information["name"] = filter_var($name, FILTER_SANITIZE_STRING);
