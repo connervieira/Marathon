@@ -41,7 +41,7 @@ $background_gradient_top = "#444444";
                         if ($_GET["editing"] == "true") {
                             echo '
                             <form style="color:white;" action="employeeadd.php" method="POST">
-                                <label for="id">ID Number:</label><input placeholder="ID Number" name="id"><br>
+                                <label for="id">ID Number:</label><input placeholder="ID Number" name="id" type="number"><br>
                                 <label for="firstname">First Name:</label><input placeholder="First Name" name="firstname" required><br>
                                 <label for="middlename">Middle Name:</label><input placeholder="Middle Name" name="middlename"><br>
                                 <label for="lastname">Last Name:</label><input placeholder="Last Name" name="lastname"><br>
