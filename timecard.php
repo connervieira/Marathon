@@ -28,6 +28,10 @@ $background_gradient_top = "#444444";
             <?php
             include('./import_databases.php');
 
+            if (isset($timecard_database[$username]) == false) { // If the user doesn't exist in the timecard database, then add them as a blank placeholder.
+                $timecard_database[$username] = array();
+            }
+
             $clock_action = $_GET["clock"];
 
             if ($clock_action == "in" or $clock_action == "out" or $clock_action == "" or $clock_action == null) {

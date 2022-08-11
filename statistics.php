@@ -41,15 +41,19 @@ $background_gradient_top = "#444444";
                         echo "<p style='color:white;' id='numberofpositions'>Number Of Positions: " . count($positions_database) . "</p>";
 
                         $total_shifts = 0;
-                        foreach($timecard_database as $element) {
-                            $total_shifts = $total_shifts + count($element);
+                        foreach($timecard_database as $element1) {
+                            foreach ($element1 as $element2) {
+                                if ($element2["valid"] == true) {
+                                    $total_shifts = $total_shifts + 1;
+                                }
+                            }
                         }
                         echo "<p style='color:white;' id='totalshiftsworked'>Total Shifts Worked: " . (string)$total_shifts . "</p>";
 
                         $total_payouts = 0.0;
                         foreach($timecard_database as $element1) {
                             foreach ($element1 as $element2) {
-                                if (isset($element2["timeout"]) == true) {
+                                if (isset($element2["timeout"]) == true and $element2["valid"] == true) {
                                     $total_payouts = $total_payouts + ((float)$element2["pay"] * (((int)$element2["timeout"] - (int)$element2["timein"])/3600));
                                 }
                             }
@@ -59,7 +63,7 @@ $background_gradient_top = "#444444";
                         $open_shifts = 0;
                         foreach($timecard_database as $element1) {
                             foreach ($element1 as $element2) {
-                                if (isset($element2["timein"]) == true and isset($element2["timeout"]) == false) {
+                                if (isset($element2["timein"]) == true and isset($element2["timeout"]) == false and $element2["valid"] == true) {
                                     $open_shifts++;
                                 }
                             }
@@ -70,7 +74,7 @@ $background_gradient_top = "#444444";
                         $unpaid_shifts = 0;
                         foreach($timecard_database as $element1) {
                             foreach ($element1 as $element2) {
-                                if ($element2["paidout"] !== true) {
+                                if ($element2["paidout"] !== true and $element2["valid"] == true) {
                                     $unpaid_shifts++;
                                 }
                             }

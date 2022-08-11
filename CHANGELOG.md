@@ -11,3 +11,9 @@ This file explains what changes are made to Marathon based on version.
 
 - Added explanation to README.md about reporting bugs.
 - Fixed issue that allowed remote clients to access raw database information.
+- Fixed an issue that caused the timecard database to fail to initialize.
+- Added a 'paid shift' viewer that allows admins to revert shifts from paid to unpaid in the event of a mistake.
+- Added an 'all shift' viewer that allows admins to invalide shifts from the timecard database.
+    - Invalidating a shift effectively deletes it, and it is no longer included in statistics or payment data.
+    - It should be noted that invalidating or deleting a shift from the database does not invalidate it's confirmation hash, meaning an employee can still prove they worked a shift, even after it has been deleted from the database.
+- Added 'Back' buttons to some admin pages to make navigation more conveinent.
