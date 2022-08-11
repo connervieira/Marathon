@@ -17,3 +17,6 @@ This file explains what changes are made to Marathon based on version.
     - Invalidating a shift effectively deletes it, and it is no longer included in statistics or payment data.
     - It should be noted that invalidating or deleting a shift from the database does not invalidate it's confirmation hash, meaning an employee can still prove they worked a shift, even after it has been deleted from the database.
 - Added 'Back' buttons to some admin pages to make navigation more conveinent.
+- Fixed an issue where shift pay was calculated inaccurately on the 'Timecard Receipts' page.
+- Fixed an issue where hourly pay rates would be saved without a decimal point.
+- Disabled autofill on certain field where it isn't appropriate.

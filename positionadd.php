@@ -50,7 +50,7 @@ if (is_numeric($id) == false) {
 
 // Sanitize all inputs then add them to the array for this position's information.
 $position_information["name"] = filter_var($name, FILTER_SANITIZE_STRING);
-$position_information["defaultpayamount"] = filter_var($defaultpayamount, FILTER_SANITIZE_STRING);
+$position_information["defaultpayamount"] = filter_var($defaultpayamount, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
 $position_information["description"] = filter_var($description, FILTER_SANITIZE_STRING);
 if ($canclockin == "on" or $canclockin == null or $canclockin == "" or $canclockin == "off") {
     if ($canclockin == "on") {
