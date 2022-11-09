@@ -39,6 +39,11 @@ $background_gradient_top = "#444444";
                     <div style="text-align:center;color:white;">
                         <?php
                             if ($employee_to_view != null and $employee_to_view != "") { // Check if the user as selected an employee to view.
+                                echo "
+                                <form>
+                                    <label for='employee'>Employee ID: </label><input name='employee' type='text' placeholder='Employee ID'>
+                                </form>
+                                ";
                                 if (isset($employee_database[$employee_to_view]) == true) { // Check if the employee exists.
                                     if ($employee_database[$employee_to_view]["paymentinfo"] !== "" and $employee_database[$employee_to_view]["paymentinfo"] !== null) { // Check if the selected employee has payment information on file.
                                         echo "<p style='color:white;font-size:25px;'>" . $employee_database[$employee_to_view]["firstname"] . " " . $employee_database[$employee_to_view]["lastname"] . "'s Payment Information</p>";

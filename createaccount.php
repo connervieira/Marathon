@@ -1,6 +1,5 @@
 <!-- V0LT - Marathon -->
 <?php
-
 $background_gradient_bottom = "#000000";
 $background_gradient_top = "#444444";
 ?>
@@ -25,6 +24,7 @@ $background_gradient_top = "#444444";
                     ?>
                 </div>
                 <main>
+                    <a class="btn btn-primary" role="button" href="login.php" style="background-color:#444444;border-color:#eeeeee">Back</a>
                     <?php
                     $username = $_POST["username"];
                     $password1 = $_POST["password1"];
@@ -45,11 +45,10 @@ $background_gradient_top = "#444444";
                         exit();
                     }
 
-                    echo $password1;
                     $authentication_database[$username]["password"] = password_hash($password1, PASSWORD_DEFAULT); // Add the new user and their hashed password to the authentication database.
                     file_put_contents('./databases/authenticationdatabase.txt', serialize($authentication_database)); // Write array changes to disk.
 
-                    echo "<p>Successfully created account!</p>";
+                    echo "<p style='text-align:center;color:white;'>Successfully created account!</p>";
                     ?>
                 </main>
             </div>

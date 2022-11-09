@@ -40,23 +40,33 @@ $background_gradient_top = "#444444";
                     <div class="row projects" style="padding-left:5%;padding-right:5%;color:white;">
                         <div class="col-sm-6 col-lg-4 item" style="margin:0;border-radius:15px;">
                             <h3>Employees</h3>
+                            <p>Add, remove, and edit employees in the database.</p>
                             <a class="btn btn-primary" role="button" href="employees.php" style="background-color:#444444;border-color:#eeeeee">Open</a>
                         </div>
                         <div class="col-sm-6 col-lg-4 item" style="margin:0;border-radius:15px;">
                             <h3>Positions</h3>
+                            <p>Add, remove, and edit positions in the database.</p>
                             <a class="btn btn-primary" role="button" href="positions.php" style="background-color:#444444;border-color:#eeeeee">Open</a>
                         </div>
                         <div class="col-sm-6 col-lg-4 item" style="margin:0;border-radius:15px;">
                             <h3>Statistics</h3>
+                            <p>View statistics related to this Marathon instance.</p>
                             <a class="btn btn-primary" role="button" href="statistics.php" style="background-color:#444444;border-color:#eeeeee">Open</a>
                         </div>
                         <div class="col-sm-6 col-lg-4 item" style="margin:0;border-radius:15px;">
                             <h3>Configuration</h3>
+                            <p>View and update this instance's configuration.</p>
                             <a class="btn btn-primary" role="button" href="configure.php" style="background-color:#444444;border-color:#eeeeee">Open</a>
                         </div>
                         <div class="col-sm-6 col-lg-4 item" style="margin:0;border-radius:15px;">
                             <h3>Tools</h3>
+                            <p>Access useful administrative tools for managing information.</p>
                             <a class="btn btn-primary" role="button" href="tools.php" style="background-color:#444444;border-color:#eeeeee">Open</a>
+                        </div>
+                        <div class="col-sm-6 col-lg-4 item" style="margin:0;border-radius:15px;">
+                            <h3>Accounts</h3>
+                            <p>View and manage administrator accounts on this instance.</p>
+                            <a class="btn btn-primary" role="button" href="manageaccounts.php" style="background-color:#444444;border-color:#eeeeee">Open</a>
                         </div>
                     </div>
                 </main>
