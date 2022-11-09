@@ -40,7 +40,7 @@ $background_gradient_top = "#444444";
                         <?php 
                         if ($_GET["editing"] == "true") {
                             echo '
-                            <form action="positionadd.php" method="POST">
+                            <form action="positionadd.php" method="POST" style="color:white;">
                                 <label for="id">ID Number:</label><input placeholder="ID Number" name="id" type="number"><br>
                                 <label for="name">Position Name:</label><input placeholder="Position Name" name="name" required><br>
                                 <label for="defaultpayamount">Default Pay Amount:</label><input placeholder="Default Pay Amount" name="defaultpayamount" type="number" step="any"><br>

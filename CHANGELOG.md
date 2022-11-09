@@ -28,3 +28,9 @@ This file explains what changes are made to Marathon based on version.
     - Admin accounts can now be deleted from the web interface by other admins.
 - Replaced several exclamation points on the login pages with periods for sake of professionalism.
 - The employee tips permission is now stored as a boolean value instead of a string.
+- The form information on the Positions page now appears white.
+- All of any employee's timecard receipts are now deleted when their account is deleted.
+    - This does not (and can not) invalidate shift confirmation hashes saved by the employee.
+- Change the method by which unpaid shift are counted on the Statistics page.
+    - The statistics will no longer count unpaid shifts from employees that no longer exist in the employee database.
+        - Practically, this should change nothing, since timecard receipts are now deleted when employees are deleted, but it should improve backwards compatibility and redundancy.

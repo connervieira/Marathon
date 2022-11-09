@@ -63,7 +63,7 @@ $background_gradient_top = "#444444";
 
                         $anyone_has_unpaid_shifts = false;
 
-                        foreach ($employee_database as $key1 => $element1) {
+                        foreach ($employee_database as $key1 => $element1) { // Iterate through each employee in the database.
                             $employee_has_unpaid_shifts = false;
                             foreach($timecard_database[$key1] as $element2) {
                                 if ($element2["paidout"] != true and isset($element2["timeout"]) and $element2["valid"] == true) {

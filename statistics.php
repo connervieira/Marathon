@@ -72,9 +72,9 @@ $background_gradient_top = "#444444";
 
 
                         $unpaid_shifts = 0;
-                        foreach($timecard_database as $element1) {
-                            foreach ($element1 as $element2) {
-                                if ($element2["paidout"] !== true and $element2["valid"] == true) {
+                        foreach ($employee_database as $key1 => $element1) { // Iterate through each employee in the database.
+                            foreach($timecard_database[$key1] as $element2) { // Iterate through each of this employee's timecard receipts.
+                                if ($element2["paidout"] != true and isset($element2["timeout"]) and $element2["valid"] == true) { // Check to see if this timecard receipt is valid, and if it has been paid out.
                                     $unpaid_shifts++;
                                 }
                             }
