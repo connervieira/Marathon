@@ -1,12 +1,10 @@
 <!-- V0LT - Marathon -->
 <?php
 
+// Destroy the session.
 session_start();
 session_unset();
-// Remove all session variables
-
 session_destroy();
-// Destroy the session
 
 
 $background_gradient_bottom = "#000000";

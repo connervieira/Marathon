@@ -29,7 +29,7 @@ $background_gradient_top = "#444444";
             if (isset($_SESSION['loggedin'])) { // Check to see if the user is logged in.
                 echo "
                 <div style='color:white;padding:10%;text-align:center;'>
-                    <p style='color:red;'>Error: You are already signed in as " . $_SESSION['username'] . "!</p>
+                    <p style='color:red;'>Error: You are already signed in as " . $_SESSION['username'] . ".</p>
                 </div>
                 ";
                 exit();
@@ -42,15 +42,15 @@ $background_gradient_top = "#444444";
                         session_start();
                         $_SESSION['loggedin'] = 1;
                         $_SESSION['username'] = $entered_username;
-                        echo "<p style='color:inherit;'>Successfully signed in!</p>";
+                        echo "<p style='color:inherit;'>Successfully signed in.</p>";
                         echo "<p style='color:inherit;'><a href='./index.php' style='text-decoration:underline;color:white;'>View Main Page</a></p>";
                     } else {
                         sleep(1); // Wait one second before showing the 'wrong password' message. This makes Marathon slightly more resistant to brute force attacks.
-                        echo "<p style='color:red;'>Error: The password you entered is incorrect!</p>";
+                        echo "<p style='color:red;'>Error: The password you entered is incorrect.</p>";
                         echo "<p style='color:inherit;'><a href='login.php' style='text-decoration:underline;color:white;'>Back</a></p>";
                     }
                 } else {
-                    echo "<p style='color:red;'>Error: The username you entered does not exist in the account database!</p>";
+                    echo "<p style='color:red;'>Error: The username you entered does not exist in the account database.</p>";
                     echo "<p style='color:inherit;'><a href='login.php' style='text-decoration:underline;color:white;'>Back</a></p>";
                 }
                 echo "</div>";

@@ -84,11 +84,8 @@ $employee_information["ssn"] = filter_var($ssn, FILTER_SANITIZE_NUMBER_INT);
 $employee_information["password"] = password_hash($password, PASSWORD_DEFAULT);
 $employee_information["paymentinfo"] = filter_var($paymentinfo, FILTER_SANITIZE_STRING);
 if ($tips == "on" or $tips == null or $tips == "" or $tips == "off") { // Check if 'Tips' is set to a valid value
-    if ($tips == "on") {
-        $employee_information["tips"] = "on";
-    } else {
-        $employee_information["tips"] = "off";
-    }
+    if ($tips == "on") { $employee_information["tips"] = true;
+    } else { $employee_information["tips"] = false; }
 } else {
     echo "<p style='color:red;'>Error: 'Tips' should only either be set to on or off.</p>";
     exit();

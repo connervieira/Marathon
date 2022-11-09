@@ -26,3 +26,5 @@ This file explains what changes are made to Marathon based on version.
 - Added short tagline descriptions to each of the main links on the main administrator page.
 - Added admin account management system.
     - Admin accounts can now be deleted from the web interface by other admins.
+- Replaced several exclamation points on the login pages with periods for sake of professionalism.
+- The employee tips permission is now stored as a boolean value instead of a string.

@@ -11,7 +11,10 @@ $background_gradient_bottom = "#000000";
 $background_gradient_top = "#444444";
 
 $user_to_delete = $_GET["user"];
-$confirmation = $_GET["confirm"]
+$confirmation = $_GET["confirm"];
+
+
+$user_to_delete = preg_replace("/[^a-zA-Z0-9\ \-\.]/", '', $user_to_delete); // Sanitize the user string.
 
 ?>
 <!DOCTYPE html>
@@ -40,10 +43,27 @@ $confirmation = $_GET["confirm"]
                             echo "<p class='text-center' style='color:#dddddd;font-size:20px;color:white;'>The confirmation timestamp was manipulated.</p>";
                             echo "<p class='text-center' style='color:#dddddd;font-size:15px;color:white;'>The confirmation timestamp is in the future, which means it's possible someone is trying to trick you into deleting an account. This should never happen under normal circustances. All accounts remain unmodified. If you opened this link from an external source, use caution with any further links you receive.</p>";
                         } else if (time() - $confirmation < 30) { // Check to see if the confirmation timestamp is less than 30 seconds from the current timestamp.
-                            // TODO: Delete account.
-                            echo "<p class='text-center' style='color:#dddddd;font-size:20px;color:white;'>Account deleted</p>";
+                            if (isset($authentication_database[$user_to_delete])) { // Check to see if the requested user to delete actually exists in the account database.
+                                if ($username == $user_to_delete) { // Check to see if the user to delete is the same as the user currently logged in.
+                                    // Log the user out.
+                                    session_start();
+                                    session_unset();
+                                    session_destroy();
+                                }
+                                unset($authentication_database[$user_to_delete]); // Remove the user from the authentication database.
+                                file_put_contents('./databases/authenticationdatabase.txt', serialize($authentication_database)); // Write array changes to disk.
+                                echo "<p class='text-center' style='color:#dddddd;font-size:20px;color:white;'>Account deleted</p>";
+                            } else {
+                                echo "<p class='text-center' style='color:#dddddd;font-size:20px;color:white;'>The specified account doesn't exist in the authentication database.</p>";
+                            }
                         } else {
                             echo "<p class='text-center' style='color:#dddddd;font-size:20px;color:white;'>Are you sure you would like to delete <b>" . $user_to_delete . "</b>?</p>";
+                            if ($username == $user_to_delete) {
+                                echo "<p class='text-center' style='color:#dddddd;font-size:15px;color:yellow;'>The account you're deleting is the account you're currently signed in as. If you delete this account, you will be logged out.</p>";
+                                if ($configuration_database["disableadminsignups"] == true and sizeof($authentication_database) <= 1) { // Check to see if this is the last user in the database, and if admin signups are disabled.
+                                    echo "<p class='text-center' style='color:#dddddd;font-size:15px;color:red;'>Additionally, there are no other admin accounts in the database, and admin signups are disabled. If you delete this account, you'll be locked out of the administrative portion of Marathon unless you manually edit the database.</p>";
+                                }
+                            }
                             echo "<a class='btn btn-primary' role='button' href='deleteaccount.php?user=" . $user_to_delete . "&confirm=" . time() . "' style='background-color:#444444;border-color:#eeeeee'>Confirm</a>";
                         }
                         ?>

@@ -36,8 +36,8 @@ $background_gradient_top = "#444444";
                     <div style="text-align:center;color:white;">
                         <?php
                         foreach ($authentication_database as $key => $element) {
-                            echo "<div style='background:#000000;padding:20px;border-radius:15px;'>";
-                            echo "<p style='font-size:25px;'><b>Username</b>: " . $key . "</p>";
+                            echo "<div style='background:#333333;padding:20px;border-radius:15px;'>";
+                            echo "<p style='font-size:25px;color:inherit;'><b>Username</b>: " . $key . "</p>";
                             echo "<a class='btn btn-primary' role='button' href='deleteaccount.php?user=" . $key . "' style='background-color:#444444;border-color:#eeeeee'>Delete</a>";
                             echo "</div>";
                             echo "<br><br>";
