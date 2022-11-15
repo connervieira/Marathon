@@ -146,7 +146,7 @@ $background_gradient_top = "#444444";
                             echo "<p class='text-center' style='color:#dddddd;font-size:20px;color:green;'>The configuration database is writable.</p>";
                             echo "<p class='text-center' style='color:#dddddd;font-size:15px;color:white;'>The Marathon configuration can be modified.</p>";
                         } else {
-                            echo "<p class='text-center' style='color:#dddddd;font-size:15px;color:white;'>The Marathon configuration can be modified.</p>";
+                            echo "<p class='text-center' style='color:#dddddd;font-size:20px;color:red;'>The configuration database isn't writable.</p>";
                             echo "<p class='text-center' style='color:#dddddd;font-size:15px;color:white;'>The Marathon configuration can't be changed.</p>";
                         }
                         ?>

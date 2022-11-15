@@ -38,3 +38,6 @@ This file explains what changes are made to Marathon based on version.
     - Database files are now created my Marathon during setup, instead of coming bundled with the program.
         - This makes read/write permissions more reliable and consistent.
     - Added checks to the database importing process to make sure the databases are writable.
+- The text on the log-out page is now centered.
+- Database loading errors are now shown inside the webpage body on the login pages.
+    - This improves formatting and style consistency.

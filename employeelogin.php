@@ -3,9 +3,6 @@
 
 $background_gradient_bottom = "#000000";
 $background_gradient_top = "#444444";
-
-
-include('./import_databases.php');
 ?>
 <!DOCTYPE html>
 <html lang="en" style="background:<?php echo $background_gradient_bottom; ?>;">
@@ -21,6 +18,9 @@ include('./import_databases.php');
 
     <body style="color:#111111;">
         <div class="projects-clean" style="background:linear-gradient(0deg, <?php echo $background_gradient_bottom; ?>, <?php echo $background_gradient_top; ?>);color:#111111;">
+            <div style="text-align:center;">
+                <?php include('./import_databases.php'); ?>
+            </div>
             <?php
             $entered_id = $_POST["id"];
             $entered_password = $_POST["password"];
