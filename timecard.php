@@ -64,7 +64,7 @@ $background_gradient_top = "#444444";
                         $timecard_database[$username] = array();
                     }
                     array_push($timecard_database[$username], $clock_record);
-                    file_put_contents('./databases/timecarddatabase.txt', serialize($timecard_database)); // Write array changes to disk
+                    file_put_contents($database_directory . '/timecarddatabase.txt', serialize($timecard_database)); // Write array changes to disk
                     echo "<p style='color:white;'>You have successfully clocked in!</p>";
                     echo "<p style='color:white;'>You are earning $" .  $clock_record["pay"] . " per hour this shift</p>";
                     echo "<a href='timecard.php' style='color:white;text-decoration:underline;'>Back</a>";
@@ -79,7 +79,7 @@ $background_gradient_top = "#444444";
                         exit();
                     } else {
                         $timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timeout"] = time();
-                        file_put_contents('./databases/timecarddatabase.txt', serialize($timecard_database)); // Write array changes to disk
+                        file_put_contents($database_directory . '/timecarddatabase.txt', serialize($timecard_database)); // Write array changes to disk
                         echo "<p style='color:white;'>You have successfully clocked out!</p>";
                         echo "<a href='timecard.php' style='color:white;text-decoration:underline;'>Back</a>";
 

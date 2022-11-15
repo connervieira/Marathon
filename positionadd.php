@@ -64,7 +64,7 @@ if ($canclockin == "on" or $canclockin == null or $canclockin == "" or $canclock
 }
 
 $position_database[$id] = $position_information; // Add the position's database to the database under its ID
-file_put_contents('./databases/positiondatabase.txt', serialize($position_database)); // Write array changes to disk
+file_put_contents($database_directory . '/positiondatabase.txt', serialize($position_database)); // Write array changes to disk
 
 header("Location: positions.php");
 exit();

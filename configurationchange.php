@@ -33,7 +33,7 @@ if ($disableadminsignups == "on" or $disableadminsignups == null or $disableadmi
 $configuration_database["clockinverificationkey"] = $clockinverificationkey;
 $configuration_database["currency"] = filter_var($currency, FILTER_SANITIZE_STRING);
 
-file_put_contents('./databases/configurationdatabase.txt', serialize($configuration_database)); // Write array changes to disk
+file_put_contents($database_directory . '/configurationdatabase.txt', serialize($configuration_database)); // Write array changes to disk
 
 header("Location: configure.php");
 exit();
