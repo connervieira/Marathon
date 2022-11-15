@@ -28,9 +28,7 @@ $background_gradient_top = "#444444";
             <div class="container" style="padding-top:100px;">
                 <a class="btn btn-primary" role="button" href="logout.php" style="background-color:#444444;border-color:#eeeeee">Logout</a>
                 <div style="text-align:center;">
-                    <?php
-                    include('./import_databases.php');
-                    ?>
+                    <?php include('./import_databases.php'); ?>
                 </div>
                 <main>
                     <div class="intro">

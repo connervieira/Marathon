@@ -33,13 +33,14 @@ This section describes how to install Marathon on a technical level.
     - Example: `http://localhost/marathon/databases/timecarddatabse.txt`
     - You should see a message indicating that you are forbidden from accessing this resource.
         - If, instead, the text file loads, and you can see its contents, something has gone wrong.
+        - If you see a 404 error indicating the resource couldn't be found, then it's possible Marathon hasn't yet created the database file. Try opening Marathon in a browser, then return to this step.
 9. Optionally, unblock Apache on your firewall.
     - `sudo ufw allow 80; sudo ufw allow 443`
 10. At this point, you should be able to load Marathon by loading `http://localhost/marathon` in your browser.
 11. Update file permissions on the Marathon database files to allow reading and writing.
-    - Depending on your server configuration, it may be necessary to update the file permissions on the Marathon databases to allow Marathon to write to them.
+    - Depending on your server configuration, it may be necessary to update the file permissions on the Marathon database directory to allow Marathon to write to them.
     - If you encounter issues setting up Marathon, try running the following command to update the database file permissions.
-        - `sudo chmod 777 /var/www/html/marathon/databases/\*`
+        - `sudo chmod 777 /var/www/html/marathon/databases`
 
 
 ## Initial Configuration

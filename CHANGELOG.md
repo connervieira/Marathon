@@ -31,6 +31,8 @@ This file explains what changes are made to Marathon based on version.
 - The form information on the Positions page now appears white.
 - All of any employee's timecard receipts are now deleted when their account is deleted.
     - This does not (and can not) invalidate shift confirmation hashes saved by the employee.
-- Change the method by which unpaid shift are counted on the Statistics page.
+- Changed the method by which unpaid shift are counted on the Statistics page.
     - The statistics will no longer count unpaid shifts from employees that no longer exist in the employee database.
         - Practically, this should change nothing, since timecard receipts are now deleted when employees are deleted, but it should improve backwards compatibility and redundancy.
+- Database files are now created my Marathon during setup, instead of coming bundled with the program.
+    - This makes read/write permissions more reliable and consistent.

@@ -6,3 +6,4 @@ This file contains things that are on the to-do list for Marathon
 - [X] Add a way delete admin accounts without manually editing the database.
 - [X] Add checks to make sure appropriate directories are writable.
 - [X] Add a production-ready check tool.
+- [ ] Move the database import function inside the webpage body on all pages.
