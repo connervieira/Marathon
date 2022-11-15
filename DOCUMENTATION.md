@@ -14,20 +14,20 @@ This section describes how to install Marathon on a technical level.
     - `sudo apt install php7.4`
 3. If the PHP isn't automatically enabled, enable it.
     - `sudo a2enmod php7.4`
-4. Restart Apache to ensure changes are applied appropriately.
+4. Restart Apache to ensure changes are applied.
     - `sudo apache2ctl restart`
-5. Download Marathon, and copy it to you the root of your web server.
+5. Download Marathon from wherever you received it from, and move it to you the root of your web server.
     - `mv ~/Downloads/marathon /var/www/html/`
-6. Restart Apache.
-    - Example: `sudo apache2ctl restart`
 7. Determine where Marathon's databases will be stored.
     1. Open the `import\_databases.php` script in a text editor.
     2. At the top of the script, you'll see a variable titled `$database\_directory`.
     3. Set this variable to an absolute directory path, indicating where you want Marathon to store databases.
+        - This directory should not be accessible through your webserver, to prevent clients from being able to access confidential information.
     4. Verify that the directory you specify is writable to Marathon.
-8. Optionally, unblock Apache on your firewall.
+8. If necessary, unblock Apache on your firewall.
     - `sudo ufw allow 80; sudo ufw allow 443`
-9. At this point, you should be able to load Marathon by loading `http://localhost/marathon` in your browser.
+9. At this point, you should be able to load Marathon in your browser.
+     - Example `http://localhost/marathon/`
 
 
 ## Initial Configuration
@@ -51,11 +51,18 @@ This section describes how to initially configure Marathon after it has been set
     - For example, you may enter `USD` if your business uses the US dollar to manage payments.
     - This setting doesn't have a significant effect on the underlying system of Marathon. It's simply a conveinence setting that helps determine things like rounding. For example, if this value is set to 'USD', values will typically be rounded off to two decimal places.
 7. After you've configured the settings explained above, click 'Submit' to save configuration changes.
-8. Verify that you've correctly setup and configured Marathon by using the Production Ready tool.
+
+
+## Verify
+
+This section describes how to verify that Marathon is functioning appropriately before continuing.
+
+1. Verify that you've correctly setup and configured Marathon by using the Production Ready tool.
     - This tool is located at /marathon/productionready.php
         - Example: `http://localhost/marathon/productionready.php`
     - This tool is designed to check common configuration mistakes before your Marathon instance is published. 
-9. The base configuration of Marathon is now complete. You can now begin adding employees and positions to your Marathon instance.
+    - It should be noted that this tool is not infallible, but it should catch most issues.
+2. Provided no issues are detected by the Production Ready tool, the initial setup process is complete. Positions, employees, and other information can now be added.
 
 
 ## Position Management
@@ -175,4 +182,5 @@ To verify a Shift Verification Hash, follow these instructions.
 7. Press 'Submit'
 8. The hash provided will be decrypted using the key provided. The output will be shown below the form.
     - If you see random nonsensical characters, its possible one of the values were mistyped, or the hash is invalid. However, it's also possible that the hash was encrypted using a different key. This could have happened if you've changed your Clock In Verification key since this hash was created.
+        - If you've changed your key since the shift was recorded, try using your old shift verification keys.
     - If the shift hash is valid, you should see the raw shift data in plain text.

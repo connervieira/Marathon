@@ -19,9 +19,7 @@ $background_gradient_top = "#444444";
         <div class="projects-clean" style="background:linear-gradient(0deg, <?php echo $background_gradient_bottom; ?>, <?php echo $background_gradient_top; ?>);color:#111111;">
             <div class="container" style="padding-top:100px;">
                 <div style="text-align:center;">
-                    <?php
-                    include('./import_databases.php');
-                    ?>
+                    <?php include('./import_databases.php'); ?>
                 </div>
                 <main>
                     <a class="btn btn-primary" role="button" href="login.php" style="background-color:#444444;border-color:#eeeeee">Back</a>
@@ -32,6 +30,16 @@ $background_gradient_top = "#444444";
                     
                     if ($configuration_database["disableadminsignups"] == true) {
                         echo "<p style='color:red;'>Error: Admin Sign Ups are currently disabled. Please contact the manager of your Marathon instance for more information.</p>";
+                        exit();
+                    }
+
+                    if (strlen($username) > 30) {
+                        echo "<p style='color:red;'>Error: The username you've entered is longer that the maximum permitted length. Please keep your username 30 characters or less.</p>";
+                        exit();
+                    }
+
+                    if (strlen($password1) > 1000) {
+                        echo "<p style='color:red;'>Error: The password you've entered is longer that the maximum permitted length. Please keep your password 1000 characters or less.</p>";
                         exit();
                     }
 
