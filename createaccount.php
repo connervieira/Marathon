@@ -38,6 +38,12 @@ $background_gradient_top = "#444444";
                         exit();
                     }
 
+                    if (preg_match("([^a-zA-Z0-9])", $username)) {
+                        echo "<p style='color:red;'>Error: The username you've entered contains non-alphanumeric characters. Please ensure your username only contains letters and numbers</p>";
+                        exit();
+                    }
+
+
                     if (strlen($password1) > 1000) {
                         echo "<p style='color:red;'>Error: The password you've entered is longer that the maximum permitted length. Please keep your password 1000 characters or less.</p>";
                         exit();
@@ -54,7 +60,7 @@ $background_gradient_top = "#444444";
                     }
 
                     $authentication_database[$username]["password"] = password_hash($password1, PASSWORD_DEFAULT); // Add the new user and their hashed password to the authentication database.
-                    file_put_contents('./databases/authenticationdatabase.txt', serialize($authentication_database)); // Write array changes to disk.
+                    file_put_contents($database_directory . '/authenticationdatabase.txt', serialize($authentication_database)); // Write array changes to disk.
 
                     echo "<p style='text-align:center;color:white;'>Successfully created account!</p>";
                     ?>

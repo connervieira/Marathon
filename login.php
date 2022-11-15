@@ -17,10 +17,9 @@ $background_gradient_top = "#444444";
     </head>
 
     <body style="color:#111111;">
-        <div style="text-align:center;">
-            <?php include './import_databases.php'; ?>
-        </div>
         <div class="projects-clean" style="background:linear-gradient(0deg, <?php echo $background_gradient_bottom; ?>, <?php echo $background_gradient_top; ?>);color:#111111;">
+            <div style="text-align:center;">
+                <?php include './import_databases.php'; ?>
             </div>
             <?php
             $entered_username = $_POST["username"];

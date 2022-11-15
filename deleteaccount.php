@@ -51,7 +51,7 @@ $user_to_delete = preg_replace("/[^a-zA-Z0-9\ \-\.]/", '', $user_to_delete); // 
                                     session_destroy();
                                 }
                                 unset($authentication_database[$user_to_delete]); // Remove the user from the authentication database.
-                                file_put_contents('./databases/authenticationdatabase.txt', serialize($authentication_database)); // Write array changes to disk.
+                                file_put_contents($database_directory . '/authenticationdatabase.txt', serialize($authentication_database)); // Write array changes to disk.
                                 echo "<p class='text-center' style='color:#dddddd;font-size:20px;color:white;'>Account deleted</p>";
                             } else {
                                 echo "<p class='text-center' style='color:#dddddd;font-size:20px;color:white;'>The specified account doesn't exist in the authentication database.</p>";

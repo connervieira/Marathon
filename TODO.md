@@ -7,4 +7,4 @@ This file contains things that are on the to-do list for Marathon
 - [X] Add checks to make sure appropriate directories are writable.
 - [X] Add a production-ready check tool.
 - [X] Move the database import function inside the webpage body on all pages.
-- [ ] Add better input validation to the admin sign-up page.
+- [X] Add better input validation to the admin sign-up page.
