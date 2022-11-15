@@ -72,7 +72,27 @@ $background_gradient_top = "#444444";
 
                         echo "<br><br>";
 
-                        if (is_writable("./databases/timecarddatabase.txt")) { // Check to see if the timecard database is writable.
+                        if (file_exists($database_directory)) { // Check to see if the database directory exists.
+                            echo "<p class='text-center' style='color:#dddddd;font-size:20px;color:green;'>The database directory exists.</p>";
+                            echo "<p class='text-center' style='color:#dddddd;font-size:15px;color:white;'>Marathon will be able to load information from databases.</p>";
+                        } else {
+                            echo "<p class='text-center' style='color:#dddddd;font-size:20px;color:red;'>The database directory doesn't exist.</p>";
+                            echo "<p class='text-center' style='color:#dddddd;font-size:15px;color:white;'>Marathon will not be able to load information from databases.</p>";
+                        }
+
+                        echo "<br><br>";
+
+                        if (is_writable($database_directory)) { // Check to see if the database directory is writable.
+                            echo "<p class='text-center' style='color:#dddddd;font-size:20px;color:green;'>The database directory is writable.</p>";
+                            echo "<p class='text-center' style='color:#dddddd;font-size:15px;color:white;'>Marathon will be able to write information to databases.</p>";
+                        } else {
+                            echo "<p class='text-center' style='color:#dddddd;font-size:20px;color:red;'>The database directory isn't writable.</p>";
+                            echo "<p class='text-center' style='color:#dddddd;font-size:15px;color:white;'>Marathon will not be able to write information to databases.</p>";
+                        }
+
+                        echo "<br><br>";
+
+                        if (is_writable($database_directory . "/timecarddatabase.txt")) { // Check to see if the timecard database is writable.
                             echo "<p class='text-center' style='color:#dddddd;font-size:20px;color:green;'>The timecard database is writable.</p>";
                             echo "<p class='text-center' style='color:#dddddd;font-size:15px;color:white;'>Employees will be able to clock in and clock out.</p>";
                         } else {
@@ -82,7 +102,7 @@ $background_gradient_top = "#444444";
 
                         echo "<br><br>";
 
-                        if (is_writable("./databases/paydatabase.txt")) { // Check to see if the pay database is writable.
+                        if (is_writable($database_directory . "/paydatabase.txt")) { // Check to see if the pay database is writable.
                             echo "<p class='text-center' style='color:#dddddd;font-size:20px;color:green;'>The pay database is writable.</p>";
                             echo "<p class='text-center' style='color:#dddddd;font-size:15px;color:white;'>Admins will be able to manage employee paychecks.</p>";
                         } else {
@@ -92,7 +112,7 @@ $background_gradient_top = "#444444";
 
                         echo "<br><br>";
 
-                        if (is_writable("./databases/employeedatabase.txt")) { // Check to see if the employee database is writable.
+                        if (is_writable($database_directory . "/employeedatabase.txt")) { // Check to see if the employee database is writable.
                             echo "<p class='text-center' style='color:#dddddd;font-size:20px;color:green;'>The employee database is writable.</p>";
                             echo "<p class='text-center' style='color:#dddddd;font-size:15px;color:white;'>Admins will be able to manage employees.</p>";
                         } else {
@@ -102,7 +122,7 @@ $background_gradient_top = "#444444";
 
                         echo "<br><br>";
 
-                        if (is_writable("./databases/positiondatabase.txt")) { // Check to see if the position database is writable.
+                        if (is_writable($database_directory . "/positiondatabase.txt")) { // Check to see if the position database is writable.
                             echo "<p class='text-center' style='color:#dddddd;font-size:20px;color:green;'>The position database is writable.</p>";
                             echo "<p class='text-center' style='color:#dddddd;font-size:15px;color:white;'>Admins will be able to manage positions.</p>";
                         } else {
@@ -112,7 +132,7 @@ $background_gradient_top = "#444444";
 
                         echo "<br><br>";
 
-                        if (is_writable("./databases/authenticationdatabase.txt")) { // Check to see if the authentication database is writable.
+                        if (is_writable($database_directory . "/authenticationdatabase.txt")) { // Check to see if the authentication database is writable.
                             echo "<p class='text-center' style='color:#dddddd;font-size:20px;color:green;'>The authentication database is writable.</p>";
                             echo "<p class='text-center' style='color:#dddddd;font-size:15px;color:white;'>Admin accounts can be created and modified.</p>";
                         } else {
@@ -122,7 +142,7 @@ $background_gradient_top = "#444444";
 
                         echo "<br><br>";
 
-                        if (is_writable("./databases/configurationdatabase.txt")) { // Check to see if the configuration database is writable.
+                        if (is_writable($database_directory . "/configurationdatabase.txt")) { // Check to see if the configuration database is writable.
                             echo "<p class='text-center' style='color:#dddddd;font-size:20px;color:green;'>The configuration database is writable.</p>";
                             echo "<p class='text-center' style='color:#dddddd;font-size:15px;color:white;'>The Marathon configuration can be modified.</p>";
                         } else {

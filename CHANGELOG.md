@@ -21,7 +21,6 @@ This file explains what changes are made to Marathon based on version.
 - Fixed an issue where hourly pay rates would be saved without a decimal point.
 - Disabled autofill on certain field where it isn't appropriate.
 - The 'view payment information' tool no longer hides the username input when a user is displayed.
-- Added checks to the database importing process to make sure the databases are writable.
 - Added a button to return to the login page after create a new admin account.
 - Added short tagline descriptions to each of the main links on the main administrator page.
 - Added admin account management system.
@@ -34,5 +33,8 @@ This file explains what changes are made to Marathon based on version.
 - Changed the method by which unpaid shift are counted on the Statistics page.
     - The statistics will no longer count unpaid shifts from employees that no longer exist in the employee database.
         - Practically, this should change nothing, since timecard receipts are now deleted when employees are deleted, but it should improve backwards compatibility and redundancy.
-- Database files are now created my Marathon during setup, instead of coming bundled with the program.
-    - This makes read/write permissions more reliable and consistent.
+- Significantly changed the way databases are loaded.
+    - The databases files are now loaded from an admin-defined directory.
+    - Database files are now created my Marathon during setup, instead of coming bundled with the program.
+        - This makes read/write permissions more reliable and consistent.
+    - Added checks to the database importing process to make sure the databases are writable.

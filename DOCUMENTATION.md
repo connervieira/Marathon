@@ -18,29 +18,16 @@ This section describes how to install Marathon on a technical level.
     - `sudo apache2ctl restart`
 5. Download Marathon, and copy it to you the root of your web server.
     - `mv ~/Downloads/marathon /var/www/html/`
-6. Open your Apache configuration in a text editor of your choice, and add the following line before the closing VirtualHost tag. This will prevent the databases from being viewed externally.
-    - Example: `sudo vim /etc/apache2/sites-enabled/000-default.conf`
-    - ```apacheconf
-        <Directory /var/www>
-            AllowOverride All
-        </Directory>
-        ```
-7. Restart Apache.
+6. Restart Apache.
     - Example: `sudo apache2ctl restart`
-8. Verify that you can't remotely view text files.
-    - The previous step should have updated Apache permissions to prevent users from being able to remotely view database files.
-    - To verify this, attempt to view one of Marathon's text file through a web browsers
-    - Example: `http://localhost/marathon/databases/timecarddatabse.txt`
-    - You should see a message indicating that you are forbidden from accessing this resource.
-        - If, instead, the text file loads, and you can see its contents, something has gone wrong.
-        - If you see a 404 error indicating the resource couldn't be found, then it's possible Marathon hasn't yet created the database file. Try opening Marathon in a browser, then return to this step.
-9. Optionally, unblock Apache on your firewall.
+7. Determine where Marathon's databases will be stored.
+    1. Open the `import\_databases.php` script in a text editor.
+    2. At the top of the script, you'll see a variable titled `$database\_directory`.
+    3. Set this variable to an absolute directory path, indicating where you want Marathon to store databases.
+    4. Verify that the directory you specify is writable to Marathon.
+8. Optionally, unblock Apache on your firewall.
     - `sudo ufw allow 80; sudo ufw allow 443`
-10. At this point, you should be able to load Marathon by loading `http://localhost/marathon` in your browser.
-11. Update file permissions on the Marathon database files to allow reading and writing.
-    - Depending on your server configuration, it may be necessary to update the file permissions on the Marathon database directory to allow Marathon to write to them.
-    - If you encounter issues setting up Marathon, try running the following command to update the database file permissions.
-        - `sudo chmod 777 /var/www/html/marathon/databases`
+9. At this point, you should be able to load Marathon by loading `http://localhost/marathon` in your browser.
 
 
 ## Initial Configuration
