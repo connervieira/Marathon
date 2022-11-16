@@ -42,3 +42,8 @@ This file explains what changes are made to Marathon based on version.
     - This improves formatting and style consistency.
 - Negative hourly rates can no longer be entered.
 - Added recognition for EUR and CAD currencies.
+- The signup page can now override the 'Disable Admin Signups' configuration value if an existing admin is signed in.
+    - This allows admins to create new admin accounts, without needing to enable admin signups.
+    - The 'Back' button on the post-signup page now links to the index page, not the login page.
+        - If the user is not signed in, they will be redirected to the login page regardless.
+    - Errors on the sign-up page are now centered for sake of formatting and consistency.

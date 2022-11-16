@@ -17,3 +17,4 @@ Below are several precautions you should take while installing Marathon to ensur
 - Only allow trusted users to access your Marathon instance.
     - Marathon is designed to be used interally for a business to track it's employee's shifts. If it can be avoided, don't make Marathon pubically accessible over the internet.
     - Provided your business's network is only accessible to authorized users, you can simply expose your Marathon instance to your local network.
+    - If you do need to expose Marathon publically to the internet, make sure all admin accounts have secure passwords, and that new admin sign-ups are disabled.
