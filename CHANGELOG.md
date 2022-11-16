@@ -41,3 +41,4 @@ This file explains what changes are made to Marathon based on version.
 - The text on the log-out page is now centered.
 - Database loading errors are now shown inside the webpage body on the login pages.
     - This improves formatting and style consistency.
+- Minimum hourly rates can no longer be entered.
