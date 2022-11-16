@@ -8,4 +8,4 @@ This file contains things that are on the to-do list for Marathon
 - [X] Add a production-ready check tool.
 - [X] Move the database import function inside the webpage body on all pages.
 - [X] Add better input validation to the admin sign-up page.
-- [ ] Add appopriate step interval to the default pay option on the Positions page.
+- [X] Add appopriate step interval to the default pay option on the Positions page.

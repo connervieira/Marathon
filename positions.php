@@ -39,18 +39,21 @@ $background_gradient_top = "#444444";
                         <p style="font-size:30px;">Add New Postition</p>
                         <?php 
                         if ($_GET["editing"] == "true") {
-                            echo '
-                            <form action="positionadd.php" method="POST" style="color:white;">
-                                <label for="id">ID Number:</label><input placeholder="ID Number" name="id" type="number"><br>
-                                <label for="name">Position Name:</label><input placeholder="Position Name" name="name" required><br>
-                                <label for="defaultpayamount">Default Pay Amount:</label><input placeholder="Default Pay Amount" name="defaultpayamount" type="number" step="any"><br>
-                                <label for="canclockin">Can Clock In:</label><input name="canclockin" type="checkbox" checked><br>
-                                <label for="description">Position Description:</label><textarea style="width:100%;height:400px;" row="15" type="text" name="description" placeholder="Position description"></textarea>
+                            echo '<form action="positionadd.php" method="POST" style="color:white;">';
+                            echo '<label for="id">ID Number:</label><input placeholder="ID Number" name="id" type="number"><br>';
+                            echo '<label for="name">Position Name:</label><input placeholder="Position Name" name="name" required><br>';
 
-                                <br>
-                                <input type="submit">
-                            </form>
-                            ';
+                            // Change the hourly pay "step" based on the currency defined in the configuration.
+                            $currency = strtolower($configuration_database["currency"]);
+                            if ($currency == "usd" or $currency == "eur" or $currency == "cad") { $currency_step = 0.01;
+                            } else if ($currency == "bch" or $currency == "xmr") { $currency_step = 0.00001;
+                            } else { $currency_step = 0.000000001; };
+                            echo '<label for="defaultpayamount">Default Pay Amount:</label><input placeholder="Default Pay Amount" name="defaultpayamount" type="number" step="' . $currency_step . '" min="0"><br>';
+
+                            echo '<label for="canclockin">Can Clock In:</label><input name="canclockin" type="checkbox" checked><br>';
+                            echo '<label for="description">Position Description:</label><textarea style="width:100%;height:400px;" row="15" type="text" name="description" placeholder="Position description"></textarea><br>';
+                            echo '<input type="submit">';
+                            echo '</form>';
                         } else {
                             echo '<a class="btn btn-primary" role="button" href="positions.php?editing=true" style="background-color:#444444;border-color:#eeeeee">Add/Edit Positions</a>';
                         }

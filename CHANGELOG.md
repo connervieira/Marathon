@@ -7,10 +7,8 @@ This file explains what changes are made to Marathon based on version.
 - Initial release (Basic functionality)
 
 
-## v0.2
+## v1.0
 
-- Added explanation to README.md about reporting bugs.
-- Fixed issue that allowed remote clients to access raw database information.
 - Fixed an issue that caused the timecard database to fail to initialize.
 - Added a 'paid shift' viewer that allows admins to revert shifts from paid to unpaid in the event of a mistake.
 - Added an 'all shift' viewer that allows admins to invalide shifts from the timecard database.
@@ -35,10 +33,12 @@ This file explains what changes are made to Marathon based on version.
         - Practically, this should change nothing, since timecard receipts are now deleted when employees are deleted, but it should improve backwards compatibility and redundancy.
 - Significantly changed the way databases are loaded.
     - The databases files are now loaded from an admin-defined directory.
+        - This makes it easy to update Marathon without changing the databases.
     - Database files are now created my Marathon during setup, instead of coming bundled with the program.
         - This makes read/write permissions more reliable and consistent.
     - Added checks to the database importing process to make sure the databases are writable.
 - The text on the log-out page is now centered.
 - Database loading errors are now shown inside the webpage body on the login pages.
     - This improves formatting and style consistency.
-- Minimum hourly rates can no longer be entered.
+- Negative hourly rates can no longer be entered.
+- Added recognition for EUR and CAD currencies.

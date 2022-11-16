@@ -50,15 +50,10 @@ $background_gradient_top = "#444444";
                             
                             // Change the hourly pay "step" based on the currency defined in the configuration.
                             $currency = strtolower($configuration_database["currency"]);
-                            if ($currency == "usd") {
-                                echo '<label for="hourlypay">Hourly Pay:</label><input placeholder="Hourly Pay" name="hourlypay" step="0.01" min="0" type="number"><br>';
-                            } elseif ($currency == "bch") {
-                                echo '<label for="hourlypay">Hourly Pay:</label><input placeholder="Hourly Pay" name="hourlypay" step="0.00001" min="0" type="number"><br>';
-                            } elseif ($currency == "xmr") {
-                                echo '<label for="hourlypay">Hourly Pay:</label><input placeholder="Hourly Pay" name="hourlypay" step="0.00001" min="0" type="number"><br>';
-                            } else {
-                                echo '<label for="hourlypay">Hourly Pay:</label><input placeholder="Hourly Pay" name="hourlypay" step="0.00000001" min="0" type="number"><br>';
-                            }
+                            if ($currency == "usd" or $currency == "eur" or $currency == "cad") { $currency_step = 0.01;
+                            } else if ($currency == "bch" or $currency == "xmr") { $currency_step = 0.00001;
+                            } else { $currency_step = 0.000000001; };
+                            echo '<label for="hourlypay">Hourly Pay:</label><input placeholder="Hourly Pay" name="hourlypay" step="' . $currency_step . '" min="0" type="number"><br>';
                             
                             
                             echo '
