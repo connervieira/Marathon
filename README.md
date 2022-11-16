@@ -43,26 +43,37 @@ Just as you would expect from an employee management tool, Marathon is designed 
 
 Marathon is lightweight enough to comfortably run on an inexpensive server like a Raspberry Pi. Even if you don't have a device that can run Marathon, you can get one for $30 and be on your way.
 
-### Backwards Compatible
+### Fast
 
-Marathon doesn't need JavaScript or other modern web technologies. This means it should run just fine, even on outdated systems your business may already have.
-
-### Free
-
-Marathon is free both in terms of freedom and cost. Marathon itself costs nothing to use, and since you have the freedom to host it how you want, you also don't have to go through V0LT to set it up!
-
-### Accessibility
-
-Marathon is designed to be fully accessible to those with visual impairments by making sure the interface works with screen-readers and is easily readable regardless of color blindness.
+Marathon doesn't need JavaScript or other modern web technologies. This means it should be blazing fast, even on outdated systems your business may already have.
 
 ### Secure
 
 Marathon encrypts all passwords, ensuring that your login credentials can't be obtained even if someone gains physical access to the server you run Marathon on.
 
-### Statistics
+### Accessible
 
-Marathon allows managers to quickly view their store statistics at a glance. Statistics can help to quickly determine how many unpaid shifts still need to be paid out, and how many people are currently clocked in.
+Marathon is designed to be fully accessible to those with visual impairments by making sure the interface works with screen-readers and is easily readable regardless of color blindness.
 
+### Modern
+
+Marathon features a lightweight, modern design, making it easy, intuitive, and visually appealing to use.
+
+### Consistent
+
+Due to it's self-hosted nature, Marathon is extremely reliable and resiliant. It doesn't need any external services, or even an internet connection at all. As long as your business is up and running, Marathon will be there along side it.
+
+### Informative
+
+Marathon provides conveinent, relevant statistics to both employees and managers alike, making it quick and easy to see trends and spot issues.
+
+### Reliable
+
+Marathon is extremely fault tolerant, such that a single error won't cause the system-wide issue. Just because a certain function encountered and error doesn't mean your entire business has to go offline.
+
+### Private
+
+Marathon has unrivaled privacy, and contains absolutely no telemetry of any kind. Marathon gives you the peace of mind that absolutely no critical (or even non-critical data) is being shared with any third parties.
 
 ## Bug Reports
 
