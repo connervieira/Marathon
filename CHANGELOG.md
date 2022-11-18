@@ -47,3 +47,5 @@ This file explains what changes are made to Marathon based on version.
     - The 'Back' button on the post-signup page now links to the index page, not the login page.
         - If the user is not signed in, they will be redirected to the login page regardless.
     - Errors on the sign-up page are now centered for sake of formatting and consistency.
+- Marathon now uses a check to ensure that the user is authenticated with Marathon, not another service on the server.
+    - Previously, a DropAuth instance installed on the same server as Marathon would cause conflicts and strange behavior.

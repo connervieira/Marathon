@@ -29,9 +29,12 @@ $background_gradient_top = "#444444";
                         $password1 = $_POST["password1"];
                         $password2 = $_POST["password2"];
                         
-                        if ($configuration_database["disableadminsignups"] == true and $_SESSION["loggedin"] !== 1) {
-                            echo "<p style='color:red;'>Error: Admin Sign Ups are currently disabled. Please contact the manager of your Marathon instance for more information.</p>";
-                            exit();
+                        session_start(); // Start a PHP session.
+                        if ($configuration_database["disableadminsignups"] == true) { // Check to see if admin signup's are disabled.
+                            if ($_SESSION["loggedin"] !== 1 or $_SESSION['authid'] !== "marathon") { // Check to see if an admin is signed in to override the error.
+                                echo "<p style='color:red;'>Error: Admin Sign Ups are currently disabled. Please contact the manager of your Marathon instance for more information.</p>";
+                                exit();
+                            }
                         }
 
                         if (strlen($username) > 30) {

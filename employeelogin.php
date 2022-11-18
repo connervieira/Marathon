@@ -26,7 +26,7 @@ $background_gradient_top = "#444444";
             $entered_password = $_POST["password"];
             
             session_start(); // Start a PHP session.
-            if (isset($_SESSION['loggedin'])) { // Check to see if the user is already logged in.
+            if ($_SESSION['authid'] == "marathon") { // Check to see if the user is already logged in.
                 echo "
                 <div style='color:white;padding:10%;text-align:center;'>
                     <p style='color:red;'>Error: You are already signed in as " . $_SESSION['username'] . ".</p>
@@ -41,6 +41,7 @@ $background_gradient_top = "#444444";
                     if (password_verify($entered_password, $employee_database[$entered_id]["password"])) { // Verify the password entered matches the password in the database.
                         session_start();
                         $_SESSION['loggedin'] = 2; // A logged in ID of 2 indicates that this user is an employee.
+                        $_SESSION['authid'] = "marathon";
                         $_SESSION['username'] = $entered_id;
                         echo "<p style='color:inherit;'>Successfully signed in.</p>";
                         echo "<p style='color:inherit;'><a href='./employeedashboard.php' style='text-decoration:underline;color:white;'>View Employee Dashboard</a></p>";

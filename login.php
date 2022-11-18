@@ -27,12 +27,21 @@ $background_gradient_top = "#444444";
             
             session_start(); // Start a PHP session.
             if (isset($_SESSION['loggedin'])) { // Check to see if the user is logged in.
-                echo "
-                <div style='color:white;padding:10%;text-align:center;'>
-                    <p style='color:red;'>Error: You are already signed in as " . $_SESSION['username'] . ".</p>
-                </div>
-                ";
-                exit();
+                if ($_SESSION["authid"] == "marathon") {
+                    echo "
+                    <div style='color:white;padding:10%;text-align:center;'>
+                        <p style='color:red;'>Error: You are already signed in as " . $_SESSION['username'] . ".</p>
+                    </div>
+                    ";
+                    exit();
+                } else {
+                    echo "
+                    <div style='color:white;padding:10%;text-align:center;'>
+                        <p style='color:red;'>Error: It appears the login session is broken. It's possible you're signed into DropAuth on this server as user '" . $_SESSION['username'] . "'. Please trying signing out of other accounts on this server, and retrying.</p>
+                    </div>
+                    ";
+                    exit();
+                }
             }
 
             if ($entered_username !== null and $entered_username !== "") {
@@ -41,6 +50,7 @@ $background_gradient_top = "#444444";
                     if (password_verify($entered_password, $authentication_database[$entered_username]["password"])) {
                         session_start();
                         $_SESSION['loggedin'] = 1;
+                        $_SESSION['authid'] = "marathon";
                         $_SESSION['username'] = $entered_username;
                         echo "<p style='color:inherit;'>Successfully signed in.</p>";
                         echo "<p style='color:inherit;'><a href='./index.php' style='text-decoration:underline;color:white;'>View Main Page</a></p>";

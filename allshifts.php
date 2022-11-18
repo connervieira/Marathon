@@ -1,7 +1,7 @@
 <!-- V0LT - Marathon -->
 <?php
 session_start(); // Start a PHP session.
-if ($_SESSION['loggedin'] == 1) { // Check to see if the user is logged in.
+if ($_SESSION['authid'] == "marathon" and $_SESSION['loggedin'] == 1) { // Check to see if the user is logged in.
     $username = $_SESSION['username']; // Set the '$username' variable to the currently signed in user's username.
 } else {
     header("Location: login.php"); // Redirect the user to the login page.
