@@ -10,3 +10,4 @@ This file contains things that are on the to-do list for Marathon
 - [X] Add better input validation to the admin sign-up page.
 - [X] Add appopriate step interval to the default pay option on the Positions page.
 - [X] Add admin account creation tool that uses an existing admin account.
+- [ ] Add security check to avoid DropAuth from interfering with Marathon's authentication system.

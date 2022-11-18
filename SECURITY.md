@@ -18,3 +18,7 @@ Below are several precautions you should take while installing Marathon to ensur
     - Marathon is designed to be used interally for a business to track it's employee's shifts. If it can be avoided, don't make Marathon pubically accessible over the internet.
     - Provided your business's network is only accessible to authorized users, you can simply expose your Marathon instance to your local network.
     - If you do need to expose Marathon publically to the internet, make sure all admin accounts have secure passwords, and that new admin sign-ups are disabled.
+        - If you need to add another admin account, do not turn off the 'Disable Admin Signups' configuration setting. Instead, follow these steps.
+            1. Log in with an existing admin account.
+            2. Navigate to the admin signup page at `/marathon/signup.php`.
+            3. Enter a username and password for the new admin account.
