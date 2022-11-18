@@ -32,8 +32,12 @@ $background_gradient_top = "#444444";
                     <a class="btn btn-primary" role="button" href="index.php" style="background-color:#444444;border-color:#eeeeee">Back</a>
                     <div class="intro">
                         <p class="text-center" style="padding-bottom:54px;color:#dddddd;font-size:40px;color:white;">Manage Accounts</p>
+                        <div style="width:100%;text-align:center;margin-bottom:100px;">
+                            <a class="btn btn-primary" role="button" href="signup.php" style="text-align:center;background-color:#444444;border-color:#eeeeee">Create Account</a>
+                        </div>
                     </div>
-                    <div style="text-align:center;color:white;">
+                    <hr style="border-color:white;">
+                    <div style="text-align:center;color:white;margin-top:100px;">
                         <?php
                         foreach ($authentication_database as $key => $element) {
                             echo "<div style='background:#333333;padding:20px;border-radius:15px;'>";

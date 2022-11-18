@@ -58,10 +58,6 @@ $background_gradient_top = "#444444";
                             <h3>View Payment Information</h3>
                             <a class="btn btn-primary" role="button" href="viewpaymentinformation.php" style="background-color:#444444;border-color:#eeeeee">Open</a>
                         </div>
-                        <div class="col-sm-6 col-lg-4 item" style="margin:0;border-radius:15px;">
-                            <h3>Create Admin Account</h3>
-                            <a class="btn btn-primary" role="button" href="signup.php" style="background-color:#444444;border-color:#eeeeee">Open</a>
-                        </div>
                     </div>
                 </main>
             </div>
