@@ -49,3 +49,15 @@ This file explains what changes are made to Marathon based on version.
     - Errors on the sign-up page are now centered for sake of formatting and consistency.
 - Marathon now uses a check to ensure that the user is authenticated with Marathon, not another service on the server.
     - Previously, a DropAuth instance installed on the same server as Marathon would cause conflicts and strange behavior.
+
+
+## Version 1.1
+
+*Release date to be determined*
+
+- Fixed an issue where positions couldn't be add without overwriting all other positions.
+- Updated the way timecard receipts are shown to employees.
+    - Shifts are now shown in reverse order, such that more recent shifts are shown at the top.
+    - Shifts that have not yet been paid out are highlighted with a green border.
+- Added more thorough checks when a user clocks in to detect if the user is getting paid $0 an hour.
+- Simplified styling and interface.

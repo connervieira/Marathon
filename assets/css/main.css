@@ -1,0 +1,58 @@
+html {
+    background:#000000;
+}
+body {
+    color: #ffffff;
+    padding: 5%;
+    background:linear-gradient(0deg, #000000, #444444);
+}
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    color: white;
+}
+.header {
+    margin-bottom: 50px;
+}
+p, a, pre {
+    color: white;
+}
+a {
+    text-decoration: underline;
+}
+p {
+    margin-bottom:-4px;
+    margin-top:-4px;
+}
+main {
+}
+hr {
+    color: #333;
+    background-color: #333;
+}
+.tile {
+    text-align: center;
+    padding-bottom: 20px;
+}
+.separator-thin {
+    height:2px;
+}
+.separator-thick {
+    height:5px;
+}
+.button {
+    line-height:50px;
+    margin: 2px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #eeeeee;
+    background-color: #444444;
+    color: white;
+    text-decoration: none;
+}
+.disabled {
+    background-color: #222222;
+    color: #555555;
+}
+.centered {
+    text-align:center;
+}

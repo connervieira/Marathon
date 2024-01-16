@@ -12,3 +12,4 @@ This file contains things that are on the to-do list for Marathon
 - [X] Add admin account creation tool that uses an existing admin account.
 - [X] Add security check to avoid DropAuth from interfering with Marathon's authentication system.
     - [X] Verify admin account creation functionality/behavior.
+- [ ] Finish simplifying user interface/styling.

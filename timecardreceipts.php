@@ -47,10 +47,12 @@ $background_gradient_top = "#444444";
 
                     include('./import_databases.php');
 
-                    foreach ($timecard_database[$username] as $key => $element) { // Iterate over all of this user's shifts in the timecard database.
+                    foreach (array_reverse($timecard_database[$username], true) as $key => $element) { // Iterate over all of this user's shifts in the timecard database.
                         if ($element["valid"] == true or $showinvalid == true) { // Check to see if this particular shift is valid.
                             if ($showinvalid == true and $element["valid"] == false) {
                                 echo "<div style='background:#222222;border:10px solid #cc2222;padding:30px;border-radius:15px;'>";
+                            } else if ($element["paidout"] == false) {
+                                echo "<div style='background:#222222;border:10px solid #22cc22;padding:30px;border-radius:15px;'>";
                             } else {
                                 echo "<div style='background:#222222;padding:30px;border-radius:15px;'>";
                             }
