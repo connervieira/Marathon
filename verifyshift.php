@@ -7,11 +7,9 @@ if ($_SESSION['authid'] == "marathon" and $_SESSION['loggedin'] == 1) { // Check
     header("Location: login.php"); // Redirect the user to the login page.
     exit();
 }
-$background_gradient_bottom = "#000000";
-$background_gradient_top = "#444444";
 ?>
 <!DOCTYPE html>
-<html lang="en" style="background:<?php echo $background_gradient_bottom; ?>;">
+<html lang="en">
     <head>
         <meta charset="utf-8">
 
@@ -20,41 +18,39 @@ $background_gradient_top = "#444444";
 
         <link rel="stylesheet" href="./assets/css/Projects-Clean.css">
         <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./assets/css/main.css">
     </head>
 
-    <body style="color:#111111;">
-        <div class="projects-clean" style="background:linear-gradient(0deg, <?php echo $background_gradient_bottom; ?>, <?php echo $background_gradient_top; ?>);color:#111111;">
-            <div class="container" style="padding-top:100px;">
-                <div style="text-align:center;">
-                    <?php
-                    include('./import_databases.php');
-                    ?>
-                </div>
-                <main>
-                    <a class="btn btn-primary" role="button" href="index.php" style="background-color:#444444;border-color:#eeeeee">Back</a>
-                    <div class="intro">
-                        <p class="text-center" style="padding-bottom:54px;color:#dddddd;font-size:40px;">Verify Shift</p>
-                    </div>
-                    <div style="text-align:center;">
-                        <form method="GET">
-                            <label for="hash">Hash:</label><input placeholder="Hash" name="hash" required><br>
-                            <label for="key">Key:</label><input placeholder="Key" name="key" type="password"><br>
-                            <input type="submit">
-                        </form>
-                    </div>
-                    <?php
-                    if ($_GET["hash"] !== null and $_GET["hash"] !== "") {
-                        if ($_GET["key"] == "") {
-                            $decrypted_verification_data = openssl_decrypt($_GET["hash"], "AES-128-CTR", $configuration_database["clockinverificationkey"], 0, "1");
-                        } else {
-                            $decrypted_verification_data = openssl_decrypt($_GET["hash"], "AES-128-CTR", $_GET["key"], 0, "1");
-                        }
-                        echo "<p>" . $decrypted_verification_data . "</p>";
-                    }
-                    ?>
-
-                </main>
-            </div>
+    <body>
+        <div class="centered">
+            <?php
+            include('./import_databases.php');
+            ?>
         </div>
+        <a class="button" role="button" href="tools.php">Back</a>
+        <div class="centered header">
+            <h1>Marathon</h1>
+            <h2>Verify Shift</h2>
+        </div>
+        <main>
+            <div class="centered">
+                <form method="GET">
+                    <label for="hash">Hash:</label><input placeholder="Hash" name="hash" autocomplete="off" required><br>
+                    <label for="key">Key:</label><input placeholder="Key" name="key" autocomplete="off" type="text"><br>
+                    <input type="submit" class="button">
+                </form>
+            </div>
+            <?php
+            if ($_GET["hash"] !== null and $_GET["hash"] !== "") {
+                if ($_GET["key"] == "") {
+                    $decrypted_verification_data = openssl_decrypt($_GET["hash"], "AES-128-CTR", $configuration_database["clockinverificationkey"], 0, "1");
+                } else {
+                    $decrypted_verification_data = openssl_decrypt($_GET["hash"], "AES-128-CTR", $_GET["key"], 0, "1");
+                }
+                echo "<p>" . $decrypted_verification_data . "</p>";
+            }
+            ?>
+
+        </main>
     </body>
 </html>

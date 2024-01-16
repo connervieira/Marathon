@@ -35,12 +35,12 @@ if ($_SESSION['authid'] == "marathon" and $_SESSION['loggedin'] == 2) { // Check
             if ($clock_action == "in") { // Clock the employee in
                 if ($positions_database[$employee_database[$username]["positionid"]]["canclockin"] == "off") {
                     echo "<p style='color:red;'>Error: Your position isn't permitted to clock in! Please speak with your manager if you have any questions.</p>";
-                    echo "<a href='timecard.php' style='color:white;text-decoration:underline;'>Back</a>";
+                    echo "<a class='button' href='timecard.php'>Back</a>";
                     exit();
                 }
                 if (isset($timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timeout"]) == false and isset($timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timein"]) == true) {
                     echo "<p style='color:red;'>Error: You appear to already be clocked in!</p>";
-                    echo "<a href='timecard.php' style='color:white;text-decoration:underline;'>Back</a>";
+                    echo "<a class='button' href='timecard.php'>Back</a>";
                     exit();
                 }
                 $clock_record["valid"] = true;
@@ -68,9 +68,9 @@ if ($_SESSION['authid'] == "marathon" and $_SESSION['loggedin'] == 2) { // Check
                 }
                 array_push($timecard_database[$username], $clock_record);
                 file_put_contents($database_directory . '/timecarddatabase.txt', serialize($timecard_database)); // Write array changes to disk
-                echo "<p style='color:white;'>You have successfully clocked in!</p>";
-                echo "<p style='color:white;'>You are earning $" .  $clock_record["pay"] . " per hour this shift</p>";
-                echo "<a href='timecard.php' style='color:white;text-decoration:underline;'>Back</a>";
+                echo "<p>You have successfully clocked in!</p>";
+                echo "<p>You are earning $" .  $clock_record["pay"] . " per hour this shift</p>";
+                echo "<a class='button' href='timecard.php'>Back</a>";
                 exit();
 
 
@@ -78,26 +78,26 @@ if ($_SESSION['authid'] == "marathon" and $_SESSION['loggedin'] == 2) { // Check
             } elseif ($clock_action == "out") { // Clock the employee out
                 if ((isset($timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timeout"]) == true and isset($timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timein"]) == true) or (isset($timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timeout"]) == false and isset($timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timein"]) == false)) {
                     echo "<p style='color:red;'>Error: You don't appear to be clocked in!</p>";
-                    echo "<a href='timecard.php' style='color:white;text-decoration:underline;'>Back</a>";
+                    echo "<a class='button' href='timecard.php'>Back</a>";
                     exit();
                 } else {
                     $timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))]["timeout"] = time();
                     file_put_contents($database_directory . '/timecarddatabase.txt', serialize($timecard_database)); // Write array changes to disk
-                    echo "<p style='color:white;'>You have successfully clocked out!</p>";
-                    echo "<a href='timecard.php' style='color:white;text-decoration:underline;'>Back</a>";
+                    echo "<p>You have successfully clocked out!</p>";
+                    echo "<a class='button' href='timecard.php'>Back</a>";
 
                     $this_shift_data = $timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))];
 
-                    echo "<br><br><br><p style='color:white;'><b>Shift Statistics</b></p>";
-                    echo "<p style='color:white;'>Start time: " . date("Y-m-d h:i:s", $this_shift_data["timein"]) . "</p>";
-                    echo "<p style='color:white;'>End time: " . date("Y-m-d h:i:s", $this_shift_data["timeout"]) . "</p>";
-                    echo "<p style='color:white;'>Hours worked: " . (round((((int)$this_shift_data["timeout"]-(int)$this_shift_data["timein"])/3600)*10000)/10000) . "</p>";
-                    echo "<p style='color:white;'>Hourly pay: " . $this_shift_data["pay"] . "</p>";
-                    echo "<p style='color:white;'>Money earned: " . ((round((((int)$this_shift_data["timeout"]-(int)$this_shift_data["timein"])/3600)*10000)/10000)*$this_shift_data["pay"]) . "</p>";
+                    echo "<br><br><br><p><b>Shift Statistics</b></p>";
+                    echo "<p>Start time: " . date("Y-m-d h:i:s", $this_shift_data["timein"]) . "</p>";
+                    echo "<p>End time: " . date("Y-m-d h:i:s", $this_shift_data["timeout"]) . "</p>";
+                    echo "<p>Hours worked: " . (round((((int)$this_shift_data["timeout"]-(int)$this_shift_data["timein"])/3600)*10000)/10000) . "</p>";
+                    echo "<p>Hourly pay: " . $this_shift_data["pay"] . "</p>";
+                    echo "<p>Money earned: " . ((round((((int)$this_shift_data["timeout"]-(int)$this_shift_data["timein"])/3600)*10000)/10000)*$this_shift_data["pay"]) . "</p>";
 
                     $raw_shift_data = "employee: " . $username . ", timein:" . $this_shift_data["timein"] . ", timeout:" . $this_shift_data["timeout"] . ", hourlypay:" . $this_shift_data["pay"];
-                    echo "<br><p style='color:white;'><b>Verification Data</b></p>";
-                    echo "<p style='color:white;'>The information below can be used to prove to your employer that you worked this shift.</p>";
+                    echo "<br><p><b>Verification Data</b></p>";
+                    echo "<p>The information below can be used to prove to your employer that you worked this shift.</p>";
                     if ($configuration_database["clockinverificationkey"] == "" or $configuration_database["clockinverificationkey"] == null) {
                         echo "<p style='color:red;'>Error: Your employer hasn't correctly configured their 'Clock In Verification Key'. Therefore, the shift verification information was unable to be generated.</p>";
                     } else {
