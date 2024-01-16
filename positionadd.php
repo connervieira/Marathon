@@ -30,7 +30,7 @@ if ($id == "" or $id == null) { // If the ID field was left blank, we'll need to
 
         // Check to see if the randomly selected ID already exists in the database.
         $id_already_exists = false;
-        foreach ($position_database as $key => $element) { 
+        foreach ($positions_database as $key => $element) { 
             if ($id == $key) {
                 $key_already_exists = true;
             }
@@ -63,8 +63,8 @@ if ($canclockin == "on" or $canclockin == null or $canclockin == "" or $canclock
     exit();
 }
 
-$position_database[$id] = $position_information; // Add the position's database to the database under its ID
-file_put_contents($database_directory . '/positiondatabase.txt', serialize($position_database)); // Write array changes to disk
+$positions_database[$id] = $position_information; // Add the position's database to the database under its ID
+file_put_contents($database_directory . '/positiondatabase.txt', serialize($positions_database)); // Write array changes to disk
 
 header("Location: positions.php");
 exit();
