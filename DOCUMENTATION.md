@@ -100,7 +100,7 @@ To delete a position, follow these steps.
 
 ### Editing Positions
 
-If you'd like to update a position's information, you can do so by overwriting it with the edit function. To edit a position, simply enter its ID number in the 'ID Number' field, and re-enter its information, adjusting it where necessary. This will allow you to change a position's information without changing its ID number.
+If you'd like to update a position's information, you can do so by overwriting it with the edit function. To edit a position, simply click the "Edit" button below its information listed in the "View" section of the "Positions" page. This will automatically populate the position's information in the edit form.
 
 
 ## Employee Management

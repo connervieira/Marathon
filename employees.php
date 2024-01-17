@@ -75,7 +75,7 @@ if ($_SESSION['authid'] == "marathon" and $_SESSION['loggedin'] == 1) { // Check
                 </form>
                 ';
             } else {
-                echo '<a class="button" role="button" href="employees.php?editing=true">Add/Edit Employee</a>';
+                echo '<a class="button" role="button" href="employees.php?editing=true">Add Employee</a>';
             }
             ?>
 
