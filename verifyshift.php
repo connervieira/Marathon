@@ -24,10 +24,11 @@ if ($_SESSION['authid'] == "marathon" and $_SESSION['loggedin'] == 1) { // Check
             include('./import_databases.php');
             ?>
         </div>
-        <a class="button" role="button" href="tools.php">Back</a>
+        <a class="button" role="button" href="shifts.php">Back</a>
         <div class="centered header">
             <h1>Marathon</h1>
             <h2>Verify Shift</h2>
+            <p>This page shows you to verify the validity of a shift verification has given a certain shift verification key.</p>
         </div>
         <main>
             <div class="centered">

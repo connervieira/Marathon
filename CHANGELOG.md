@@ -28,7 +28,7 @@ This file explains what changes are made to Marathon based on version.
 - The form information on the Positions page now appears white.
 - All of any employee's timecard receipts are now deleted when their account is deleted.
     - This does not (and can not) invalidate shift confirmation hashes saved by the employee.
-- Changed the method by which unpaid shift are counted on the Statistics page.
+- Changed the method by which unpaid shifts are counted on the 'Statistics' page.
     - The statistics will no longer count unpaid shifts from employees that no longer exist in the employee database.
         - Practically, this should change nothing, since timecard receipts are now deleted when employees are deleted, but it should improve backwards compatibility and redundancy.
 - Significantly changed the way databases are loaded.
@@ -66,3 +66,9 @@ This file explains what changes are made to Marathon based on version.
     - Replaced the 'gender' attribute with the 'sex' attribute.
 - Updated the position data management system.
     - Added the ability to edit existing employees.
+- Update the way shifts are viewed by administrators.
+    - The 'Tools' page has been renamed to the 'Shifts' page.
+    - Added the 'Max Shifts Displayed' configuration value to restrict how many shifts are displayed for each employee under normal circumstances.
+        - This can be overriden by clicking the text below an employee showing how many shifts were truncated.
+    - Shifts are now shown in reverse order, such that more recent shifts are displayed first.
+    - Shifts are now display in a much more compact, side-by-side format.

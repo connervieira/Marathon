@@ -33,6 +33,7 @@ if ($_SESSION['authid'] == "marathon" and $_SESSION['loggedin'] == 1) { // Check
                 echo '<label for="disableadminsignups">Disable Admin Sign Ups: </label><input name="disableadminsignups" id="disabledadminsignups" type="checkbox" '; if ($configuration_database["disableadminsignups"] == true) { echo "checked"; } echo '><br>';
                 echo '<label for="clockinverificationkey">Clock In Verification Key: </label><input name="clockinverificationkey" id="clockinverificationkey" type="text" value="' . $configuration_database["clockinverificationkey"] . '"><br>';
                 echo '<label for="currency">Business Currency Code: </label><input name="currency" id="currency" type="text" maxlength="4" value="' . $configuration_database["currency"] .'"><br>';
+                echo '<label for="maxshiftsdisplayed">Max Shifts Displayed: </label><input name="maxshiftsdisplayed" id="maxshiftsdisplayed" type="number" step="1" min="1" max="1000" value="' . $configuration_database["maxshiftsdisplayed"] .'" required><br>';
                 ?>
                 <input class='button' type="submit" value="Submit">
             </form>

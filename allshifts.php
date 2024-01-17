@@ -8,6 +8,7 @@ if ($_SESSION['authid'] == "marathon" and $_SESSION['loggedin'] == 1) { // Check
     exit();
 }
 include('./import_databases.php');
+include('./utils.php');
 
 $employee_id_to_mark = $_GET["employee"];
 $shift_id_to_mark = $_GET["shift"];
@@ -24,13 +25,20 @@ $confirmation = $_GET["confirmation"];
     </head>
 
     <body>
-        <a class="button" role="button" href="tools.php">Back</a>
+        <a class="button" role="button" href="shifts.php">Back</a>
         <div class="centered header">
             <h1>Marathon</h1>
             <h2>All Shifts</h2>
+            <p>This page shows all valid shifts, regardless of whether or not they have been paid out.</p>
         </div>
         <main>
             <?php
+            if (isset($_GET["displayall"])) {
+                echo "<div class='centered'>";
+                echo "<p>Only displaying " . $employee_database[intval($_GET["displayall"])]["firstname"] . "'s shifts.</p>";
+                echo "<a class='button' href='allshifts.php'>Reset</a>";
+                echo "</div>";
+            }
             if (isset($employee_id_to_mark) == true and isset($shift_id_to_mark) == true) { // Check to see if the user has clicked "Invalidate" on a particular shift
                 echo "<div class='centered'>";
                 if ($confirmation == true) { // Check to see if the user has clicked the "Confirm" button yet.
@@ -54,6 +62,7 @@ $confirmation = $_GET["confirmation"];
             $anyone_has_valid_shifts = false;
 
             foreach ($employee_database as $key1 => $element1) {
+                if (isset($_GET["displayall"]) and intval($key1) !== intval($_GET["displayall"])) { continue; }
                 $employee_has_valid_shifts = false;
                 foreach($timecard_database[$key1] as $element2) {
                     if ($element2["valid"] == true and isset($element2["timeout"])) {
@@ -64,33 +73,44 @@ $confirmation = $_GET["confirmation"];
                 if ($employee_has_valid_shifts == true) {
                     echo "<div class='shift-collection'>";
                     echo "<hr class='separator-thick'>";
-                    echo "<h3><a target='_blank' href='viewpaymentinformation.php?employee=" . $key1 . "'>" . $element1["firstname"] . " " . $element1["lastname"] . "'s</a> Valid Shifts</h3>";
-                    $total_payment_owed = 0;
-                    foreach($timecard_database[$key1] as $key2 => $element2) {
-                        if ($element2["valid"] == true and isset($element2["timeout"]) and $element2["valid"] == true) {
-                            echo "<div class='shift-container'>";
-                            echo "<p><b>Shift ID</b>: " . $key2 . "</p>";
-                            echo "<p><b>Hourly Rate</b>: " . $element2["pay"] . " " . $configuration_database["currency"] . "</p>";
-                            echo "<p><b>Start Time</b>: " . date("Y/m/d H:i:s", $element2["timein"]) . "</p>";
-                            echo "<p><b>End Time</b>: " . date("Y/m/d H:i:s", $element2["timeout"]) . "</p>";
+                    echo "<h3 id='" . $key1 . "'><a target='_blank' href='viewpaymentinformation.php?employee=" . $key1 . "'>" . $element1["firstname"] . " " . $element1["lastname"] . "'s</a> Valid Shifts</h3>";
+                    $employee_shift_count = 0; // This will count the total number of valid shifts for this employee in the database.
+                    $truncated_shifts = 0; // This variable will keep track of how many of this employees shifts were truncated by the "max shifts displayed" configuration value.
+                    foreach(array_reverse($timecard_database[$key1], true) as $key2 => $element2) {
+                        if ($element2["valid"] == true and isset($element2["timeout"])) {
+                            $employee_shift_count+=1;
+                            if ($employee_shift_count <= $configuration_database["maxshiftsdisplayed"] or intval($_GET["displayall"]) == intval($key1)) {
+                                echo "<div class='shift-container'>";
+                                echo "<p><b>Shift ID</b>: " . $key2 . "</p>";
+                                echo "<p><b>Hourly Rate</b>: " . $element2["pay"] . " " . $configuration_database["currency"] . "</p>";
+                                echo "<p><b>Start Time</b>: " . date("Y/m/d H:i:s", $element2["timein"]) . "</p>";
+                                echo "<p><b>End Time</b>: " . date("Y/m/d H:i:s", $element2["timeout"]) . "</p>";
 
-                            $hours_worked = round((($element2["timeout"] - $element2["timein"]) / 3600)*100000)/100000;
-                            echo "<p><b>Time Worked</b>: " . $hours_worked . " hours</p>";
+                                $hours_worked = round((($element2["timeout"] - $element2["timein"]) / 3600)*100000)/100000;
+                                echo "<p><b>Time Worked</b>: " . $hours_worked . " hours</p>";
 
-                            $payment_owed = $hours_worked * $element2["pay"];
-                            $total_payment_owed = $total_payment_owed + $payment_owed;
-                            echo "<p><b>Payment</b>: " . $payment_owed . " " . $configuration_database["currency"] . "</p>";
-                            if ($element2["paidout"] == true) { echo "<p><b>Paid</b>: Yes</p>";
-                            } else { echo "<p><b>Paid</b>: No</p>"; }
-                            echo '<br><a class="button" role="button" href="allshifts.php?employee=' . $key1 . '&shift=' . $key2 . '">Mark As Invalid</a><br><br>';
-                            echo "</div>";
+                                $payment_owed = $hours_worked * $element2["pay"];
+                                echo "<p><b>Payment</b>: " . round_currency($payment_owed) . " " . $configuration_database["currency"] . "</p>";
+                                if ($element2["paidout"] == true) { echo "<p><b>Paid</b>: Yes</p>";
+                                } else { echo "<p><b>Paid</b>: No</p>"; }
+                                echo '<br><a class="button" role="button" href="allshifts.php?employee=' . $key1 . '&shift=' . $key2 . '">Mark As Invalid</a><br><br>';
+                                echo "</div>";
+                            } else {
+                                $truncated_shifts+=1;
+                            }
                         }
+                    }
+                    echo "</div>";
+                    echo "<div class='centered' style='clear:left;'>";
+                    echo "<p>" . $element1["firstname"] . " " . $element1["lastname"] . " has worked " . $employee_shift_count . " shift"; if ($employee_shift_count > 1) { echo "s"; } echo ".</p>";
+                    if ($truncated_shifts > 0) {
+                        echo "<p><a href='?displayall=" . intval($key1) . "'>" . $truncated_shifts . " shift"; if ($truncated_shifts > 1) { echo "s were "; } else { echo " was "; } echo " truncated.</a></p>";
                     }
                     echo "</div>";
                 }
             }
             if ($anyone_has_valid_shifts == false) {
-                echo "<p>There are currently no valid shifts!</p>";
+                echo "<p class='centered'>There are currently no valid shifts!</p>";
             }
             echo "<br><br>";
             ?>
