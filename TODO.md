@@ -12,5 +12,6 @@ This file contains things that are on the to-do list for Marathon
 - [X] Add admin account creation tool that uses an existing admin account.
 - [X] Add security check to avoid DropAuth from interfering with Marathon's authentication system.
     - [X] Verify admin account creation functionality/behavior.
-- [ ] Finish simplifying user interface/styling.
-- [ ] Add a way to limit the maximum age of shifts that are displayed.
+- [X] Finish simplifying user interface/styling.
+- [X] Add a way to limit the maximum age of shifts that are displayed.
+- [ ] Add a way for administrators to force employees to clock-out.

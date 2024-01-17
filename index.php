@@ -51,9 +51,9 @@ if ($_SESSION['authid'] == "marathon" and $_SESSION['loggedin'] == 1) { // Check
                             <a class="button" role="button" href="configure.php" style="background-color:#444444;border-color:#eeeeee">Open</a>
                         </div>
                         <div class="tile col-sm-6 col-lg-4 item">
-                            <h3>Tools</h3>
-                            <p>Access useful administrative tools for managing information.</p>
-                            <a class="button" role="button" href="tools.php" style="background-color:#444444;border-color:#eeeeee">Open</a>
+                            <h3>Shifts</h3>
+                            <p>Access useful administrative tools for managing shifts.</p>
+                            <a class="button" role="button" href="shifts.php" style="background-color:#444444;border-color:#eeeeee">Open</a>
                         </div>
                         <div class="tile col-sm-6 col-lg-4 item">
                             <h3>Accounts</h3>

@@ -21,7 +21,10 @@ if ($_SESSION['authid'] == "marathon" and $_SESSION['loggedin'] == 1) { // Check
 
     <body>
         <div class="centered">
-            <?php include('./import_databases.php'); ?>
+            <?php
+            include('./import_databases.php');
+            include('./utils.php');
+            ?>
         </div>
         <a class="button" role="button" href="index.php">Back</a>
         <div class="centered header">
@@ -38,7 +41,7 @@ if ($_SESSION['authid'] == "marathon" and $_SESSION['loggedin'] == 1) { // Check
                     }
                 }
             }
-            echo "<p id='currentlyopenshiftcount'><b>Employees Currently Clocked In</b>: " . (string)$open_shifts . "</p>";
+            echo "<p id='currentlyopenshiftcount'><b>Currently Open Shifts</b>: " . (string)$open_shifts . "</p>";
 
 
             $unpaid_shifts = 0;
@@ -51,6 +54,8 @@ if ($_SESSION['authid'] == "marathon" and $_SESSION['loggedin'] == 1) { // Check
             }
             echo "<p id='unpaidshiftcount'><b>Unpaid Shifts</b>: " . (string)$unpaid_shifts . "</p>";
 
+
+            echo "<br>";
             echo "<p id='numberofemployees'><b>Number Of Employees</b>: " . count($employee_database) . "</p>";
             echo "<p id='numberofpositions'><b>Number Of Positions</b>: " . count($positions_database) . "</p>";
 
@@ -64,15 +69,27 @@ if ($_SESSION['authid'] == "marathon" and $_SESSION['loggedin'] == 1) { // Check
             }
             echo "<p id='totalshiftsworked'><b>Total Shifts Worked</b>: " . (string)$total_shifts . "</p>";
 
+            $total_unpaid = 0.0;
+            $total_paid = 0.0;
             $total_payouts = 0.0;
+
             foreach($timecard_database as $element1) {
                 foreach ($element1 as $element2) {
                     if (isset($element2["timeout"]) == true and $element2["valid"] == true) {
-                        $total_payouts = $total_payouts + ((float)$element2["pay"] * (((int)$element2["timeout"] - (int)$element2["timein"])/3600));
+                        $total_payouts += floatval($element2["pay"]) * (intval($element2["timeout"]) - intval($element2["timein"]))/3600;
+                        if ($element2["paidout"] == true) {
+                            $total_paid += floatval($element2["pay"]) * (intval($element2["timeout"]) - intval($element2["timein"]))/3600;
+                        } else {
+                            $total_unpaid += floatval($element2["pay"]) * (intval($element2["timeout"]) - intval($element2["timein"]))/3600;
+                        }
                     }
                 }
             }
-            echo "<p id='totalemployeepayoutamount'><b>Total Payouts</b>: " . (string)(round($total_payouts * 100000) / 100000) . " " . strtoupper($configuration_database["currency"]) . "</p>";
+
+            echo "<br>";
+            echo "<p id='totalemployeepayoutamount'><b>Total Unpaid</b>: " . round_currency($total_unpaid) . " " . strtoupper($configuration_database["currency"]) . "</p>";
+            echo "<p id='totalemployeepayoutamount'><b>Total Paid</b>: " . round_currency($total_paid) . " " . strtoupper($configuration_database["currency"]) . "</p>";
+            echo "<p id='totalemployeepayoutamount'><b>Total Payouts</b>: " . round_currency($total_payouts) . " " . strtoupper($configuration_database["currency"]) . "</p>";
             ?>
         </main>
     </body>
