@@ -166,7 +166,7 @@ To delete an employee, follow these steps.
 
 ### Editing Employees
 
-If you'd like to update an employee's information, you can do so by overwriting them with the edit function. To edit an employee, simply enter their ID number in the 'ID Number' field, and re-enter their information, adjusting it where necessary. This will allow you to change an employee's information without changing their ID number.
+If you'd like to update an employee's information, you can do so by clicking the "Edit" button below an employee's information. All of the employee's information will automatically populate the edit form, excluding their password. To leave the password unchanged, simply leave the password field blank.
 
 
 ## Verifying Shift Verification Hashes

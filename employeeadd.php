@@ -15,7 +15,7 @@ $middlename = $_POST["middlename"];
 $lastname = $_POST["lastname"];
 $positionid = $_POST["positionid"];
 $hourlypay = $_POST["hourlypay"];
-$gender = $_POST["gender"];
+$sex = $_POST["sex"];
 $birthday = $_POST["birthday"];
 $phone = $_POST["phone"];
 $email = $_POST["email"];
@@ -34,10 +34,18 @@ if ($firstname == "" or $firstname == null) {
     echo "<p style='color:red;'>Error: 'First Name' is a required field, but it was left empty!</p>";
     exit();
 }
-if ($password == "" or $password == null) {
-    echo "<p style='color:red;'>Error: 'Employee Password/PIN' is a required field, but it was left empty!</p>";
-    exit();
+
+if ($password == "" or $password == null or isset($password) == false) { // Check to see if the password field was left blank.
+    if (in_array($id, array_keys($employee_database))) { // Check to see if this employee already exists in the database.
+        $employee_information["password"] = $employee_database[$id]["password"]; // Leave the password for this user unchanged.
+    } else {
+        echo "<p style='color:red;'>Error: 'Employee Password/PIN' is a required field, but it was left empty!</p>";
+        exit();
+    }
+} else {
+    $employee_information["password"] = password_hash($password, PASSWORD_DEFAULT);
 }
+
 if ($positionid == "" or $positionid == null) {
     echo "<p style='color:red;'>Error: 'Position ID' is a required field, but it was left empty!</p>";
     exit();
@@ -74,14 +82,13 @@ $employee_information["middlename"] = filter_var($middlename, FILTER_SANITIZE_ST
 $employee_information["lastname"] = filter_var($lastname, FILTER_SANITIZE_STRING);
 $employee_information["positionid"] = filter_var($positionid, FILTER_SANITIZE_NUMBER_INT);
 $employee_information["hourlypay"] = filter_var($hourlypay, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-$employee_information["gender"] = filter_var($gender, FILTER_SANITIZE_STRING);
+$employee_information["sex"] = filter_var($sex, FILTER_SANITIZE_STRING);
 $employee_information["birthday"] = filter_var($birthday, FILTER_SANITIZE_NUMBER_INT);
 $employee_information["phone"] = filter_var($phone, FILTER_SANITIZE_NUMBER_INT);
 $employee_information["email"] = filter_var($email, FILTER_SANITIZE_EMAIL);
 $employee_information["instantmessage"] = filter_var($instantmessage, FILTER_SANITIZE_STRING);
 $employee_information["address"] = filter_var($address, FILTER_SANITIZE_STRING);
 $employee_information["ssn"] = filter_var($ssn, FILTER_SANITIZE_NUMBER_INT);
-$employee_information["password"] = password_hash($password, PASSWORD_DEFAULT);
 $employee_information["paymentinfo"] = filter_var($paymentinfo, FILTER_SANITIZE_STRING);
 if ($tips == "on" or $tips == null or $tips == "" or $tips == "off") { // Check if 'Tips' is set to a valid value
     if ($tips == "on") { $employee_information["tips"] = true;
