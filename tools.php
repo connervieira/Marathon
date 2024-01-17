@@ -7,24 +7,18 @@ if ($_SESSION['authid'] == "marathon" and $_SESSION['loggedin'] == 1) { // Check
     header("Location: login.php"); // Redirect the user to the login page.
     exit();
 }
-
-$background_gradient_bottom = "#000000";
-$background_gradient_top = "#444444";
 ?>
 <!DOCTYPE html>
-<html lang="en" style="background:<?php echo $background_gradient_bottom; ?>;">
+<html lang="en">
     <head>
         <meta charset="utf-8">
-
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Marathon - Admin Tools</title>
 
-        <link rel="stylesheet" href="./assets/css/Projects-Clean.css">
-        <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="./assets/css/main.css">
     </head>
 
-    <body style="background:linear-gradient(0deg, <?php echo $background_gradient_bottom; ?>, <?php echo $background_gradient_top; ?>);color:#111111;">
+    <body>
         <a class="button" role="button" href="index.php">Back</a>
         <div class="centered">
             <?php

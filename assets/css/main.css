@@ -2,9 +2,11 @@ html {
     background:#000000;
 }
 body {
+    margin: 0px;
     color: #ffffff;
     padding: 5%;
     background:linear-gradient(0deg, #000000, #444444);
+    font-family: Arial, Helvetica, sans-serif;
 }
 h1, h2, h3, h4, h5, h6 {
     text-align: center;
@@ -20,8 +22,8 @@ a {
     text-decoration: underline;
 }
 p {
-    margin-bottom:-4px;
-    margin-top:-4px;
+    margin-bottom:0px;
+    margin-top:0px;
 }
 main {
 }
@@ -44,6 +46,8 @@ hr {
     height: 5px;
 }
 .button {
+    font-family: inherit;
+    font-size: inherit;
     line-height:50px;
     margin: 2px;
     padding: 10px;
@@ -62,9 +66,15 @@ hr {
 }
 .shift-container {
     float: left;
-    min-width: 300px;
+    min-width: 250px;
+    margin-bottom:20px;
 }
 .shift-collection {
     float: center;
     clear: left;
+}
+.horizontal-tile {
+    background:#111111;
+    padding:20px;
+    border-radius:15px;
 }

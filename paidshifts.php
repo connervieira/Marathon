@@ -17,12 +17,9 @@ $confirmation = $_GET["confirmation"];
 <html lang="en">
     <head>
         <meta charset="utf-8">
-
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Marathon - Paid Shifts</title>
 
-        <link rel="stylesheet" href="./assets/css/Projects-Clean.css">
-        <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="./assets/css/main.css">
     </head>
 
@@ -42,7 +39,7 @@ $confirmation = $_GET["confirmation"];
                                 $timecard_database[$employee_id_to_mark][$shift_id_to_mark]["paidout"] = false; // Mark this shift as not paid out.
                                 file_put_contents($database_directory . '/timecarddatabase.txt', serialize($timecard_database)); // Write array changes to disk.
                                 echo "<p>This shift has been marked as unpaid!</p>";
-                                echo "<p><a class='button' href='paidshifts.php'>Back</a></p>";
+                                echo "<a class='button' href='paidshifts.php'>Back</a>";
                             } else {
                                 echo "<p style='color:red;'>Error: This shift doesn't appear to be valid!</p>";
                             }
@@ -50,8 +47,9 @@ $confirmation = $_GET["confirmation"];
                             echo "<p style='color:red;'>Error: This shift doesn't appear to exist!</p>";
                         }
                     } else {
-                        echo "<p><a class='button' href='paidshifts.php?employee=" . $employee_id_to_mark . "&shift=" . $shift_id_to_mark . "&confirmation=true'>Confirm</a></p>";
-                        echo "<p><a class='button' href='paidshifts.php'>Cancel</a></p>";
+                        echo "<p>Are you sure you would like to revert this shift to being unpaid? This should usually only be done if you accidentally marked a shift as paid before adding it to payroll.</p>";
+                        echo "<a class='button' href='paidshifts.php?employee=" . $employee_id_to_mark . "&shift=" . $shift_id_to_mark . "&confirmation=true'>Confirm</a>";
+                        echo "<a class='button' href='paidshifts.php'>Cancel</a>";
                     }
                     echo "</div>";
                     exit();

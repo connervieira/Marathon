@@ -17,12 +17,9 @@ $confirmation = $_GET["confirmation"];
 <html lang="en">
     <head>
         <meta charset="utf-8">
-
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Marathon - Unpaid Shifts</title>
 
-        <link rel="stylesheet" href="./assets/css/Projects-Clean.css">
-        <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="./assets/css/main.css">
     </head>
 
@@ -70,8 +67,8 @@ $confirmation = $_GET["confirmation"];
                         echo "<p><a class='button' href='unpaidshifts.php'>Back</a></p>";
                     } else {
                         echo "<p>You are about to mark all of " . $employee_database[$employee_id_to_mark]["firstname"] . " " . $employee_database[$employee_id_to_mark]["lastname"] . "'s unpaid shifts as paid. Are you sure you would like to continue?</p>";
-                        echo "<p><a class='button' href='unpaidshifts.php?employee=" . $employee_id_to_mark . "&confirmation=true'>Confirm</a></p>";
-                        echo "<p><a class='button' href='unpaidshifts.php'>Cancel</a></p>";
+                        echo "<a class='button' href='unpaidshifts.php?employee=" . $employee_id_to_mark . "&confirmation=true'>Confirm</a>";
+                        echo "<a class='button' href='unpaidshifts.php'>Cancel</a>";
                     }
                 }
                 echo "</div>";

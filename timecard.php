@@ -16,8 +16,6 @@ if ($_SESSION['authid'] == "marathon" and $_SESSION['loggedin'] == 2) { // Check
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Marathon - Employee Timecard</title>
 
-        <link rel="stylesheet" href="./assets/css/Projects-Clean.css">
-        <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="./assets/css/main.css">
     </head>
 
@@ -89,11 +87,11 @@ if ($_SESSION['authid'] == "marathon" and $_SESSION['loggedin'] == 2) { // Check
                     $this_shift_data = $timecard_database[$username][key(array_slice($timecard_database[$username], -1, 1, true))];
 
                     echo "<br><br><br><p><b>Shift Statistics</b></p>";
-                    echo "<p>Start time: " . date("Y-m-d h:i:s", $this_shift_data["timein"]) . "</p>";
-                    echo "<p>End time: " . date("Y-m-d h:i:s", $this_shift_data["timeout"]) . "</p>";
-                    echo "<p>Hours worked: " . (round((((int)$this_shift_data["timeout"]-(int)$this_shift_data["timein"])/3600)*10000)/10000) . "</p>";
-                    echo "<p>Hourly pay: " . $this_shift_data["pay"] . "</p>";
-                    echo "<p>Money earned: " . ((round((((int)$this_shift_data["timeout"]-(int)$this_shift_data["timein"])/3600)*10000)/10000)*$this_shift_data["pay"]) . "</p>";
+                    echo "<p>Start Time: " . date("Y-m-d h:i:s", $this_shift_data["timein"]) . "</p>";
+                    echo "<p>End Time: " . date("Y-m-d h:i:s", $this_shift_data["timeout"]) . "</p>";
+                    echo "<p>Hours: " . (round((((int)$this_shift_data["timeout"]-(int)$this_shift_data["timein"])/3600)*10000)/10000) . "</p>";
+                    echo "<p>Hourly Rate: " . $this_shift_data["pay"] . "</p>";
+                    echo "<p>Earnings: " . ((round((((int)$this_shift_data["timeout"]-(int)$this_shift_data["timein"])/3600)*10000)/10000)*$this_shift_data["pay"]) . "</p>";
 
                     $raw_shift_data = "employee: " . $username . ", timein:" . $this_shift_data["timein"] . ", timeout:" . $this_shift_data["timeout"] . ", hourlypay:" . $this_shift_data["pay"];
                     echo "<br><p><b>Verification Data</b></p>";

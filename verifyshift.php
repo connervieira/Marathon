@@ -12,12 +12,9 @@ if ($_SESSION['authid'] == "marathon" and $_SESSION['loggedin'] == 1) { // Check
 <html lang="en">
     <head>
         <meta charset="utf-8">
-
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Marathon - Verify Shift</title>
 
-        <link rel="stylesheet" href="./assets/css/Projects-Clean.css">
-        <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="./assets/css/main.css">
     </head>
 
@@ -37,7 +34,7 @@ if ($_SESSION['authid'] == "marathon" and $_SESSION['loggedin'] == 1) { // Check
                 <form method="GET">
                     <label for="hash">Hash:</label><input placeholder="Hash" name="hash" autocomplete="off" required><br>
                     <label for="key">Key:</label><input placeholder="Key" name="key" autocomplete="off" type="text"><br>
-                    <input type="submit" class="button">
+                    <input type="submit" value="Submit" class="button">
                 </form>
             </div>
             <?php
@@ -50,7 +47,6 @@ if ($_SESSION['authid'] == "marathon" and $_SESSION['loggedin'] == 1) { // Check
                 echo "<p>" . $decrypted_verification_data . "</p>";
             }
             ?>
-
         </main>
     </body>
 </html>

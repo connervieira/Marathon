@@ -7,55 +7,35 @@ if ($_SESSION['authid'] == "marathon" and $_SESSION['loggedin'] == 1) { // Check
     header("Location: login.php"); // Redirect the user to the login page.
     exit();
 }
-$background_gradient_bottom = "#000000";
-$background_gradient_top = "#444444";
 ?>
 <!DOCTYPE html>
-<html lang="en" style="background:<?php echo $background_gradient_bottom; ?>;">
+<html lang="en">
     <head>
         <meta charset="utf-8">
-
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Marathon - Configure</title>
 
-        <link rel="stylesheet" href="./assets/css/Projects-Clean.css">
-        <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./assets/css/main.css">
     </head>
 
-    <body style="color:#111111;">
-        <div class="projects-clean" style="background:linear-gradient(0deg, <?php echo $background_gradient_bottom; ?>, <?php echo $background_gradient_top; ?>);color:#111111;">
-            <div class="container" style="padding-top:100px;">
-                <div style="text-align:center;">
-                    <?php
-                    include('./import_databases.php');
-                    ?>
-                </div>
-                <main>
-                    <a class="btn btn-primary" role="button" href="index.php" style="background-color:#444444;border-color:#eeeeee">Back</a>
-                    <div class="intro">
-                        <p class="text-center" style="padding-bottom:54px;color:#dddddd;font-size:40px;">Configure</p>
-                    </div>
-                    <div style="text-align:center;">
-                        <form action="configurationchange.php" method="POST" style="color:white;">
-                            <?php
-                            if ($configuration_database["disableadminsignups"] == true) {
-                                echo '<label for="disableadminsignups">Disable Admin Sign Ups: </label><input name="disableadminsignups" type="checkbox" checked><br>';
-                            } else {
-                                echo '<label for="disableadminsignups">Disable Admin Sign Ups: </label><input name="disableadminsignups" type="checkbox"><br>';
-                            }
-                            echo '<label for="clockinverificationkey">Clock In Verification Key: </label><input name="clockinverificationkey" type="text" value="';
-                            echo $configuration_database["clockinverificationkey"];
-                            echo '"><br>';
-
-                            echo '<label for="currency">Business Currency Code: </label><input name="currency" type="text" maxlength="4" value="';
-                            echo $configuration_database["currency"];
-                            echo '"><br>';
-                            ?>
-                            <input type="submit">
-                        </form>
-                    </div>
-                </main>
-            </div>
+    <body>
+        <div class="centered">
+            <?php include('./import_databases.php'); ?>
         </div>
+        <a class="button" role="button" href="index.php">Back</a>
+        <div class="centered header">
+            <h1>Marathon</h1>
+            <h2>Configure</h2>
+        </div>
+        <main class="centered">
+            <form action="configurationchange.php" method="POST" style="color:white;">
+                <?php
+                echo '<label for="disableadminsignups">Disable Admin Sign Ups: </label><input name="disableadminsignups" id="disabledadminsignups" type="checkbox" '; if ($configuration_database["disableadminsignups"] == true) { echo "checked"; } echo '><br>';
+                echo '<label for="clockinverificationkey">Clock In Verification Key: </label><input name="clockinverificationkey" id="clockinverificationkey" type="text" value="' . $configuration_database["clockinverificationkey"] . '"><br>';
+                echo '<label for="currency">Business Currency Code: </label><input name="currency" id="currency" type="text" maxlength="4" value="' . $configuration_database["currency"] .'"><br>';
+                ?>
+                <input class='button' type="submit" value="Submit">
+            </form>
+        </main>
     </body>
 </html>
