@@ -28,7 +28,7 @@ if ($_SESSION['authid'] == "marathon" and $_SESSION['loggedin'] == 1) { // Check
         <div class="centered header">
             <h1>Marathon</h1>
             <h2>Verify Shift</h2>
-            <p>This page shows you to verify the validity of a shift verification has given a certain shift verification key.</p>
+            <p>This page allows you to verify a shift, given a verification hash and key pair.</p>
         </div>
         <main>
             <div class="centered">
