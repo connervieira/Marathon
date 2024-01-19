@@ -14,4 +14,4 @@ This file contains things that are on the to-do list for Marathon
     - [X] Verify admin account creation functionality/behavior.
 - [X] Finish simplifying user interface/styling.
 - [X] Add a way to limit the maximum age of shifts that are displayed.
-- [ ] Add a way for administrators to force employees to clock-out.
+- [X] Add a way for administrators to force employees to clock-out.

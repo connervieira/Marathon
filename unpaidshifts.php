@@ -118,7 +118,7 @@ $confirmation = $_GET["confirmation"];
 
                                 echo "<p><b>Time Worked</b>: " . $hours_worked . " hours</p>";
 
-                                echo "<p><b>Payment</b>: $" . round_currency($payment_owed) . "</p>";
+                                echo "<p><b>Payment</b>: " . round_currency($payment_owed) . " " . strtoupper($configuration_database["currency"]) . "</p>";
                                 echo '<a class="button" role="button" href="unpaidshifts.php?employee=' . $key1 . '&shift=' . $key2 . '">Mark As Paid</a>';
                                 echo "</div>";
                             } else {

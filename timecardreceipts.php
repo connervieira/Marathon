@@ -54,8 +54,8 @@ if ($_SESSION['authid'] == "marathon" and $_SESSION['loggedin'] == 2) { // Check
                     }
                     $hours_worked = round(intval($element["timeout"])-intval($element["timein"]))/3600;
                     $hours_worked = round($hours_worked*10000)/10000;
-                    if (intval($element["timeout"]) < -intval($element["timein"])) { // Check to see if the number of hours worked is negative.
-                        echo "<p>The clock out time is <b>before</b> the clock out time. This means something has gone very wrong!</p>";
+                    if (intval($element["timeout"]) < intval($element["timein"])) { // Check to see if the number of hours worked is negative.
+                        echo "<p style='color:red;'><i>The clock out time is before the clock in time. This means something has gone very wrong!</i></p>";
                     }
                     echo "<p><b>Shift ID</b>: " . $key . "</p>";
                     echo "<p><b>Start Time</b>: " . date("Y-m-d H:i:s", $element["timein"]) . "</p>";

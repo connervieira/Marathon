@@ -53,25 +53,26 @@ This file explains what changes are made to Marathon based on version.
 
 ## Version 2.0
 
-*Release date to be determined*
+January 18th, 2024
 
+- Significantly revised the styling and interface.
+- Added more thorough checks when a user clocks in to detect if the user is getting paid $0 an hour.
 - Fixed an issue where positions couldn't be added without overwriting all other positions.
+- Updated the position data management system.
+    - Added the ability to edit existing employees.
 - Updated the way timecard receipts are shown to employees.
     - Shifts are now shown in reverse order, such that more recent shifts are shown at the top.
     - Shifts that have not yet been paid out are highlighted with a green border.
-- Added more thorough checks when a user clocks in to detect if the user is getting paid $0 an hour.
-- Simplified styling and interface.
-- Updated the employee data management system.
-    - Added the ability to edit existing employees.
-    - Replaced the 'gender' attribute with the 'sex' attribute.
-- Updated the position data management system.
-    - Added the ability to edit existing employees.
-- Update the way shifts are viewed by administrators.
+    - Marathon now checks to see if a shift's clock-out time is before the clock-in time. This can help identify significant problems earlier.
+- Update the way shifts are shown to administrators.
     - The 'Tools' page has been renamed to the 'Shifts' page.
     - Added the 'Max Shifts Displayed' configuration value to restrict how many shifts are displayed for each employee under normal circumstances.
         - This can be overriden by clicking the text below an employee showing how many shifts were truncated.
     - Shifts are now shown in reverse order, such that more recent shifts are displayed first.
     - Shifts are now displayed in a much more compact, side-by-side format.
 - Significantly changed the data storage back-end.
-    - All data is now stored as encoded JSON, rather than serialized PHP data.
+    - Updated the employee data management system.
+        - Added the ability to edit existing employees without manually re-entering their information.
+        - Replaced the 'gender' attribute with the 'sex' attribute.
+    - All data is now stored as encoded JSON, rather than serialized PHP data for portability, speed, and stability.
     - There is now a dedicated function for saving data to disk.
