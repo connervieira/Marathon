@@ -7,14 +7,25 @@ An open source, transparent, self hosted employee management tool.
 
 ## Webpage
 
-You can find the official Marathon webpage, as well as Marathon downloads at <https://v0lttech.com/marathon.php>.
+You can find the official Marathon webpage, as well as downloads at <https://v0lttech.com/marathon.php>.
 
 
 ## Description
 
-Marathon is an employee tracking tool designed to prioritize both employees and their managers. With Marathon, managers can add employees to the system, manage their information, and track payment information. Employees can quickly and easy clock in, clock out, and keep track of their hours and pay.
+Marathon is an employee tracking tool designed to prioritize both employees and their managers. With Marathon, managers can add employees to the system, manage their information, and track payments. Employees can quickly and easy clock in, clock out, and keep track of their hours and expected pay.
 
 Marathon's main defining feature is it's unrivaled transparency. Using simple cryptography, Marathon allows employees to prove that they worked a given shift to their employers using a 'shift verification hash'. Similarly, employers can know with near certainty that if an employee has a shift verification hash that they did indeed work a given shift. Simply put, when an employee clocks out of their shift, they recieve a unique string of seemingly random characters that has been generated using their employer's defined key, and contains all of the information about their shift. Only someone with this key could generate such a string. If a doubt about the hours worked by an employee comes up, the employee can present this random string, and their employer can use their key to see if the information contained in the string matches the hours the employee claims to have worked.
+
+
+## Screenshots
+
+Marathon allows employees to view their previous timecard receipts in a modern and organized interface.
+
+![A screenshot of the employee timecard receipt interface](./files/images/screenshots/employee/timecardreceipts.png)
+
+Administrators/managers can view how much employees are owed, and easily mark their pending shifts as paid out after adding them to payroll.
+
+![A screenshot of the unpaid shift interrface](./files/images/screenshots/admin/unpaidshifts.png)
 
 
 ## Features
@@ -33,7 +44,7 @@ Marathon is completely open source, meaning you're completely free to inspect, a
 
 ### Stable
 
-Marathon protects you from yourself by detecting malformatted information before it is added to the database. Even if invalid data does make it through the filters, it will be stored in a safe way that won't corrupt the database after being loaded.
+Marathon protects you by detecting malformed information before it is added to the database. Additionally, all of Marathon's data is stored in plain text files that can be easily backed up by system administrators.
 
 ### Convenient
 
@@ -67,13 +78,18 @@ Due to it's self-hosted nature, Marathon is extremely reliable and resiliant. It
 
 Marathon provides conveinent, relevant statistics to both employees and managers alike, making it quick and easy to see trends and spot issues.
 
+### Organized
+
+Marathon's interface is designed to be compact, adaptive, and easy to understand. This makes it easy for new users to get started, while still allowing experience administrators to make the most of the available screen space.
+
 ### Reliable
 
 Marathon is extremely fault tolerant, such that a single error won't cause the system-wide issue. Just because a certain function encountered and error doesn't mean your entire business has to go offline.
 
 ### Private
 
-Marathon has unrivaled privacy, and contains absolutely no telemetry of any kind. Marathon gives you the peace of mind that absolutely no critical (or even non-critical data) is being shared with any third parties.
+Marathon has unrivaled privacy, and contains absolutely no telemetry of any kind. Marathon gives you the peace of mind that absolutely no data is being shared with any third parties.
+
 
 ## Bug Reports
 
