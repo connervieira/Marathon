@@ -23,10 +23,10 @@
             echo "<p><a href='employeeremove.php?id=" . $id_to_delete . "&confirmation=true'>Confirm</a></p>";
             echo "<p><a href='employees.php'>Cancel</a></p>";
         } else { // Otherwise, delete the employee.
-            unset($employee_database[$id_to_delete]); // Remove the employee from the employee database
-            unset($timecard_database[$id_to_delete]); // Remove the employee from the timecard database
-            file_put_contents($database_directory . '/employeedatabase.txt', serialize($employee_database)); // Write array changes to disk
-            file_put_contents($database_directory . '/timecarddatabase.txt', serialize($timecard_database)); // Write array changes to disk
+            unset($employee_database[$id_to_delete]); // Remove the employee from the employee database.
+            unset($timecard_database[$id_to_delete]); // Remove the employee from the timecard database.
+            save_database('employeedatabase.json', $employee_database); // Write array changes to disk.
+            save_database('timecarddatabase.json', $timecard_database); // Write array changes to disk.
             echo "<p>Employee deleted</p>";
             echo "<p><a href='employees.php'>Back</a></p>";
         }

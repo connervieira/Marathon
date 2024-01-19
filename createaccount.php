@@ -57,7 +57,7 @@
                 }
 
                 $authentication_database[$username]["password"] = password_hash($password1, PASSWORD_DEFAULT); // Add the new user and their hashed password to the authentication database.
-                file_put_contents($database_directory . '/authenticationdatabase.txt', serialize($authentication_database)); // Write array changes to disk.
+                save_database('authenticationdatabase.json', $authentication_database); // Write array changes to disk.
 
                 echo "<p>Successfully created account!</p>";
                 ?>

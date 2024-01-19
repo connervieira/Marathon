@@ -34,27 +34,35 @@ if ($_SESSION['authid'] == "marathon" and $_SESSION['loggedin'] == 2) { // Check
         </div>
         <main>
             <?php
-
+            include('./utils.php');
             include('./import_databases.php');
 
             foreach (array_reverse($timecard_database[$username], true) as $key => $element) { // Iterate over all of this user's shifts in the timecard database.
                 if ($element["valid"] == true or $showinvalid == true) { // Check to see if this particular shift is valid.
-                    if ($showinvalid == true and $element["valid"] == false) {
+                    if (isset($element["timein"]) == true and isset($element["timeout"]) == false and $element["valid"] == true) { // Check to see if this shift is still open.
+                        echo "<div class='horizontal-tile' style='border:10px solid #cccc22;'>";
+                        echo "<p style='color:yellow;'>Active</p>";
+                        $element["timeout"] = time();
+                    } else if ($showinvalid == true and $element["valid"] == false) { // Check to see if this shift is invalid.
                         echo "<div class='horizontal-tile' style='border:10px solid #cc2222;'>";
-                    } else if ($element["paidout"] == false) {
+                        echo "<p style='color:red;'>Invalid</p>";
+                    } else if ($element["paidout"] == false) { // Check to see if this shift hasn't yet been paid out.
                         echo "<div class='horizontal-tile' style='border:10px solid #22cc22;'>";
+                        echo "<p style='color:lime;'>Unpaid</p>";
                     } else {
                         echo "<div class='horizontal-tile'>";
                     }
-                    echo "<p><b>Shift ID</b>: " . $key . "</p>";
-                    if ($showinvalid == true and $element["valid"] == false) {
-                        echo "<p style='color:red;'>Invalid</p>";
+                    $hours_worked = round(intval($element["timeout"])-intval($element["timein"]))/3600;
+                    $hours_worked = round($hours_worked*10000)/10000;
+                    if (intval($element["timeout"]) < -intval($element["timein"])) { // Check to see if the number of hours worked is negative.
+                        echo "<p>The clock out time is <b>before</b> the clock out time. This means something has gone very wrong!</p>";
                     }
-                    echo "<p><b>Start Time</b>: " . date("Y-m-d h:i:s", $element["timein"]) . "</p>";
-                    echo "<p><b>End Time</b>: " . date("Y-m-d h:i:s", $element["timeout"]) . "</p>";
-                    echo "<p><b>Hours</b>: " . (round((((int)$element["timeout"]-(int)$element["timein"])/3600)*10000)/10000) . "</p>";
+                    echo "<p><b>Shift ID</b>: " . $key . "</p>";
+                    echo "<p><b>Start Time</b>: " . date("Y-m-d H:i:s", $element["timein"]) . "</p>";
+                    echo "<p><b>End Time</b>: " . date("Y-m-d H:i:s", $element["timeout"]) . "</p>";
+                    echo "<p><b>Hours</b>: " . $hours_worked . "</p>";
                     echo "<p><b>Payrate</b>: " . $element["pay"] . " " . strtoupper($configuration_database["currency"]) . " per hour</p>";
-                    echo "<p><b>Earnings</b>: " . ((round((((int)$element["timeout"]-(int)$element["timein"])/3600)*10000)/10000)*$element["pay"]) . " " . strtoupper($configuration_database["currency"]) . "</p>";
+                    echo "<p><b>Earnings</b>: " . round_currency($hours_worked*$element["pay"]) . " " . strtoupper($configuration_database["currency"]) . "</p>";
 
                     // Display verification data
                     $raw_shift_data = "employee: " . $username . ", timein:" . $element["timein"] . ", timeout:" . $element["timeout"] . ", hourlypay:" . $element["pay"]; // Generate the raw shift data to be encrypted with the shift verification key.

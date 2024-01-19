@@ -29,57 +29,59 @@ if ($_SESSION['authid'] == "marathon" and $_SESSION['loggedin'] == 1) { // Check
             <h1>Marathon</h1>
             <h2>Manage Employees</h2>
         </div>
-        <main class="centered">
-            <h3>Add Employee</h3>
-            <?php 
-            if ($_GET["editing"] == "true") {
-                echo '
-                <form action="employeeadd.php" method="POST">
-                    <label for="id">ID Number:</label><input placeholder="ID Number" name="id" id="id" type="number" value="' . $_GET["id"] . '"><br>
-                    <label for="firstname">First Name:</label><input placeholder="First Name" name="firstname" id="firstname" value="' . $employee_database[$_GET["id"]]["firstname"] . '" required><br>
-                    <label for="middlename">Middle Name:</label><input placeholder="Middle Name" name="middlename" id="middlename" value="' . $employee_database[$_GET["id"]]["middlename"] . '" ><br>
-                    <label for="lastname">Last Name:</label><input placeholder="Last Name" name="lastname" id="lastname" value="' . $employee_database[$_GET["id"]]["lastname"] . '" ><br>
-                    <label for="positionid">Position ID:</label><input placeholder="Position ID" name="positionid" id="positionid" type="number" value="' . $employee_database[$_GET["id"]]["positionid"] . '" required><br>
+        <main>
+            <div class="centered">
+                <h3>Add Employee</h3>
+                <?php 
+                if ($_GET["editing"] == "true") {
+                    echo '
+                    <form action="employeeadd.php" method="POST">
+                        <label for="id">ID Number:</label><input placeholder="ID Number" name="id" id="id" type="number" value="' . $_GET["id"] . '"><br>
+                        <label for="firstname">First Name:</label><input placeholder="First Name" name="firstname" id="firstname" value="' . $employee_database[$_GET["id"]]["firstname"] . '" required><br>
+                        <label for="middlename">Middle Name:</label><input placeholder="Middle Name" name="middlename" id="middlename" value="' . $employee_database[$_GET["id"]]["middlename"] . '" ><br>
+                        <label for="lastname">Last Name:</label><input placeholder="Last Name" name="lastname" id="lastname" value="' . $employee_database[$_GET["id"]]["lastname"] . '" ><br>
+                        <label for="positionid">Position ID:</label><input placeholder="Position ID" name="positionid" id="positionid" type="number" value="' . $employee_database[$_GET["id"]]["positionid"] . '" required><br>
+                        ';
+                    
+                    // Change the hourly pay "step" based on the currency defined in the configuration.
+                    $currency = strtolower($configuration_database["currency"]);
+                    if ($currency == "usd" or $currency == "eur" or $currency == "cad") { $currency_step = 0.01;
+                    } else if ($currency == "bch" or $currency == "xmr") { $currency_step = 0.00001;
+                    } else { $currency_step = 0.000000001; };
+                    echo '<label for="hourlypay">Hourly Pay:</label><input placeholder="Hourly Pay" name="hourlypay" id="hourlypay" step="' . $currency_step . '" min="0" type="number" value="' . $employee_database[$_GET["id"]]["hourlypay"] . '" ><br>';
+                    
+                    
+                    echo '
+                        <label for="sex">Sex:</label><select id="sex" name="sex">
+                            <option value="unspecified" '; if ($employee_database[$_GET["id"]]["sex"] == "unspecified") { echo 'selected'; } echo '>Unspecified</option>
+                            <option value="male" '; if ($employee_database[$_GET["id"]]["sex"] == "male") { echo 'selected'; } echo '>Male</option>
+                            <option value="female" '; if ($employee_database[$_GET["id"]]["sex"] == "female") { echo 'selected'; } echo '>Female</option>
+                        </select><br>
+                        <label for="birthday">Birthday:</label><input name="birthday" id="birthday" type="date" value="' . $employee_database[$_GET["id"]]["birthday"] . '" ><br>
+                        <label for="phone">Phone:</label><input placeholder="Phone Number" name="phone" id="phone" type="tel" value="' . $employee_database[$_GET["id"]]["phone"] . '" ><br>
+                        <label for="email">Email:</label><input placeholder="Email" name="email" id="email" type="email" value="' . $employee_database[$_GET["id"]]["email"] . '" ><br>
+                        <label for="instantmessage">Instant Message Contact:</label><input placeholder="Instant Message Contact" name="instantmessage" id="instantmessage" value="' . $employee_database[$_GET["id"]]["instantmessage"] . '" ><br>
+                        <label for="address">Address:</label><input placeholder="Address" name="address" id="address" type="address" value="' . $employee_database[$_GET["id"]]["address"] . '" ><br>
+                        <label for="ssn">Social Security Number:</label><input placeholder="Social Security Number" name="ssn" id="ssn" type="number" minlength="9" maxlength="9" value="' . $employee_database[$_GET["id"]]["ssn"] . '" ><br>';
+                    
+                    echo '<label for="password">Employee Password/PIN:</label><input placeholder="'; if (isset($_GET["id"])) { echo "Leave Unchanged"; } else { echo 'Password/PIN'; } echo '" name="password" id="password" type="password"><br>';
+
+                    echo '<label for="tips">Tips:</label><input name="tips" id="tips" type="checkbox" '; if ($employee_database[$_GET["id"]]["tips"]) { echo "checked"; } echo '><br>';
+
+                    echo '<br>
+                        <label for="paymentinfo">Payment Information:</label><textarea style="width:100%;height:400px;" row="15" type="text" name="paymentinfo" id="paymentinfo" placeholder="Bank account information, cryptocurrency address, etc.">' . $employee_database[$_GET["id"]]["paymentinfo"] . '</textarea>
+                        <input type="submit" class="button">
+                    </form>
                     ';
-                
-                // Change the hourly pay "step" based on the currency defined in the configuration.
-                $currency = strtolower($configuration_database["currency"]);
-                if ($currency == "usd" or $currency == "eur" or $currency == "cad") { $currency_step = 0.01;
-                } else if ($currency == "bch" or $currency == "xmr") { $currency_step = 0.00001;
-                } else { $currency_step = 0.000000001; };
-                echo '<label for="hourlypay">Hourly Pay:</label><input placeholder="Hourly Pay" name="hourlypay" id="hourlypay" step="' . $currency_step . '" min="0" type="number" value="' . $employee_database[$_GET["id"]]["hourlypay"] . '" ><br>';
-                
-                
-                echo '
-                    <label for="sex">Sex:</label><select id="sex" name="sex">
-                        <option value="unspecified" '; if ($employee_database[$_GET["id"]]["sex"] == "unspecified") { echo 'selected'; } echo '>Unspecified</option>
-                        <option value="male" '; if ($employee_database[$_GET["id"]]["sex"] == "male") { echo 'selected'; } echo '>Male</option>
-                        <option value="female" '; if ($employee_database[$_GET["id"]]["sex"] == "female") { echo 'selected'; } echo '>Female</option>
-                    </select><br>
-                    <label for="birthday">Birthday:</label><input name="birthday" id="birthday" type="date" value="' . $employee_database[$_GET["id"]]["birthday"] . '" ><br>
-                    <label for="phone">Phone:</label><input placeholder="Phone Number" name="phone" id="phone" type="tel" value="' . $employee_database[$_GET["id"]]["phone"] . '" ><br>
-                    <label for="email">Email:</label><input placeholder="Email" name="email" id="email" type="email" value="' . $employee_database[$_GET["id"]]["email"] . '" ><br>
-                    <label for="instantmessage">Instant Message Contact:</label><input placeholder="Instant Message Contact" name="instantmessage" id="instantmessage" value="' . $employee_database[$_GET["id"]]["instantmessage"] . '" ><br>
-                    <label for="address">Address:</label><input placeholder="Address" name="address" id="address" type="address" value="' . $employee_database[$_GET["id"]]["address"] . '" ><br>
-                    <label for="ssn">Social Security Number:</label><input placeholder="Social Security Number" name="ssn" id="ssn" type="number" minlength="9" maxlength="9" value="' . $employee_database[$_GET["id"]]["ssn"] . '" ><br>';
-                
-                echo '<label for="password">Employee Password/PIN:</label><input placeholder="'; if (isset($_GET["id"])) { echo "Leave Unchanged"; } else { echo 'Password/PIN'; } echo '" name="password" id="password" type="password"><br>';
-
-                echo '<label for="tips">Tips:</label><input name="tips" id="tips" type="checkbox" '; if ($employee_database[$_GET["id"]]["tips"]) { echo "checked"; } echo '><br>';
-
-                echo '<br>
-                    <label for="paymentinfo">Payment Information:</label><textarea style="width:100%;height:400px;" row="15" type="text" name="paymentinfo" id="paymentinfo" placeholder="Bank account information, cryptocurrency address, etc.">' . $employee_database[$_GET["id"]]["paymentinfo"] . '</textarea>
-                    <input type="submit" class="button">
-                </form>
-                ';
-            } else {
-                echo '<a class="button" role="button" href="employees.php?editing=true">Add Employee</a>';
-            }
-            ?>
+                } else {
+                    echo '<a class="button" role="button" href="employees.php?editing=true">Add Employee</a>';
+                }
+                ?>
+            </div>
 
             <hr class="separator-thin">
 
-            <h3>View Employees</h3>
+            <h3 class="centered">View Employees</h3>
             <?php
             foreach ($employee_database as $key => $element) {
                 echo "<h3><b>Name</b>: " . $element["firstname"] . " " . $element["middlename"] . " " . $element["lastname"] . "</h3>";

@@ -71,4 +71,7 @@ This file explains what changes are made to Marathon based on version.
     - Added the 'Max Shifts Displayed' configuration value to restrict how many shifts are displayed for each employee under normal circumstances.
         - This can be overriden by clicking the text below an employee showing how many shifts were truncated.
     - Shifts are now shown in reverse order, such that more recent shifts are displayed first.
-    - Shifts are now display in a much more compact, side-by-side format.
+    - Shifts are now displayed in a much more compact, side-by-side format.
+- Significantly changed the data storage back-end.
+    - All data is now stored as encoded JSON, rather than serialized PHP data.
+    - There is now a dedicated function for saving data to disk.

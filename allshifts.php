@@ -44,7 +44,7 @@ $confirmation = $_GET["confirmation"];
                 if ($confirmation == true) { // Check to see if the user has clicked the "Confirm" button yet.
                     if (isset($timecard_database[$employee_id_to_mark][$shift_id_to_mark]) == true) { // Check to see if this shift exists
                         $timecard_database[$employee_id_to_mark][$shift_id_to_mark]["valid"] = false; // Mark this shift as invalid
-                        file_put_contents($database_directory . '/timecarddatabase.txt', serialize($timecard_database)); // Write array changes to disk
+                        save_database('timecarddatabase.json', $timecard_database); // Write array changes to disk.
                         echo "<p>This shift has been marked as invalid!</p>";
                         echo "<p><a class='button' href='allshifts.php'>Back</a></p>";
                     } else {

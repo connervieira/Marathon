@@ -99,7 +99,7 @@ if ($tips == "on" or $tips == null or $tips == "" or $tips == "off") { // Check 
 }
 
 $employee_database[$id] = $employee_information; // Add the employee's database to the database under their ID
-file_put_contents($database_directory . '/employeedatabase.txt', serialize($employee_database)); // Write array changes to disk
+save_database('employeedatabase.json', $employee_database); // Write array changes to disk.
 
 header("Location: employees.php");
 exit();

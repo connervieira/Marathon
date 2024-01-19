@@ -60,12 +60,10 @@ if ($_SESSION['authid'] == "marathon" and $_SESSION['loggedin'] == 1) { // Check
                     echo "<h4><b>Position Name</b>: " . $element["name"] . "</h4>";
                     echo "<p><b>ID Number</b>: " . $key . "</p>";
                     if ($element["defaultpayamount"] !== null and $element["defaultpayamount"] !== "") {
-                        echo "<p><b>Default Pay Amount</b>: " . $element["defaultpayamount"] . "</p>";
+                        echo "<p><b>Default Pay</b>: " . $element["defaultpayamount"] . " " . strtoupper($configuration_database["currency"]) . "</p>";
                     }
-                    if ($element["canclockin"] == "on") {
-                        echo "<p><b>Can Clock In</b>: Allowed</p>";
-                    } else {
-                        echo "<p><b>Can Clock In</b>: Disallowed</p>";
+                    if ($element["canclockin"] == "on") { echo "<p><b>Enabled</b>: Yes</p>";
+                    } else { echo "<p><b>Enabled</b>: No</p>";
                     }
                     if ($element["description"] !== null and $element["description"] !== "") {
                         echo "<p><b>Description</b>: " . $element["description"] . "</p>";

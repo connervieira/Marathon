@@ -29,8 +29,31 @@ include('./utils.php');
         </div>
         <main>
             <?php
-            $open_shifts = array(); // This is an array that all currently open shifts will be added to.
+            $employee_to_clockout = $_GET["clockout"];
+            if (isset($employee_to_clockout)) { // Check to see if the variable to clock out a specific employee exists.
+                ksort($timecard_database[$employee_to_clockout]); // Sort the employee's shifts by shift ID (such that more recent shifts are at the end).
+                $most_recent_shift_id = array_reverse(array_keys($timecard_database[$employee_to_clockout]))[0]; // Get the ID of the last shift (the most recent shift).
+                echo "<div class='centered'>";
 
+                if (isset($timecard_database[$employee_to_clockout][$most_recent_shift_id]["timein"]) == true and isset($timecard_database[$employee_to_clockout][$most_recent_shift_id]["timeout"]) == false and $timecard_database[$employee_to_clockout][$most_recent_shift_id]["valid"] == true) { // Check to make sure this shift is actually still active.
+                    if (strval($_GET["confirm"]) == "true") { // Check to see if the administrator has clicked the confirmation button.
+                        $timecard_database[$employee_to_clockout][$most_recent_shift_id]["timeout"] = time(); // Set the end time of this shift to now.
+                        save_database('timecarddatabase.json', $timecard_database); // Write array changes to disk.
+                        echo "<p>" . $employee_database[$employee_to_clockout]["firstname"] . " " . $employee_database[$employee_to_clockout]["lastname"] . " has been clocked out. You may now want to invalidate this shift on the <a href='allshifts.php'>All Shifts</a> page to prevent it from being counted in statistics and payments.</p>";
+                    } else { // If the confirmation button hasn't been clicked yet, then display the button and a prompt.
+                        echo "<p>Are you sure you would like to manually clock out " . $employee_database[$employee_to_clockout]["firstname"] . " " . $employee_database[$employee_to_clockout]["lastname"] . "?</p>";
+                        echo "<a class='button' href='?clockout=" . $employee_to_clockout . "&confirm=true'>Confirm</a>";
+                    }
+                } else {
+                    echo "<p style='color:red;'>Error: This employee doesn't appear to be currently clocked in.</p>";
+                }
+                echo "<a class='button' href='openshifts.php'>Cancel</a>";
+                echo "</div>";
+                exit();
+            }
+
+
+            $open_shifts = array(); // This is an array that all currently open shifts will be added to.
             foreach($timecard_database as $employee_id => $employee) { // Iterate through each employee in the timecard database.
                 ksort($employee);
                 $most_recent_shift = array_reverse(array_keys($employee))[0];
@@ -39,9 +62,13 @@ include('./utils.php');
                 }
             }
 
-            foreach ($open_shifts as $employee_id => $information) {
-                $shift_length = round(((time() - $information["timein"])/60/60)*1000)/1000;
-                echo "<p><b>" . $employee_database[$employee_id]["firstname"] . " " . $employee_database[$employee_id]["lastname"] . "</b> - " . $shift_length . " hours</p>";
+            if (sizeof($open_shifts) > 0) { // Check to see if there is at least one open shift.
+                foreach ($open_shifts as $employee_id => $information) {
+                    $shift_length = round(((time() - $information["timein"])/60/60)*1000)/1000;
+                    echo "<p><b>" . $employee_database[$employee_id]["firstname"] . " " . $employee_database[$employee_id]["lastname"] . "</b> - " . $shift_length . " hours <a class='button' href='?clockout=" . $employee_id . "'>Clock Out</a></p>";
+                }
+            } else {
+                echo "<p><i>There are currently no open shifts.</i></p>";
             }
             ?>
         </main>

@@ -39,7 +39,7 @@ $configuration_database["clockinverificationkey"] = $clockinverificationkey;
 $configuration_database["currency"] = filter_var($currency, FILTER_SANITIZE_STRING);
 $configuration_database["maxshiftsdisplayed"] = $maxshiftsdisplayed;
 
-file_put_contents($database_directory . '/configurationdatabase.txt', serialize($configuration_database)); // Write array changes to disk
+save_database('configurationdatabase.json', $configuration_database); // Write array changes to disk.
 
 header("Location: configure.php");
 exit();

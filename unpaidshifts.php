@@ -46,7 +46,7 @@ $confirmation = $_GET["confirmation"];
                         if (isset($timecard_database[$employee_id_to_mark][$shift_id_to_mark]) == true) { // Check to see if this shift exists
                             if ($timecard_database[$employee_id_to_mark][$shift_id_to_mark]["valid"] == true) { // Check to see if this shift is valid.
                                 $timecard_database[$employee_id_to_mark][$shift_id_to_mark]["paidout"] = true; // Mark this shift as paid out
-                                file_put_contents($database_directory . '/timecarddatabase.txt', serialize($timecard_database)); // Write array changes to disk
+                                save_database('timecarddatabase.json', $timecard_database); // Write array changes to disk.
                                 echo "<p>This shift has been marked as paid!</p>";
                                 echo "<p><a class='button' href='unpaidshifts.php'>Back</a></p>";
                             } else {
@@ -72,7 +72,7 @@ $confirmation = $_GET["confirmation"];
                                 }
                             }
                         }
-                        file_put_contents($database_directory . '/timecarddatabase.txt', serialize($timecard_database)); // Write array changes to disk.
+                        save_database('timecarddatabase.json', $timecard_database); // Write array changes to disk.
                         echo "<p>All of " . $employee_database[$employee_id_to_mark]["firstname"] . " " . $employee_database[$employee_id_to_mark]["lastname"] . "'s shifts have been marked as paid out!</p>";
                         echo "<p><a class='button' href='unpaidshifts.php'>Back</a></p>";
                     } else {
@@ -90,7 +90,7 @@ $confirmation = $_GET["confirmation"];
             foreach ($employee_database as $key1 => $element1) { // Iterate through each employee in the database.
                 if (isset($_GET["displayall"]) and intval($key1) !== intval($_GET["displayall"])) { continue; }
                 $employee_has_unpaid_shifts = false;
-                foreach($timecard_database[$key1] as $element2) {
+                foreach($timecard_database[$key1] as $element2) { // Iterate through each of this employee's shifts.
                     if ($element2["paidout"] != true and isset($element2["timeout"]) and $element2["valid"] == true) {
                         $employee_has_unpaid_shifts = true;
                         $anyone_has_unpaid_shifts = true;
@@ -103,7 +103,7 @@ $confirmation = $_GET["confirmation"];
                     $total_payment_owed = 0;
                     $employee_shift_count = 0;
                     $truncated_shifts = 0;
-                    foreach($timecard_database[$key1] as $key2 => $element2) { // Iterate over each of this employee's shifts.
+                    foreach(array_reverse($timecard_database[$key1], true) as $key2 => $element2) { // Iterate over each of this employee's shifts.
                         if ($element2["paidout"] == false and isset($element2["timeout"]) and $element2["valid"] == true) {
                             $employee_shift_count+=1;
                             $hours_worked = round((($element2["timeout"] - $element2["timein"]) / 3600)*100000)/100000;
