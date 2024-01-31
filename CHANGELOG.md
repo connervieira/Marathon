@@ -11,10 +11,10 @@ This file explains what changes are made to Marathon based on version.
 
 - Fixed an issue that caused the timecard database to fail to initialize.
 - Added a 'paid shift' viewer that allows admins to revert shifts from paid to unpaid in the event of a mistake.
-- Added an 'all shift' viewer that allows admins to invalide shifts from the timecard database.
+- Added an 'all shift' viewer that allows admins to invalidate shifts from the timecard database.
     - Invalidating a shift effectively deletes it, and it is no longer included in statistics or payment data.
     - It should be noted that invalidating or deleting a shift from the database does not (and cannot) invalidate it's confirmation hash, meaning an employee can still prove they worked a shift, even after it has been deleted from the database.
-- Added 'Back' buttons to some admin pages to make navigation more conveinent.
+- Added 'Back' buttons to some admin pages to make navigation more convenient.
 - Fixed an issue where shift pay was calculated inaccurately on the 'Timecard Receipts' page.
 - Fixed an issue where hourly pay rates would be saved without a decimal point.
 - Disabled autofill on certain field where it isn't appropriate.
@@ -67,7 +67,7 @@ January 18th, 2024
 - Update the way shifts are shown to administrators.
     - The 'Tools' page has been renamed to the 'Shifts' page.
     - Added the 'Max Shifts Displayed' configuration value to restrict how many shifts are displayed for each employee under normal circumstances.
-        - This can be overriden by clicking the text below an employee showing how many shifts were truncated.
+        - This can be overridden by clicking the text below an employee showing how many shifts were truncated.
     - Shifts are now shown in reverse order, such that more recent shifts are displayed first.
     - Shifts are now displayed in a much more compact, side-by-side format.
 - Significantly changed the data storage back-end.

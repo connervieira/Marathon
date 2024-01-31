@@ -7,14 +7,14 @@ An open source, transparent, self hosted employee management tool.
 
 ## Webpage
 
-You can find the official Marathon webpage, as well as downloads at <https://v0lttech.com/marathon.php>.
+You can find the official Marathon web-page, as well as downloads at <https://v0lttech.com/marathon.php>.
 
 
 ## Description
 
 Marathon is an employee tracking tool designed to prioritize both employees and their managers. With Marathon, managers can add employees to the system, manage their information, and track payments. Employees can quickly and easy clock in, clock out, and keep track of their hours and expected pay.
 
-Marathon's main defining feature is it's unrivaled transparency. Using simple cryptography, Marathon allows employees to prove that they worked a given shift to their employers using a 'shift verification hash'. Similarly, employers can know with near certainty that if an employee has a shift verification hash that they did indeed work a given shift. Simply put, when an employee clocks out of their shift, they recieve a unique string of seemingly random characters that has been generated using their employer's defined key, and contains all of the information about their shift. Only someone with this key could generate such a string. If a doubt about the hours worked by an employee comes up, the employee can present this random string, and their employer can use their key to see if the information contained in the string matches the hours the employee claims to have worked.
+Marathon's main defining feature is it's unrivaled transparency. Using simple cryptography, Marathon allows employees to prove that they worked a given shift to their employers using a 'shift verification hash'. Similarly, employers can know with near certainty that if an employee has a shift verification hash that they did indeed work a given shift. Simply put, when an employee clocks out of their shift, they receive a unique string of seemingly random characters that has been generated using their employer's defined key, and contains all of the information about their shift. Only someone with this key could generate such a string. If a doubt about the hours worked by an employee comes up, the employee can present this random string, and their employer can use their key to see if the information contained in the string matches the hours the employee claims to have worked.
 
 
 ## Screenshots
@@ -25,7 +25,7 @@ Marathon allows employees to view their previous timecard receipts in a modern a
 
 Administrators/managers can view how much employees are owed, and easily mark their pending shifts as paid out after adding them to payroll.
 
-![A screenshot of the unpaid shift interrface](./files/images/screenshots/admin/unpaidshifts.png)
+![A screenshot of the unpaid shift interface](./files/images/screenshots/admin/unpaidshifts.png)
 
 
 ## Features
@@ -36,7 +36,7 @@ Marathon is run completely on your own hardware, meaning it doesn't have to be d
 
 ### Transparent
 
-Marathon is designed to be transparent for employees, allowing them to be sure they are being paid fairly without compromising the privacy or security of other employees. Simiarly, employers can be confident knowing that the software they trust with the business is completely open source and freely auditable.
+Marathon is designed to be transparent for employees, allowing them to be sure they are being paid fairly without compromising the privacy or security of other employees. Similarly, employers can be confident knowing that the software they trust with the business is completely open source and freely audit-able.
 
 ### Libre
 
@@ -72,11 +72,11 @@ Marathon features a lightweight, modern design, making it easy, intuitive, and v
 
 ### Consistent
 
-Due to it's self-hosted nature, Marathon is extremely reliable and resiliant. It doesn't need any external services, or even an internet connection at all. As long as your business is up and running, Marathon will be there along side it.
+Due to it's self-hosted nature, Marathon is extremely reliable and resilient. It doesn't need any external services, or even an internet connection at all. As long as your business is up and running, Marathon will be there along side it.
 
 ### Informative
 
-Marathon provides conveinent, relevant statistics to both employees and managers alike, making it quick and easy to see trends and spot issues.
+Marathon provides convenient, relevant statistics to both employees and managers alike, making it quick and easy to see trends and spot issues.
 
 ### Organized
 
